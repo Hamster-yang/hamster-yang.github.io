@@ -1,168 +1,115 @@
-/*!
-* Start Bootstrap - Personal v1.0.1 (https://startbootstrap.com/template-overviews/personal)
-* Copyright 2013-2023 Start Bootstrap
-* Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-personal/blob/master/LICENSE)
-*/
-// This file is intentionally blank
-// Use this file to add JavaScript to your project
+// 粒子背景配置 - Matrix Style
+particlesJS('particles-js', {
+    particles: {
+        number: { value: 100, density: { enable: true, value_area: 800 } },
+        color: { value: '#00ff41' },
+        shape: { type: 'circle' },
+        opacity: { value: 0.6, random: true, anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false } },
+        size: { value: 2, random: true, anim: { enable: true, speed: 2, size_min: 0.1, sync: false } },
+        line_linked: { enable: true, distance: 150, color: '#00ff41', opacity: 0.3, width: 1 },
+        move: { enable: true, speed: 1.5, direction: 'none', random: true, straight: false, out_mode: 'out', bounce: false }
+    },
+    interactivity: {
+        detect_on: 'canvas',
+        events: { 
+            onhover: { enable: true, mode: 'grab' }, 
+            onclick: { enable: true, mode: 'push' }, 
+            resize: true 
+        },
+        modes: { 
+            grab: { distance: 150, line_linked: { opacity: 0.8 } },
+            push: { particles_nb: 4 } 
+        }
+    },
+    retina_detect: true
+});
 
-var inputReady = true;
-            var input = $('.404-input');
-            input.focus();
-            $('.container').on('click', function(e){
-            input.focus();
-            });
+// 導航欄滾動效果
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 100) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
+});
 
-            input.on('keyup', function(e){
-            $('.new-output').text(input.val());
-            // console.log(inputReady);
-            });
+// 漢堡選單
+const hamburger = document.getElementById('hamburger');
+const navMenu = document.getElementById('nav-menu');
+hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navMenu.classList.toggle('active');
+});
 
-            $('.four-oh-four-form').on('submit', function(e){
-            e.preventDefault();
-            var val = $(this).children($('.404-input')).val().toLowerCase();
-            var href;
-            console.log(val);
+// 點擊導航連結後關閉選單
+document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+    });
+});
 
-                if (val === '404 not found'){
-                showKittens();
-            }else {
-                resetForm();
-            }
-            });
+// 滾動動畫觀察器
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+        }
+    });
+}, { threshold: 0.1, rootMargin: '0px 0px -100px 0px' });
 
-            function resetForm(withKittens){
-            var message = "Sorry that command is not recognized."
-            var input = $('.404-input');
+document.querySelectorAll('.about-card, .timeline-item, .skill-category, .contact-method').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(30px)';
+    el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+    observer.observe(el);
+});
 
-            if (withKittens){
-                $('.kittens').removeClass('kittens');
-                message = "Huzzzzzah Kittehs!"
-            }
+// 平滑滾動
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
+        }
+    });
+});
 
-            $('.new-output').removeClass('new-output');
-            input.val('');
-            $('.terminal').append('<p class="prompt">' + message + '</p><p class="prompt output new-output"></p>');
+// 添加矩陣雨效果到終端機
+function createMatrixRain() {
+    const terminal = document.querySelector('.terminal-body');
+    if (!terminal) return;
+    
+    setInterval(() => {
+        const chars = '01';
+        const randomChar = chars[Math.floor(Math.random() * chars.length)];
+        const span = document.createElement('span');
+        span.textContent = randomChar;
+        span.style.cssText = `
+            position: absolute;
+            color: var(--primary-color);
+            opacity: 0;
+            animation: matrixFall 2s linear;
+            pointer-events: none;
+        `;
+        span.style.left = Math.random() * 100 + '%';
+        terminal.appendChild(span);
+        
+        setTimeout(() => span.remove(), 2000);
+    }, 200);
+}
 
-            $('.new-output').velocity(
-                'scroll'
-            ), {duration: 100}
-            }
+// 執行矩陣雨效果
+setTimeout(createMatrixRain, 1000);
 
-                function showKittens(){
-                    $('.terminal').append("<div class='kittens'>"+ //doh
-                        "<p class='prompt'>         ,--,                        ,--,                                                                                                    </p>" +
-                        "<p class='prompt'>       ,--.'|     ,----..          ,--.'|                               ___                                                                  </p>" +
-                        "<p class='prompt'>    ,--,  | :    /   /   \\     ,--,  | :                             ,--.'|_       .--.,                                               ,---,</p>" +
-                        "<p class='prompt'> ,---.'|  : '   /   .     :  ,---.'|  : '         ,---,     ,---.     |  | :,'    ,--.'  \\    ,---.            ,--,        ,---,      ,---.'|</p>" +
-                        "<p class='prompt'> ;   : |  | ;  .   /   ;.  \\ ;   : |  | ;     ,-+-. /  |   '   ,'\\    :  : ' :    |  | /\\/   '   ,'\\         ,'_ /|    ,-+-. /  |     |   | :</p>" +
-                        "<p class='prompt'> |   | : _' | .   ;   /  ` ; |   | : _' |    ,--.'|'   |  /   /   | .;__,'  /     :  : :    /   /   |   .--. |  | :   ,--.'|'   |     |   | |</p>" +
-                        "<p class='prompt'> :   : |.'  | ;   |  ; \\ ; | :   : |.'  |   |   |  ,'' | .   ; ,. : |  |   |      :  | |-, .   ; ,. : ,'_ /| :  . |  |   |  ,'' |   ,--.__| |</p>" +
-                        "<p class='prompt'> |   ' '  ; : |   :  | ; | ' |   ' '  ; :   |   | /  | | '   | |: : :__,'| :      |  : :/| '   | |: : |  ' | |  . .  |   | /  | |  /   ,'   |</p>" +
-                        "<p class='prompt'> \\   \\  .'. | .   |  ' ' ' : \\   \\  .'. |   |   | |  | | '   | .; :   '  : |__    |  |  .' '   | .; : |  | ' |  | |  |   | |  | | .   '  /  |</p>" +
-                        "<p class='prompt'>  `---`:  | ' '   ;  \\; /  |  `---`:  | '   |   | |  |/  |   :    |   |  | '.'|   '  : '   |   :    | :  | : ;  ; |  |   | |  |/  '   ; |:  |</p>" +
-                        "<p class='prompt'>       '  ; |  \\   \\  ',  /        '  ; |   |   | |--'    \\   \\  /    ;  :    ;   |  | |    \\   \\  /  '  :  `--'   \\ |   | |--'   |   | '/  '</p>" +
-                        "<p class='prompt'>       |  : ;   ;   :    /         |  : ;   |   |/         `----'     |  ,   /    |  : \\     `----'   :  ,      .-./ |   |/       |   :    :|</p>" +
-                        "<p class='prompt'>       '  ,/     \\   \\ .'          '  ,/    '---'                      ---`-'     |  |,'               `--`----'     '---'         \\   \\ /  </p>" +
-                        "<p class='prompt'>       '--'       `---`            '--'                                           `--'                                              `----'   </p>" +
-                        "<p class='prompt'> hamsteryang.com                                                             </p></div>");
-                    /*
-                    $('.terminal').append("<div class='kittens'>"+
-                        "<p class='prompt'>        ,--,                        ,--,                                                         </p>" +
-                        "<p class='prompt'>       ,--.                ,/   .`|       ,/   .`|                     ,--.              ,`--.' |</p>" +
-                        "<p class='prompt'>   ,--/  /|    ,---,     ,`   .'  :     ,`   .'  :     ,---,.        ,--.'|   .--.--.    |   :  :</p>" +
-                        "<p class='prompt'>,---,': / ' ,`--.' |   ;    ;     /   ;    ;     /   ,'  .' |    ,--,:  : |  /  /    '.  '   '  ;</p>" +
-                        "<p class='prompt'>:   : '/ /  |   :  : .'___,/    ,'  .'___,/    ,'  ,---.'   | ,`--.'`|  ' : |  :  /`. /  |   |  |</p>" +
-                        "<p class='prompt'>|   '   ,   :   |  ' |    :     |   |    :     |   |   |   .' |   :  :  | | ;  |  |--`   '   :  ;</p>" +
-                        "<p class='prompt'>'   |  /    |   :  | ;    |.';  ;   ;    |.';  ;   :   :  |-, :   |   \\ | : |  :  ;_     |   |  '</p>" +
-                        "<p class='prompt'>|   ;  ;    '   '  ; `----'  |  |   `----'  |  |   :   |  ;/| |   : '  '; |  \\  \\    `.  '   :  |</p>" +
-                        "<p class='prompt'>:   '   \\   |   |  |     '   :  ;       '   :  ;   |   :   .' '   ' ;.    ;   `----.   \\ ;   |  ;</p>" +
-                        "<p class='prompt'>'   : |.  \\ |   |  '     '   :  |       '   :  |   '   :  ;/| '   : |  ; .'  /  /`--'  /  `--..`;  </p>" +
-                        "<p class='prompt'>|   | '_\\.' '   :  |     ;   |.'        ;   |.'    |   |    \\ |   | '`--'   '--'.     /  .--,_   </p>" +
-                        "<p class='prompt'>'   : |     ;   |.'      '---'          '---'      |   :   .' '   : |         `--'---'   |    |`.  </p>" +
-                        "<p class='prompt'>;   |,'     '---'                                  |   | ,'   ;   |.'                    `-- -`, ; </p>" +
-                        "<p class='prompt'>'---'                                              `----'     '---'                        '---`'</p>" +
-                        "<p class='prompt'>                                                              </p></div>");
-                    $('.terminal').append("<div class='kittens'>"+
-                                            "<p class='prompt'>	                             ,----,         ,----,                                          ,---,</p>" +
-                                            "<p class='prompt'>       ,--.                ,/   .`|       ,/   .`|                     ,--.              ,`--.' |</p>" +
-                                            "<p class='prompt'>   ,--/  /|    ,---,     ,`   .'  :     ,`   .'  :     ,---,.        ,--.'|   .--.--.    |   :  :</p>" +
-                                            "<p class='prompt'>,---,': / ' ,`--.' |   ;    ;     /   ;    ;     /   ,'  .' |    ,--,:  : |  /  /    '.  '   '  ;</p>" +
-                                            "<p class='prompt'>:   : '/ /  |   :  : .'___,/    ,'  .'___,/    ,'  ,---.'   | ,`--.'`|  ' : |  :  /`. /  |   |  |</p>" +
-                                            "<p class='prompt'>|   '   ,   :   |  ' |    :     |   |    :     |   |   |   .' |   :  :  | | ;  |  |--`   '   :  ;</p>" +
-                                            "<p class='prompt'>'   |  /    |   :  | ;    |.';  ;   ;    |.';  ;   :   :  |-, :   |   \\ | : |  :  ;_     |   |  '</p>" +
-                                            "<p class='prompt'>|   ;  ;    '   '  ; `----'  |  |   `----'  |  |   :   |  ;/| |   : '  '; |  \\  \\    `.  '   :  |</p>" +
-                                            "<p class='prompt'>:   '   \\   |   |  |     '   :  ;       '   :  ;   |   :   .' '   ' ;.    ;   `----.   \\ ;   |  ;</p>" +
-                                            "<p class='prompt'>'   : |.  \\ |   |  '     '   :  |       '   :  |   '   :  ;/| '   : |  ; .'  /  /`--'  /  `--..`;  </p>" +
-                                            "<p class='prompt'>|   | '_\\.' '   :  |     ;   |.'        ;   |.'    |   |    \\ |   | '`--'   '--'.     /  .--,_   </p>" +
-                                            "<p class='prompt'>'   : |     ;   |.'      '---'          '---'      |   :   .' '   : |         `--'---'   |    |`.  </p>" +
-                                            "<p class='prompt'>;   |,'     '---'                                  |   | ,'   ;   |.'                    `-- -`, ; </p>" +
-                                            "<p class='prompt'>'---'                                              `----'     '---'                        '---`'</p>" +
-                                            "<p class='prompt'>                                                              </p></div>");
-
-                    */
-                    var lines = $('.kittens p');
-                    $.each(lines, function(index, line){
-                        setTimeout(function(){
-                            $(line).css({
-                                "opacity": 1
-                            });
-
-                            textEffect($(line))
-                        }, index * 100);
-                    });
-
-                    $('.new-output').velocity(
-                        'scroll'
-                    ), {duration: 100}
-
-                    setTimeout(function(){
-                        var gif;
-
-                        $.get('http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=kittens', function(result){
-                            gif = result.data.image_url;
-                            $('.terminal').append('<img class="kitten-gif" src="' + gif + '"">');
-                            resetForm(true);
-                        });
-                    }, (lines.length * 100) + 1000);
-                }
-
-                function textEffect(line){
-                    var alpha = [';', '.', ',', ':', ';', '~', '`'];
-                    var animationSpeed = 10;
-                    var index = 0;
-                    var string = line.text();
-                    var splitString = string.split("");
-                    var copyString = splitString.slice(0);
-
-                    var emptyString = copyString.map(function(el){
-                        return [alpha[Math.floor(Math.random() * (alpha.length))], index++];
-                    })
-
-                    emptyString = shuffle(emptyString);
-
-                    $.each(copyString, function(i, el){
-                        var newChar = emptyString[i];
-                        toUnderscore(copyString, line, newChar);
-
-                        setTimeout(function(){
-                        fromUnderscore(copyString, splitString, newChar, line);
-                        },i * animationSpeed);
-                    })
-                }
-
-                function toUnderscore(copyString, line, newChar){
-                    copyString[newChar[1]] = newChar[0];
-                    line.text(copyString.join(''));
-                }
-
-                function fromUnderscore(copyString, splitString, newChar, line){
-                    copyString[newChar[1]] = splitString[newChar[1]];
-                    line.text(copyString.join(""));
-                }
-
-
-                function shuffle(o){
-                    for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
-                    return o;
-                };
+// 載入動畫
+window.addEventListener('load', () => {
+    document.body.style.opacity = '0';
+    setTimeout(() => {
+        document.body.style.transition = 'opacity 0.5s ease-in';
+        document.body.style.opacity = '1';
+    }, 100);
+});
