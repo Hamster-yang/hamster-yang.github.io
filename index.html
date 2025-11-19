@@ -1,28 +1,41 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>楊上賢 Hamsteryang - macOS Style</title>
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
-    <link rel="stylesheet" href="css/macos.css">
-</head>
+    <!DOCTYPE html>
+    <html lang="zh-TW">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>楊上賢 Hamsteryang - macOS Style</title>
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
+        <link rel="stylesheet" href="css/macos.css">
+    </head>
+
 <body>
     <div class="desktop">
+        <!-- Particles Background -->
+        <div id="particles-js"></div>
+
         <!-- Top Bar -->
         <div class="top-bar">
             <div class="top-bar-left">
                 <div class="apple-logo"><i class="bi bi-apple"></i></div>
                 <div class="menu-item" style="font-weight: bold;">Hamsteryang</div>
-                <div class="menu-item">File</div>
-                <div class="menu-item">Edit</div>
-                <div class="menu-item">View</div>
-                <div class="menu-item">Go</div>
-                <div class="menu-item">Window</div>
-                <div class="menu-item">Help</div>
+                <div class="menu-item hide-on-mobile">File</div>
+                <div class="menu-item hide-on-mobile">Edit</div>
+                <div class="menu-item hide-on-mobile">View</div>
+                <div class="menu-item hide-on-mobile">Go</div>
+                <div class="menu-item hide-on-mobile">Window</div>
+                <div class="menu-item hide-on-mobile">Help</div>
             </div>
             <div class="top-bar-right">
                 <div class="menu-item"><i class="bi bi-battery-full"></i></div>
@@ -34,7 +47,7 @@
         </div>
 
         <!-- Windows Area -->
-        
+
         <!-- About Me Window (Finder Style) -->
         <div class="window" id="about-window" style="width: 600px; height: 450px; top: 100px; left: 100px;">
             <div class="window-header">
@@ -47,11 +60,12 @@
             </div>
             <div class="window-content">
                 <div style="text-align: center; margin-bottom: 20px;">
-                    <img src="https://avatars.githubusercontent.com/u/62399435?v=4" alt="Profile" style="width: 100px; height: 100px; border-radius: 50%; margin-bottom: 10px;">
+                    <img src="https://avatars.githubusercontent.com/u/62399435?v=4" alt="Profile"
+                        style="width: 100px; height: 100px; border-radius: 50%; margin-bottom: 10px;">
                     <h1>楊上賢 Hamsteryang</h1>
                     <p style="color: #aaa;">Medical AI Researcher · CS Master Student</p>
                 </div>
-                
+
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
                     <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 8px;">
                         <h3><i class="bi bi-mortarboard"></i> 教育背景</h3>
@@ -61,7 +75,8 @@
                         <h3><i class="bi bi-code-square"></i> 專業領域</h3>
                         <p>醫學影像處理、深度學習<br>電腦視覺、影像分割</p>
                     </div>
-                    <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 8px; grid-column: span 2;">
+                    <div
+                        style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 8px; grid-column: span 2;">
                         <h3><i class="bi bi-lightbulb"></i> 研究興趣</h3>
                         <p>醫療 AI、聯邦學習、資訊安全、系統開發</p>
                     </div>
@@ -82,7 +97,9 @@
             <div class="window-content">
                 <div style="border-left: 2px solid #333; padding-left: 20px; margin-left: 10px;">
                     <div style="margin-bottom: 30px; position: relative;">
-                        <div style="position: absolute; left: -26px; top: 0; width: 10px; height: 10px; background: var(--accent-color); border-radius: 50%;"></div>
+                        <div
+                            style="position: absolute; left: -26px; top: 0; width: 10px; height: 10px; background: var(--accent-color); border-radius: 50%;">
+                        </div>
                         <span style="font-size: 12px; color: var(--accent-color);">2020 - Present</span>
                         <h3 style="margin: 5px 0;">技術長 CTO</h3>
                         <h4 style="margin: 0 0 10px 0; color: #aaa;">艾登星科技教育有限公司 Hudence</h4>
@@ -90,7 +107,9 @@
                     </div>
 
                     <div style="margin-bottom: 30px; position: relative;">
-                        <div style="position: absolute; left: -26px; top: 0; width: 10px; height: 10px; background: #ffbd2e; border-radius: 50%;"></div>
+                        <div
+                            style="position: absolute; left: -26px; top: 0; width: 10px; height: 10px; background: #ffbd2e; border-radius: 50%;">
+                        </div>
                         <span style="font-size: 12px; color: #ffbd2e;">2020 - Present</span>
                         <h3 style="margin: 5px 0;">技術顧問</h3>
                         <h4 style="margin: 0 0 10px 0; color: #aaa;">蒂思科技 Di-Shoes</h4>
@@ -98,7 +117,9 @@
                     </div>
 
                     <div style="margin-bottom: 30px; position: relative;">
-                        <div style="position: absolute; left: -26px; top: 0; width: 10px; height: 10px; background: #27c93f; border-radius: 50%;"></div>
+                        <div
+                            style="position: absolute; left: -26px; top: 0; width: 10px; height: 10px; background: #27c93f; border-radius: 50%;">
+                        </div>
                         <span style="font-size: 12px; color: #27c93f;">2023</span>
                         <h3 style="margin: 5px 0;">實習生 Intern</h3>
                         <h4 style="margin: 0 0 10px 0; color: #aaa;">國家高速網路與計算中心 NCHC</h4>
@@ -106,7 +127,9 @@
                     </div>
 
                     <div style="margin-bottom: 30px; position: relative;">
-                        <div style="position: absolute; left: -26px; top: 0; width: 10px; height: 10px; background: #ff5f56; border-radius: 50%;"></div>
+                        <div
+                            style="position: absolute; left: -26px; top: 0; width: 10px; height: 10px; background: #ff5f56; border-radius: 50%;">
+                        </div>
                         <span style="font-size: 12px; color: #ff5f56;">2022</span>
                         <h3 style="margin: 5px 0;">實習生 Intern</h3>
                         <h4 style="margin: 0 0 10px 0; color: #aaa;">國家太空中心 TASA</h4>
@@ -117,7 +140,8 @@
         </div>
 
         <!-- Skills Window (Terminal Style) -->
-        <div class="window terminal-app" id="skills-window" style="width: 550px; height: 400px; top: 200px; left: 200px;">
+        <div class="window terminal-app" id="skills-window"
+            style="width: 550px; height: 400px; top: 200px; left: 200px;">
             <div class="window-header" style="background: #333; border-bottom: 1px solid #444;">
                 <div class="window-controls">
                     <button class="control-btn close-btn"></button>
@@ -147,7 +171,8 @@
                 <div>├── Web 開發</div>
                 <div>└── 系統整合</div>
                 <br>
-                <div><span style="color: #27c93f;">➜</span> <span style="color: #0a84ff;">~</span> <span class="cursor">_</span></div>
+                <div><span style="color: #27c93f;">➜</span> <span style="color: #0a84ff;">~</span> <span
+                        class="cursor">_</span></div>
             </div>
         </div>
 
@@ -161,14 +186,16 @@
                 </div>
                 <div class="window-title">Contact</div>
             </div>
-            <div class="window-content" style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+            <div class="window-content"
+                style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
                 <h2 style="margin-bottom: 20px;">Get in Touch</h2>
                 <div style="display: flex; gap: 20px;">
                     <a href="https://github.com/Hamster-yang" target="_blank" style="text-align: center; color: white;">
                         <i class="bi bi-github" style="font-size: 40px;"></i>
                         <div style="font-size: 12px; margin-top: 5px;">GitHub</div>
                     </a>
-                    <a href="https://www.instagram.com/ysh.6201/" target="_blank" style="text-align: center; color: white;">
+                    <a href="https://www.instagram.com/ysh.6201/" target="_blank"
+                        style="text-align: center; color: white;">
                         <i class="bi bi-instagram" style="font-size: 40px;"></i>
                         <div style="font-size: 12px; margin-top: 5px;">Instagram</div>
                     </a>
@@ -184,11 +211,13 @@
         <!-- Dock -->
         <div class="dock-container">
             <div class="dock">
-                <div class="dock-item" data-target="about-window" style="background: linear-gradient(to bottom, #00b4db, #0083b0);">
+                <div class="dock-item" data-target="about-window"
+                    style="background: linear-gradient(to bottom, #00b4db, #0083b0);">
                     <i class="bi bi-person-fill"></i>
                     <div class="dock-tooltip">About Me</div>
                 </div>
-                <div class="dock-item" data-target="experience-window" style="background: linear-gradient(to bottom, #ff9966, #ff5e62);">
+                <div class="dock-item" data-target="experience-window"
+                    style="background: linear-gradient(to bottom, #ff9966, #ff5e62);">
                     <i class="bi bi-calendar-event"></i>
                     <div class="dock-tooltip">Experience</div>
                 </div>
@@ -196,12 +225,14 @@
                     <i class="bi bi-terminal" style="color: #27c93f;"></i>
                     <div class="dock-tooltip">Skills</div>
                 </div>
-                <div class="dock-item" data-target="contact-window" style="background: linear-gradient(to bottom, #56ab2f, #a8e063);">
+                <div class="dock-item" data-target="contact-window"
+                    style="background: linear-gradient(to bottom, #56ab2f, #a8e063);">
                     <i class="bi bi-envelope"></i>
                     <div class="dock-tooltip">Contact</div>
                 </div>
                 <div style="width: 1px; height: 40px; background: rgba(255,255,255,0.2); margin: 0 5px;"></div>
-                <a href="https://github.com/Hamster-yang" target="_blank" class="dock-item" style="background: #24292e; text-decoration: none;">
+                <a href="https://github.com/Hamster-yang" target="_blank" class="dock-item"
+                    style="background: #24292e; text-decoration: none;">
                     <i class="bi bi-github"></i>
                     <div class="dock-tooltip">GitHub</div>
                 </a>
@@ -209,6 +240,8 @@
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script src="js/macos.js"></script>
 </body>
+
 </html>
