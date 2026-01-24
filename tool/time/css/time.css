@@ -1,0 +1,225 @@
+/* Time Window */
+.time-window {
+    position: fixed;
+    top: 30px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--window-bg);
+    box-shadow: var(--shadow-lg);
+    display: flex;
+    flex-direction: column;
+    z-index: 9000;
+}
+
+.time-header {
+    height: 50px;
+    background: var(--window-header-bg);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.window-controls {
+    display: flex;
+    gap: 8px;
+}
+
+.window-control-btn {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+}
+
+.window-control-btn.close {
+    background: #ff5f56;
+}
+
+.window-control-btn.close:hover {
+    background: #ff4136;
+}
+
+.time-header-title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.time-header-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: var(--font-main);
+}
+
+.btn-icon {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.btn-icon:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.btn-icon.active {
+    background: var(--accent-color);
+}
+
+.btn-primary {
+    background: var(--accent-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #0070d6;
+}
+
+.time-content {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    transition: background-color 0.3s ease;
+}
+
+/* Seven-Segment Display Style */
+#clock-display {
+    font-size: 120px;
+    font-weight: 400;
+    font-family: 'DSEG7 Modern', 'Orbitron', monospace;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.05em;
+    color: #0a84ff;
+    text-shadow: 0 0 20px rgba(10, 132, 255, 0.5);
+    cursor: move;
+    user-select: none;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(0, 0);
+    will-change: transform;
+    transition: color 0.3s ease;
+}
+
+/* Settings Panel */
+.settings-panel {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 280px;
+    background: var(--window-header-bg);
+    backdrop-filter: var(--glass-blur);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: var(--shadow-lg);
+    transform: translateX(320px);
+    transition: transform 0.3s ease;
+}
+
+.settings-panel.show {
+    transform: translateX(0);
+}
+
+.setting-group {
+    margin-bottom: 20px;
+}
+
+.setting-group:last-child {
+    margin-bottom: 0;
+}
+
+.setting-group label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 10px;
+}
+
+.slider-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.slider-container input[type="range"] {
+    flex: 1;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    outline: none;
+    cursor: pointer;
+}
+
+.slider-container span {
+    font-size: 11px;
+    color: var(--accent-color);
+    font-weight: 600;
+    min-width: 50px;
+    text-align: right;
+}
+
+.theme-buttons,
+.bg-buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+
+.theme-btn,
+.bg-btn {
+    padding: 8px 12px;
+    border: 2px solid transparent;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.theme-btn:hover,
+.bg-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.theme-btn.active,
+.bg-btn.active {
+    border-color: var(--accent-color);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* Load DSEG7 Modern font from CDN */
+@font-face {
+    font-family: 'DSEG7 Modern';
+    src: url('https://cdn.jsdelivr.net/npm/dseg@0.46.0/fonts/DSEG7-Modern/DSEG7Modern-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}

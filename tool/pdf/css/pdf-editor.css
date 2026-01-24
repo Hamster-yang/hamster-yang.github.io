@@ -1,0 +1,449 @@
+/* PDF Editor Window */
+.pdf-window {
+    position: fixed;
+    top: 30px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--window-bg);
+    box-shadow: var(--shadow-lg);
+    display: flex;
+    flex-direction: column;
+    z-index: 9000;
+    /* Performance optimizations */
+    will-change: transform;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    contain: layout style paint;
+}
+
+.pdf-header {
+    height: 50px;
+    background: var(--window-header-bg);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.window-controls {
+    display: flex;
+    gap: 8px;
+}
+
+.window-control-btn {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+}
+
+.window-control-btn.close {
+    background: #ff5f56;
+}
+
+.window-control-btn.close:hover {
+    background: #ff4136;
+}
+
+.pdf-header-title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.pdf-header-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: var(--font-main);
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn-primary {
+    background: var(--accent-color);
+    color: white;
+}
+
+.btn-primary:hover:not(:disabled) {
+    background: #0070d6;
+}
+
+.btn-success {
+    background: #27c93f;
+    color: white;
+}
+
+.btn-success:hover:not(:disabled) {
+    background: #1fb535;
+}
+
+.btn-danger {
+    background: #ff5f56;
+    color: white;
+}
+
+.pdf-content {
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.section-header {
+    padding: 15px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.section-header h3 {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.page-count {
+    font-size: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 4px 12px;
+    border-radius: 12px;
+    color: var(--text-color);
+}
+
+#pages-grid {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 20px;
+    align-content: start;
+}
+
+#pages-grid::-webkit-scrollbar {
+    width: 6px;
+}
+
+#pages-grid::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#pages-grid::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+}
+
+.page-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: grab;
+    transition: all 0.2s ease;
+    border: 2px solid transparent;
+    position: relative;
+}
+
+.page-card:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.page-card:active {
+    cursor: grabbing;
+}
+
+.sortable-ghost {
+    opacity: 0.3;
+    background: rgba(10, 132, 255, 0.2);
+    border-color: var(--accent-color);
+}
+
+.page-thumbnail {
+    aspect-ratio: 3/4;
+    padding: 8px;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.page-thumbnail img {
+    max-width: 100%;
+    max-height: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.page-info {
+    padding: 8px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+}
+
+.page-number {
+    background: var(--accent-color);
+    color: white;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+.page-actions {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    display: flex;
+    gap: 4px;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.page-card:hover .page-actions {
+    opacity: 1;
+}
+
+.page-action-btn {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: white;
+    transition: all 0.2s;
+}
+
+.page-action-btn.edit {
+    background: var(--accent-color);
+}
+
+.page-action-btn.edit:hover {
+    background: #0070d6;
+}
+
+.page-action-btn.delete {
+    background: #ff5f56;
+}
+
+.page-action-btn.delete:hover {
+    background: #e54942;
+}
+
+.empty-state {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 60px 20px;
+    color: #888;
+}
+
+.empty-state i {
+    font-size: 64px;
+    margin-bottom: 20px;
+    opacity: 0.5;
+}
+
+/* Edit Modal */
+#edit-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 10000;
+    display: none;
+    flex-direction: column;
+}
+
+#edit-modal.active {
+    display: flex;
+}
+
+.edit-header {
+    background: var(--window-header-bg);
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.edit-tools {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.tool-group {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 0 15px;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tool-group:last-child {
+    border-right: none;
+}
+
+.tool-btn {
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: none;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-color);
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+}
+
+.tool-btn.active {
+    background: var(--accent-color);
+    color: white;
+}
+
+.tool-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.tool-btn.active:hover {
+    background: #0070d6;
+}
+
+input[type="color"] {
+    width: 32px;
+    height: 32px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+input[type="range"] {
+    width: 120px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    outline: none;
+    cursor: pointer;
+}
+
+.edit-canvas-wrapper {
+    flex: 1;
+    overflow: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.edit-canvas-container {
+    position: relative;
+    display: inline-block;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+#pdf-edit-canvas {
+    display: block;
+    background: white;
+    cursor: crosshair;
+}
+
+#canvas-text-input {
+    position: absolute;
+    border: 2px solid var(--accent-color);
+    background: rgba(255, 255, 255, 0.9);
+    padding: 4px 8px;
+    outline: none;
+    z-index: 100;
+    display: none;
+    min-width: 50px;
+    font-family: Arial;
+}
+
+/* Loading */
+#loading-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 11000;
+}
+
+#loading-overlay.active {
+    display: flex;
+}
+
+.loading-content {
+    background: var(--window-bg);
+    background: var(--window-bg);
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(255, 255, 255, 0.1);
+    border-top-color: var(--accent-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 15px;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Toast */
+#toast {
+    position: fixed;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--window-header-bg);
+    background: var(--window-header-bg);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 24px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+    z-index: 12000;
+}
+
+#toast.show {
+    opacity: 1;
+}

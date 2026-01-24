@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF 編輯器 - Hamsteryang Tools</title>
+    <link rel="icon" type="image/x-icon" href="../../assets/favicon.ico" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../../css/macos.css">
+    <link rel="stylesheet" href="css/pdf-editor.css">
+    <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+</head>
+
+<body>
+    <div class="desktop">
+
+        <!-- Top Bar -->
+        <div class="top-bar">
+            <div class="top-bar-left">
+                <div class="apple-logo"><i class="bi bi-apple"></i></div>
+                <div class="menu-item" style="font-weight: bold;">PDF Editor</div>
+                <div class="menu-item hide-on-mobile">File</div>
+                <div class="menu-item hide-on-mobile">Edit</div>
+                <div class="menu-item hide-on-mobile">View</div>
+            </div>
+            <div class="top-bar-right">
+                <div class="menu-item"><i class="bi bi-battery-full"></i></div>
+                <div class="menu-item"><i class="bi bi-wifi"></i></div>
+                <div class="menu-item"><i class="bi bi-search"></i></div>
+                <div class="menu-item" id="clock">Mon Jun 22 9:41 AM</div>
+            </div>
+        </div>
+
+        <!-- PDF Editor Window -->
+        <div class="pdf-window">
+            <div class="pdf-header">
+                <div class="window-controls">
+                    <a href="../../index.html" class="window-control-btn close" title="關閉"></a>
+                    <div class="window-control-btn" style="background: #ffbd2e; cursor: default;"></div>
+                    <div class="window-control-btn" style="background: #27c93f; cursor: default;"></div>
+                </div>
+                <span class="pdf-header-title">PDF 編輯器</span>
+                <div class="pdf-header-actions">
+                    <button class="btn btn-primary" onclick="document.getElementById('file-input').click()">
+                        <i class="bi bi-upload"></i>
+                        <span>上傳</span>
+                    </button>
+                    <button class="btn btn-success" id="download-btn" disabled onclick="exportPDF()">
+                        <i class="bi bi-download"></i>
+                        <span>匯出</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="pdf-content">
+                <div class="section-header">
+                    <h3>頁面列表</h3>
+                    <span class="page-count" id="page-count-display">0 頁</span>
+                </div>
+                <div id="pages-grid">
+                    <div class="empty-state">
+                        <i class="bi bi-file-earmark-pdf"></i>
+                        <p>尚無頁面</p>
+                        <p style="font-size: 11px; margin-top: 5px;">點擊上方按鈕上傳 PDF</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hidden file input -->
+        <input type="file" id="file-input" multiple accept="application/pdf" style="display: none;">
+
+        <!-- Edit Modal -->
+        <div id="edit-modal">
+            <div class="edit-header">
+                <div class="edit-tools">
+                    <div class="tool-group">
+                        <button id="tool-draw" class="tool-btn active" onclick="setTool('draw')">
+                            <i class="bi bi-pencil"></i> 畫筆
+                        </button>
+                        <button id="tool-text" class="tool-btn" onclick="setTool('text')">
+                            <i class="bi bi-text-left"></i> 文字
+                        </button>
+                    </div>
+                    <div class="tool-group">
+                        <label style="font-size: 12px; color: #888;">顏色</label>
+                        <input type="color" id="edit-color" value="#000000">
+                    </div>
+                    <div class="tool-group">
+                        <label style="font-size: 12px; color: #888;" id="size-label">粗細: 2</label>
+                        <input type="range" id="edit-size" min="1" max="50" value="2">
+                    </div>
+                    <div class="tool-group">
+                        <button class="btn btn-danger" style="padding: 6px 12px; font-size: 12px;"
+                            onclick="clearCanvas()">
+                            <i class="bi bi-eraser"></i> 清除
+                        </button>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 10px;">
+                    <button class="btn" style="background: rgba(255, 255, 255, 0.1); color: white;"
+                        onclick="closeEditModal()">取消</button>
+                    <button class="btn btn-success" id="save-edit-btn" onclick="saveEdit()">完成編輯</button>
+                </div>
+            </div>
+            <div class="edit-canvas-wrapper">
+                <div class="edit-canvas-container">
+                    <canvas id="pdf-edit-canvas"></canvas>
+                    <input type="text" id="canvas-text-input" placeholder="輸入文字...">
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading Overlay -->
+        <div id="loading-overlay">
+            <div class="loading-content">
+                <div class="loading-spinner"></div>
+                <p id="loading-text" style="color: white;">處理中...</p>
+            </div>
+        </div>
+
+        <!-- Toast -->
+        <div id="toast"></div>
+    </div>
+
+    <script src="../../js/macos.js"></script>
+    <script src="js/pdf-editor.js"></script>
+</body>
+
+</html>
