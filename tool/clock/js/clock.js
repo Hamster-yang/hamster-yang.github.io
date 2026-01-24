@@ -227,25 +227,39 @@ soundCheckbox.addEventListener('change', (e) => {
 });
 
 // Dragging functionality - optimized
-timerDisplay.addEventListener('mousedown', (e) => {
-    isDragging = true;
-    startX = e.clientX;
-    startY = e.clientY;
-    timerDisplay.style.cursor = 'grabbing';
-});
+timerDisplay.addEventListener('mousedown', handleDragStart);
+timerDisplay.addEventListener('touchstart', handleDragStart, { passive: false });
 
-document.addEventListener('mousemove', (e) => {
+document.addEventListener('mousemove', handleDragMove);
+document.addEventListener('touchmove', handleDragMove, { passive: false });
+
+document.addEventListener('mouseup', handleDragEnd);
+document.addEventListener('touchend', handleDragEnd);
+
+function handleDragStart(e) {
+    isDragging = true;
+    startX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+    startY = e.type.includes('touch') ? e.touches[0].clientY : e.clientY;
+    timerDisplay.style.cursor = 'grabbing';
+}
+
+function handleDragMove(e) {
     if (!isDragging) return;
-    const dx = e.clientX - startX;
-    const dy = e.clientY - startY;
+    e.preventDefault(); // Prevent scrolling on touch
+
+    const clientX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+    const clientY = e.type.includes('touch') ? e.touches[0].clientY : e.clientY;
+
+    const dx = clientX - startX;
+    const dy = clientY - startY;
     const newX = initialX + dx;
     const newY = initialY + dy;
     timerDisplay.style.transform = `translate(${newX}px, ${newY}px)`;
     timerDisplay.style.left = '50%';
     timerDisplay.style.top = '50%';
-});
+}
 
-document.addEventListener('mouseup', () => {
+function handleDragEnd() {
     if (isDragging) {
         const transform = timerDisplay.style.transform;
         const match = transform.match(/translate\((-?\d+)px, (-?\d+)px\)/);
@@ -256,7 +270,7 @@ document.addEventListener('mouseup', () => {
         isDragging = false;
         timerDisplay.style.cursor = 'move';
     }
-});
+}
 
 // Initialize
 updateDisplay();

@@ -73,25 +73,30 @@ bgButtons.forEach(btn => {
 let isDragging = false;
 let startX, startY, initialX = 0, initialY = 0;
 
-clockDisplay.addEventListener('mousedown', (e) => {
+function handleDragStart(e) {
     isDragging = true;
-    startX = e.clientX;
-    startY = e.clientY;
+    startX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+    startY = e.type.includes('touch') ? e.touches[0].clientY : e.clientY;
     clockDisplay.style.cursor = 'grabbing';
-});
+}
 
-document.addEventListener('mousemove', (e) => {
+function handleDragMove(e) {
     if (!isDragging) return;
-    const dx = e.clientX - startX;
-    const dy = e.clientY - startY;
+    e.preventDefault(); // Prevent scrolling on touch
+
+    const clientX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+    const clientY = e.type.includes('touch') ? e.touches[0].clientY : e.clientY;
+
+    const dx = clientX - startX;
+    const dy = clientY - startY;
     const newX = initialX + dx;
     const newY = initialY + dy;
     clockDisplay.style.transform = `translate(${newX}px, ${newY}px)`;
     clockDisplay.style.left = '50%';
     clockDisplay.style.top = '50%';
-});
+}
 
-document.addEventListener('mouseup', () => {
+function handleDragEnd() {
     if (isDragging) {
         const transform = clockDisplay.style.transform;
         const match = transform.match(/translate\((-?\d+)px, (-?\d+)px\)/);
@@ -102,7 +107,16 @@ document.addEventListener('mouseup', () => {
         isDragging = false;
         clockDisplay.style.cursor = 'move';
     }
-});
+}
+
+clockDisplay.addEventListener('mousedown', handleDragStart);
+clockDisplay.addEventListener('touchstart', handleDragStart, { passive: false });
+
+document.addEventListener('mousemove', handleDragMove);
+document.addEventListener('touchmove', handleDragMove, { passive: false });
+
+document.addEventListener('mouseup', handleDragEnd);
+document.addEventListener('touchend', handleDragEnd);
 
 // Reset position and scale
 resetBtn.addEventListener('click', () => {
