@@ -77,6 +77,13 @@ function handleDragStart(e) {
     isDragging = true;
     startX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
     startY = e.type.includes('touch') ? e.touches[0].clientY : e.clientY;
+
+    // Read current position from computed style (handles both CSS % and inline px)
+    const style = window.getComputedStyle(clockDisplay);
+    const matrix = new DOMMatrix(style.transform);
+    initialX = matrix.m41;
+    initialY = matrix.m42;
+
     clockDisplay.style.cursor = 'grabbing';
 }
 
@@ -97,16 +104,8 @@ function handleDragMove(e) {
 }
 
 function handleDragEnd() {
-    if (isDragging) {
-        const transform = clockDisplay.style.transform;
-        const match = transform.match(/translate\((-?\d+)px, (-?\d+)px\)/);
-        if (match) {
-            initialX = parseInt(match[1]);
-            initialY = parseInt(match[2]);
-        }
-        isDragging = false;
-        clockDisplay.style.cursor = 'move';
-    }
+    isDragging = false;
+    clockDisplay.style.cursor = 'move';
 }
 
 clockDisplay.addEventListener('mousedown', handleDragStart);
@@ -120,9 +119,8 @@ document.addEventListener('touchend', handleDragEnd);
 
 // Reset position and scale
 resetBtn.addEventListener('click', () => {
-    initialX = 0;
-    initialY = 0;
-    clockDisplay.style.transform = 'translate(0, 0)';
+    // Clear inline transform to revert to CSS default (centered)
+    clockDisplay.style.transform = '';
     clockDisplay.style.left = '50%';
     clockDisplay.style.top = '50%';
     fontScaleSlider.value = 1;

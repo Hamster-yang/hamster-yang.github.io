@@ -123,7 +123,7 @@
     position: absolute;
     left: 50%;
     top: 50%;
-    transform: translate(0, 0);
+    transform: translate(-50%, -50%);
     will-change: transform;
     transition: color 0.3s ease;
 }

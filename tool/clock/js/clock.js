@@ -240,6 +240,13 @@ function handleDragStart(e) {
     isDragging = true;
     startX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
     startY = e.type.includes('touch') ? e.touches[0].clientY : e.clientY;
+
+    // Read current position from computed style
+    const style = window.getComputedStyle(timerDisplay);
+    const matrix = new DOMMatrix(style.transform);
+    initialX = matrix.m41;
+    initialY = matrix.m42;
+
     timerDisplay.style.cursor = 'grabbing';
 }
 
@@ -260,16 +267,8 @@ function handleDragMove(e) {
 }
 
 function handleDragEnd() {
-    if (isDragging) {
-        const transform = timerDisplay.style.transform;
-        const match = transform.match(/translate\((-?\d+)px, (-?\d+)px\)/);
-        if (match) {
-            initialX = parseInt(match[1]);
-            initialY = parseInt(match[2]);
-        }
-        isDragging = false;
-        timerDisplay.style.cursor = 'move';
-    }
+    isDragging = false;
+    timerDisplay.style.cursor = 'move';
 }
 
 // Initialize
