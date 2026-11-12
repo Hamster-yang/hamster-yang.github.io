@@ -1,40 +1,129 @@
-# 楊上賢 (Hamsteryang) - Personal Portfolio & Tools
+# Hamster Yang 楊上賢 — Personal Workspace
 
-## 🛠️ 整合工具箱 (Tools)
+以暗色 macOS 桌面與終端機呈現的個人網站，研究方向為腦血管分割、腦動脈瘤分割與肺部動靜脈分割，並提供四個日常瀏覽器工具。首頁以文字、ASCII 角色、視窗、Dock 與解剖點雲桌布組成，不載入個人照片。原有照片檔案保留在儲存庫中，沒有刪除。
 
-本專案內建一系列純前端開發的高效能工具：
+個人資料依使用者提供的更新：2026 年 8 月取得國立彰化師範大學資訊工程碩士學位；2026 年 9 月入學國立陽明交通大學生醫光電研究所博士班，目前就讀中；2026 年起擔任艾登星執行長暨技術長，並保留自 2020 年起的技術長經歷。
 
-### 📄 PDF Editor (`tool/pdf/`)
-- 支援 PDF 頁面排序、刪除與合併。
-- 內建畫筆與文字工具，可直接在頁面上註記。
-- 支援拖曳操作，直覺易用。
+網站維持 HTML、CSS 與原生 JavaScript 架構，不需安裝套件或執行建置。首頁和個人頁使用本機樣式與腳本；既有工具仍使用部分 CDN 程式庫與字體，因此整站並非完全離線。
 
-### 🎬 Video Editor (`tool/video/`)
-- 瀏覽器端的影片剪輯工具。
-- 支援影片裁剪、片段刪除與重新排序。
-- 即時預覽與 webm 格式匯出。
+## 本機預覽
 
-### ⏰ Time (`tool/time/`)
-- **七段顯示器風格**: 採用 DSEG7 Modern 字體，經典 LED 質感。
-- **高度客製化**: 支援 0.1x-20x 字體縮放、多種配色與背景切換。
-- **自由拖曳**: 可隨意拖曳時鐘位置，支援全螢幕顯示。
+可直接以瀏覽器開啟 `index.html`（`file://`）；首頁的桌面、終端機指令與一般頁面連結不需要後端服務。既有 PDF／影片工具可能受到瀏覽器對本機檔案、Worker 或媒體 API 的限制，完整測試建議在儲存庫根目錄啟動 HTTP 伺服器：
 
-### ⏲️ Countdown (`tool/clock/`)
-- **即時控制**: 調整時間立即更新，支援快速預設時間（1分鐘至1小時）。
-- **視覺化回饋**: 時間倒數變色提醒（黃色/紅色）。
-- **拖曳縮放**: 與時鐘工具相同的自由操作體驗。
+```sh
+python3 -m http.server 4173
+```
 
-## 💻 技術棧
+開啟 [http://localhost:4173](http://localhost:4173)。Python 簡易伺服器不會自動套用 GitHub Pages 的自訂 404；可直接開啟 `/404.html` 預覽錯誤頁。404 的根目錄資源路徑以網站部署環境為準。
 
-- **核心**: HTML5, CSS3, Vanilla JavaScript (無過度依賴框架)。
-- **樣式**: CSS Variables, Flexbox/Grid, Glassmorphism (玻璃擬態)。
-- **字體**: DSEG7 Modern (LED 風格), Orbitron, Bootstrap Icons。
-- **優化**: GPU 加速渲染 (will-change), 零相依性輕量化設計。
+**目前改版只在本機，尚未部署。** 本機預覽與檢查完成不代表公開網站已更新。
 
-## 👨‍💻 關於作者
+## 桌面操作
 
-**楊上賢 (Hamsteryang)**
-- 專注於醫學影像處理、深度學習與醫療 AI 研究。
+- 終端機與工具資料夾預設開啟；「關於我」與「研究方向」可從桌面檔案、Dock、視窗選單或終端機開啟。
+- 紅色按鈕關閉視窗，黃色按鈕最小化；可由 Dock 重新開啟。關閉或最小化後，鍵盤焦點回到對應 Dock 入口。
+- 桌機上可拖曳視窗標題列、使用綠色按鈕放大／還原，或雙擊標題列切換大小。
+- 小螢幕將視窗改為直向排列，使用頁面捲動閱讀。
+- `Command/Ctrl + K` 開啟並聚焦終端機；在輸入欄使用 `↑`、`↓` 瀏覽歷史指令，`Ctrl + L` 清空畫面。
+- `#about`、`#research`、`#files`、`#terminal` 可用作外部書籤；桌面內開窗不改寫網址或逐次新增瀏覽紀錄。
+- 視窗、指令歷史與輸出只保留在目前頁面記憶體中，重新載入後重設。
 
----
-*Copyright © 2026 Hamsteryang. All rights reserved.*
+終端機提供的是站內導覽指令，不會執行電腦上的 shell 指令或讀取本機檔案。
+
+| 指令 | 功能 |
+| --- | --- |
+| `help` | 顯示指令說明 |
+| `whoami` | 顯示個人介紹與主要技術 |
+| `about`、`cat about.md` | 開啟關於我視窗 |
+| `research`、`cat research.md` | 開啟研究方向視窗 |
+| `skills`、`cat skills.txt` | 列出常用技術 |
+| `tools`、`projects` | 開啟工具資料夾 |
+| `contact`、`cat contact.txt` | 顯示既有社群聯絡連結 |
+| `ls` | 列出站內檔案與資料夾連結 |
+| `date` | 顯示瀏覽器目前時間 |
+| `pwd` | 顯示示意工作路徑 |
+| `clear` | 清空終端機顯示 |
+| `reset` | 重設桌面視窗並還原介紹 |
+
+停用 JavaScript 或首頁腳本尚未初始化時，各視窗以一般文件區塊依序呈現，所有主要內容和連結仍可閱讀；終端機輸入與視窗控制需 JavaScript 啟用。
+
+## 解剖點雲桌布
+
+頂部「桌布」選單可切換完整大腦與肺部動靜脈、暫停或播放旋轉。「只看桌布」會暫時隱藏視窗，按 Esc 或開啟任一桌面視窗即可返回。瀏覽器會儲存場景與播放偏好，系統偏好減少動態時預設靜止。
+
+兩個場景皆使用 BodyParts3D 4.0 成人解剖參考圖譜的表面網格，依 CC BY 4.0 授權使用。
+
+- **完整大腦**呈現雙側大腦皮質、小腦與腦幹的外觀。50 個來源網格經外表面篩選後，從 137,062 個原始三角面取樣為 64,000 點。大腦表面的單位法線用於光照，另以 16,000 個低亮度暖色點顯示同一圖譜的腦動脈。合計 80,000 點共用同一座標變換。
+- **肺部動靜脈**由 184 個共用原始座標的血管網格取樣為 56,000 點，藍色表示動脈，珊瑚色表示靜脈。
+
+每個場景採用共同的旋轉、置中與等比例縮放。瀏覽器優先使用 WebGL，再依支援情形切換低密度 Canvas 2D 或靜態背景。手機會降低顯示點數、DPR 與幀率，分頁隱藏時會停止動畫。[桌布資料來源](vascular-sources.html) · [取樣與建構說明](assets/vascular/README.md)
+
+瀏覽器直接載入本機已取樣資料。可在儲存庫根目錄使用 Python 與 NumPy 重建桌布資料。
+
+```sh
+python3 scripts/build-vascular-pointclouds.py
+```
+
+## 檔案結構
+
+| 路徑 | 用途 |
+| --- | --- |
+| `index.html` | 桌面、終端機、工具資料夾、關於我及研究方向視窗 |
+| `projects.html` | 四個實際工具的介紹與分類篩選 |
+| `resume.html` | 教育背景、實務經歷與技能 |
+| `contact.html` | Telegram、GitHub 與 Instagram 聯絡連結 |
+| `404.html` | 找不到頁面時的返回入口，使用網站根路徑資源 |
+| `css/site.css` | 暗色主題、共用字體、導覽、按鈕與頁尾 |
+| `css/home.css` | 首頁桌面、視窗、終端機與 Dock 響應式樣式 |
+| `css/projects.css` | 工具介紹頁專用樣式 |
+| `css/profile.css` | 履歷、聯絡與 404 專用樣式 |
+| `js/desktop.js` | 首頁視窗管理、拖曳、鍵盤操作、站內終端機指令與時鐘 |
+| `js/vascular-geometry.js`、`js/vascular-wallpaper.js` | 本機點資料解碼、渲染、動畫與桌布控制 |
+| `assets/vascular/` | 來源幾何、授權、manifest、預取樣資料與變換記錄 |
+| `vascular-sources.html` | 桌布公開資料來源與處理方式 |
+| `js/site.js` | 個人子頁的行動版選單與 Escape 操作 |
+| `js/projects.js` | 作品分類篩選；停用 JavaScript 時仍顯示全部作品 |
+| `assets/` | 網站圖示與保留的既有靜態資源 |
+| `tool/` | 原有 PDF、影片、時鐘與倒數工具 |
+| `tests/*-regressions.test.cjs` | PDF、影片與時鐘的功能回歸測試 |
+| `css/tools.css`、`js/tools.js` | 四個工具共用的暗色視窗樣式與選單時鐘 |
+| `js/clock-face.js` | 時鐘與倒數共用的縮放、拖曳、設定及全螢幕控制 |
+| `TOOL_REVIEW.md` | 四個工具的審查結果、實測與後續建議 |
+| `CODE_REVIEW.md` | 原始碼審查、修復說明及分版本驗證紀錄 |
+| `CNAME` | 原有自訂網域 `hamsteryang.com` |
+
+首頁的桌面由 `js/desktop.js` 與 `css/home.css` 實作。四個工具統一使用 `css/tools.css`、`js/tools.js` 及各工具專用樣式與腳本。舊 `macos.css`／`macos.js` 已不由目前頁面載入。
+
+## 工具入口
+
+- [PDF 編輯器](tool/pdf/index.html)：頁面排序、刪除、合併與註記。
+- [影片剪輯器](tool/video/index.html)：片段裁剪、刪除、重新排序、預覽與 WebM／MP4 匯出（依瀏覽器支援）。
+- [全螢幕時鐘](tool/time/index.html)：七段顯示風格、配色與縮放設定。
+- [倒數計時器](tool/clock/index.html)：時間預設、倒數與接近結束時的顏色提醒。
+
+影片以實時播放速度錄製為 720p，並非無損或逐 frame 精確剪接。匯出時需保持分頁在前景，支援格式取決於瀏覽器。部分 WebM 缺少 duration metadata，重新匯入前可能需重新封裝。PDF 核心與時鐘字體由固定版本 CDN 載入，首次使用需網路連線。
+
+時鐘縮放以可用顯示區的 25–100% 為範圍，避免大字超出螢幕。兩個時鐘進入全螢幕後隱藏標題列、設定及一般工具列，只留下時間；移動滑鼠、觸控或鍵盤操作會喚出小型浮層。原生 Fullscreen API 不可用時會使用頁面滿版模式，仍可按 Esc 返回。
+
+## 驗證
+
+使用具備內建測試執行器的 Node.js 版本，在根目錄執行：
+
+```sh
+node --test tests/*-regressions.test.cjs
+node --test tests/vascular-*.test.cjs
+node --check js/desktop.js
+```
+
+工具回歸測試使用可控制的 DOM、時間與媒體 API 替身。桌面拖曳、視窗層級、鍵盤焦點、小螢幕版面、網址錨點、停用 JavaScript 與真實媒體匯出仍應以瀏覽器確認。請以 `CODE_REVIEW.md` 對應日期與版本的紀錄判斷驗證範圍，避免套用前一版版面結果。
+
+## 維護與部署
+
+- 直接編輯各 HTML 頁面的內容；共用導覽與頁尾需同步更新各頁。
+- 新增桌面視窗需對應 `data-window`、唯一 ID、標題及 `data-open` 入口；指令處理集中於 `js/desktop.js`。
+- 履歷與介紹依既有儲存庫資料整理；新增學位、職稱或日期前應確認內容。
+- 聯絡頁使用既有社群管道，沒有表單後端或郵件寄送服務。
+- 保留原有 GitHub Pages 路徑與 `CNAME`，沒有新增託管服務或變更網域。
+- 正式上線需依此儲存庫既有的 GitHub Pages 設定發布；本次文件記錄不代表已推送或部署。
+
+© 2026 楊上賢 Hamster Yang
