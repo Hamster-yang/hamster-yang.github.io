@@ -1,0 +1,4632 @@
+{
+  "dataset": "BodyParts3D version 4.0, PART-OF Tree, polygon reduction rate = 99%",
+  "source_url": "https://dbarchive.biosciencedbc.jp/en/bodyparts3d/download.html",
+  "archive_url": "https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/partof_BP3D_4.0_obj_99.zip",
+  "archive_bytes": 64888505,
+  "archive_sha256": "9fbc713fffeee924a5a657d9813d84d7eb957bded63adb854931dd5e3eb61c97",
+  "metadata_urls": {
+    "partof_parts_list_e.txt": "https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/partof_parts_list_e.txt",
+    "partof_element_parts.txt": "https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/partof_element_parts.txt",
+    "partof_inclusion_relation_list.txt": "https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/partof_inclusion_relation_list.txt"
+  },
+  "downloaded_on": "2026-11-10",
+  "license": "Creative Commons Attribution 4.0 International (official publisher license updated 2025-02-27)",
+  "license_url": "https://dbarchive.biosciencedbc.jp/en/bodyparts3d/lic.html",
+  "attribution": "BodyParts3D, © The Database Center for Life Science licensed under CC Attribution 4.0 International",
+  "source_license_notice": "OBJ comments contain the historical CC BY-SA 2.1 Japan attribution. Files were not edited; current official lic.html and latest README explicitly update database license to CC BY 4.0 in February 2025.",
+  "methodology": "Anatomical reference atlas derived from the TARO 2-mm whole-body MRI male volunteer model, with manual anatomical refinement. This is not a subject-specific clinical vessel segmentation.",
+  "methodology_source": "https://doi.org/10.1093/nar/gkn613",
+  "coordinate_policy": "All OBJ vertices are in the shared original BodyParts3D whole-body coordinate system. Keep all pulmonary artery and vein coordinates together. Apply one global centering and isotropic scale only. Do not independently normalize individual parts.",
+  "coordinates_unit": "mm",
+  "transformations": [
+    "Selected pulmonary arterial tree FMA45842 and four pulmonary vein roots FMA49911, FMA49913, FMA49914, FMA49916 from the official PART-OF compound-organ mapping.",
+    "Excluded FJ2041 and FJ2044 because they are spatially detached below the other pulmonary vasculature. Excluded meshes were not repositioned or replaced.",
+    "Concatenated original OBJ vertices and offset face indices; no vertex coordinates were changed. OBJ polygons, if any, were triangulated by a fan.",
+    "Assigned face labels from official anatomical grouping: 0 arteries, 1 veins."
+  ],
+  "source_concepts": {
+    "arteries": [
+      {
+        "concept id": "FMA45842",
+        "representation id": "BP9415",
+        "en": "pulmonary arterial tree"
+      }
+    ],
+    "veins": [
+      {
+        "concept id": "FMA49911",
+        "representation id": "BP9407",
+        "en": "right inferior pulmonary vein"
+      },
+      {
+        "concept id": "FMA49913",
+        "representation id": "BP9712",
+        "en": "left inferior pulmonary vein"
+      },
+      {
+        "concept id": "FMA49914",
+        "representation id": "BP9365",
+        "en": "right superior pulmonary vein"
+      },
+      {
+        "concept id": "FMA49916",
+        "representation id": "BP9499",
+        "en": "left superior pulmonary vein"
+      }
+    ]
+  },
+  "excluded_meshes": [
+    {
+      "element_id": "FJ2041",
+      "file": "pulmonary/FJ2041.obj",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2041.obj",
+      "bytes": 17503,
+      "sha256": "d52990514f3fd26238511bc25ae0fdbeef1555b2b450b13166925fb8f3541120",
+      "vertices": 158,
+      "triangles": 290,
+      "surface_area": 439.2297603746884,
+      "degenerate_triangles": 0,
+      "bounds": {
+        "min": [
+          -85.1699,
+          -85.8819,
+          1028.59
+        ],
+        "max": [
+          -57.6642,
+          -73.2395,
+          1050.31
+        ]
+      },
+      "reason": "This source mesh is spatially detached below the main pulmonary vascular group (nearest other pulmonary vertex 91–112 mm away) and labelled Right anterior segmental artery. Preserve the source and inspect before inclusion; the cause is unconfirmed.",
+      "closest_other_pulmonary_mesh_vertex_mm": 91.445
+    },
+    {
+      "element_id": "FJ2044",
+      "file": "pulmonary/FJ2044.obj",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2044.obj",
+      "bytes": 16922,
+      "sha256": "92c5a838b3e2be5316d0b4c0ff2b644e533f60d91dffd2716807116033aef0e7",
+      "vertices": 155,
+      "triangles": 276,
+      "surface_area": 456.9810863429712,
+      "degenerate_triangles": 0,
+      "bounds": {
+        "min": [
+          -97.1391,
+          -86.7178,
+          1014.59
+        ],
+        "max": [
+          -58.2803,
+          -80.8967,
+          1034.44
+        ]
+      },
+      "reason": "This source mesh is spatially detached below the main pulmonary vascular group (nearest other pulmonary vertex 91–112 mm away) and labelled Right anterior segmental artery. Preserve the source and inspect before inclusion; the cause is unconfirmed.",
+      "closest_other_pulmonary_mesh_vertex_mm": 111.921
+    }
+  ],
+  "geometry": {
+    "file": "bodyparts3d-pulmonary.npz",
+    "bytes": 646320,
+    "sha256": "e2051b8d24af36aa7d4005d177f909cca9ea930ce6ffaa50c57a820673f231f8",
+    "canonical_array_sha256": "a974de068594e669abe92e2b2561026e85b979ae59e0faf94fba7813d8384a7c",
+    "canonical_array_hash_definition": "SHA-256 of vertices C-order little-endian float64 bytes, followed by faces C-order little-endian uint32 bytes, followed by face_labels uint8 bytes, concatenated without separators.",
+    "arrays": {
+      "vertices": {
+        "shape": [
+          39220,
+          3
+        ],
+        "dtype": "<f8",
+        "sha256": "60f661a473a39c4435732af901d3edfb8d16b9c72b14bf112aaf6d64bdd1025b"
+      },
+      "faces": {
+        "shape": [
+          67170,
+          3
+        ],
+        "dtype": "<u4",
+        "sha256": "7b6eb04ddead9e378f3d820b02f7678ecdfd310fea9705839127c8ba9dc1dd6b"
+      },
+      "face_labels": {
+        "shape": [
+          67170
+        ],
+        "dtype": "|u1",
+        "sha256": "4cd6ffa7f44908f9d61c66f859c4d9094ae0dd83cce5b1c9d31d24502f6eaad5"
+      }
+    },
+    "bounds_mm": {
+      "min": [
+        -114.302,
+        -171.757,
+        1123.11
+      ],
+      "max": [
+        125.432,
+        -20.9425,
+        1355.94
+      ]
+    },
+    "groups": [
+      {
+        "name": "arteries",
+        "label": 0,
+        "meshes": 92,
+        "vertices": 25707,
+        "triangles": 43624,
+        "bounds_mm": {
+          "min": [
+            -114.302,
+            -171.757,
+            1123.11
+          ],
+          "max": [
+            125.432,
+            -20.9425,
+            1348.56
+          ]
+        },
+        "surface_area_mm2": 68258.70583144233
+      },
+      {
+        "name": "veins",
+        "label": 1,
+        "meshes": 92,
+        "vertices": 13513,
+        "triangles": 23546,
+        "bounds_mm": {
+          "min": [
+            -113.847,
+            -169.046,
+            1127.02
+          ],
+          "max": [
+            119.306,
+            -23.4817,
+            1355.94
+          ]
+        },
+        "surface_area_mm2": 43915.999232597926
+      }
+    ],
+    "degenerate_triangles": 0
+  },
+  "source_validation": {
+    "artery_vein_mesh_overlap": [],
+    "missing_from_pulmonary_vascular_system": [],
+    "unclassified_vascular_system_meshes": [],
+    "source_geometry_outliers": [
+      {
+        "element_id": "FJ2041",
+        "reason": "This source mesh is spatially detached below the main pulmonary vascular group (nearest other pulmonary vertex 91–112 mm away) and labelled Right anterior segmental artery. Preserve the source and inspect before inclusion; the cause is unconfirmed.",
+        "closest_other_pulmonary_mesh_vertex_mm": 91.445
+      },
+      {
+        "element_id": "FJ2044",
+        "reason": "This source mesh is spatially detached below the main pulmonary vascular group (nearest other pulmonary vertex 91–112 mm away) and labelled Right anterior segmental artery. Preserve the source and inspect before inclusion; the cause is unconfirmed.",
+        "closest_other_pulmonary_mesh_vertex_mm": 111.921
+      }
+    ]
+  },
+  "meshes": [
+    {
+      "element_id": "FJ2881",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2881.obj",
+      "source_obj_sha256": "ed30dc150cff62adeea8107c3fa164a3a14a06e54c2fc1709875655a9db37fe6",
+      "source_bytes": 102860,
+      "vertex_start": 0,
+      "vertex_count": 878,
+      "face_start": 0,
+      "face_count": 1748,
+      "bounds_mm": {
+        "min": [
+          63.2211,
+          -69.3463,
+          1131.58
+        ],
+        "max": [
+          83.0281,
+          -27.6947,
+          1247.69
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2882",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2882.obj",
+      "source_obj_sha256": "4c818f1db1cc14b6d7c1549174fc3fb6e7b6cce56bd04542b23eebe33efcfa62",
+      "source_bytes": 5934,
+      "vertex_start": 878,
+      "vertex_count": 66,
+      "face_start": 1748,
+      "face_count": 62,
+      "bounds_mm": {
+        "min": [
+          103.645,
+          -60.2943,
+          1144.94
+        ],
+        "max": [
+          107.816,
+          -45.8384,
+          1160.69
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2883",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2883.obj",
+      "source_obj_sha256": "4ed8ded534c49f725c3403bafdc47dac755c9dacd02c3b8d4cdaad7c951e00dc",
+      "source_bytes": 149377,
+      "vertex_start": 944,
+      "vertex_count": 1292,
+      "face_start": 1810,
+      "face_count": 2400,
+      "bounds_mm": {
+        "min": [
+          56.3629,
+          -127.702,
+          1145.67
+        ],
+        "max": [
+          125.113,
+          -60.643,
+          1258.84
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2884",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2884.obj",
+      "source_obj_sha256": "abfae95bcf1f126d11866a62c2f45839f99f88b3722c88da1ab57baf8baccfd6",
+      "source_bytes": 78356,
+      "vertex_start": 2236,
+      "vertex_count": 698,
+      "face_start": 4210,
+      "face_count": 1274,
+      "bounds_mm": {
+        "min": [
+          71.6488,
+          -142.124,
+          1163.6
+        ],
+        "max": [
+          114.889,
+          -62.505,
+          1236.1
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2885",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2885.obj",
+      "source_obj_sha256": "fc1ce0a1524c6866c03aaf518f0d7056ba47834dc5c8a24f6f689f8c50ca724b",
+      "source_bytes": 29491,
+      "vertex_start": 2934,
+      "vertex_count": 276,
+      "face_start": 5484,
+      "face_count": 462,
+      "bounds_mm": {
+        "min": [
+          81.8502,
+          -101.322,
+          1200.5
+        ],
+        "max": [
+          119.04,
+          -71.6082,
+          1223.69
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2886",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2886.obj",
+      "source_obj_sha256": "32b38d09c913d78e21863e40d1e661730a0522e06f6d9c8595fc8ce37050f1c4",
+      "source_bytes": 9843,
+      "vertex_start": 3210,
+      "vertex_count": 102,
+      "face_start": 5946,
+      "face_count": 138,
+      "bounds_mm": {
+        "min": [
+          109.383,
+          -99.6084,
+          1137.42
+        ],
+        "max": [
+          125.432,
+          -94.2162,
+          1174.46
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2887",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2887.obj",
+      "source_obj_sha256": "c2ada586c2153865073bd233f98b659035675c9a49ff96d297a92e324a8dfb5d",
+      "source_bytes": 8243,
+      "vertex_start": 3312,
+      "vertex_count": 88,
+      "face_start": 6084,
+      "face_count": 104,
+      "bounds_mm": {
+        "min": [
+          110.328,
+          -113.966,
+          1164.5
+        ],
+        "max": [
+          123.213,
+          -95.3028,
+          1175.03
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2888",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2888.obj",
+      "source_obj_sha256": "48c2b6729e09202fa97918fc47dddf8bf0cfa46b32025be63bbf48d9aacca6f5",
+      "source_bytes": 36502,
+      "vertex_start": 3400,
+      "vertex_count": 332,
+      "face_start": 6188,
+      "face_count": 590,
+      "bounds_mm": {
+        "min": [
+          37.318,
+          -69.0704,
+          1257.06
+        ],
+        "max": [
+          57.4996,
+          -39.6693,
+          1293.27
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2889",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2889.obj",
+      "source_obj_sha256": "8fdf31ccfc469d7fbe00825a3daa990b478e32c1ad476263b5c62a1bfa6e1d00",
+      "source_bytes": 7872,
+      "vertex_start": 3732,
+      "vertex_count": 85,
+      "face_start": 6778,
+      "face_count": 94,
+      "bounds_mm": {
+        "min": [
+          46.5311,
+          -42.7846,
+          1279.81
+        ],
+        "max": [
+          54.341,
+          -40.1948,
+          1290.88
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2890",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2890.obj",
+      "source_obj_sha256": "a96f916bb1ee2d6be37600737d95d8b587c39b4555b6e120667e4394cd8e4830",
+      "source_bytes": 8671,
+      "vertex_start": 3817,
+      "vertex_count": 91,
+      "face_start": 6872,
+      "face_count": 114,
+      "bounds_mm": {
+        "min": [
+          50.5549,
+          -46.5871,
+          1268.33
+        ],
+        "max": [
+          71.7935,
+          -43.0532,
+          1282.98
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2891",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2891.obj",
+      "source_obj_sha256": "379124a8465b7c0c3998e6eb6780a8f2f606dfcd771a1af1e3ec90b11866a3bd",
+      "source_bytes": 25041,
+      "vertex_start": 3908,
+      "vertex_count": 224,
+      "face_start": 6986,
+      "face_count": 418,
+      "bounds_mm": {
+        "min": [
+          41.0658,
+          -67.2541,
+          1226.14
+        ],
+        "max": [
+          55.0899,
+          -53.5376,
+          1266.81
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2892",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2892.obj",
+      "source_obj_sha256": "cf6100ec0a04f979b00a8803732b1420deac3f82b8ed053456c34ee1f625fe2a",
+      "source_bytes": 11009,
+      "vertex_start": 4132,
+      "vertex_count": 115,
+      "face_start": 7404,
+      "face_count": 150,
+      "bounds_mm": {
+        "min": [
+          73.3725,
+          -37.7076,
+          1137.75
+        ],
+        "max": [
+          83.5073,
+          -28.6404,
+          1156.0
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2893",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2893.obj",
+      "source_obj_sha256": "58544ef724582a4cbbea92d24b2b7ebadda07bbb9371de4a37db9cc857b0456b",
+      "source_bytes": 8676,
+      "vertex_start": 4247,
+      "vertex_count": 87,
+      "face_start": 7554,
+      "face_count": 126,
+      "bounds_mm": {
+        "min": [
+          42.5588,
+          -57.9734,
+          1229.17
+        ],
+        "max": [
+          49.7007,
+          -49.6272,
+          1245.54
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2894",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2894.obj",
+      "source_obj_sha256": "89d4a63a968bd00dc2da4fe5baf7427b30ac29ae3fbe1944cdb750fc8cbfb666",
+      "source_bytes": 26012,
+      "vertex_start": 4334,
+      "vertex_count": 242,
+      "face_start": 7680,
+      "face_count": 416,
+      "bounds_mm": {
+        "min": [
+          51.4941,
+          -64.8118,
+          1250.8
+        ],
+        "max": [
+          81.0374,
+          -34.8426,
+          1267.17
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2895",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2895.obj",
+      "source_obj_sha256": "4533df99087110a5230718ac586a17e893a1bdeb4459b666910db2958f399a65",
+      "source_bytes": 9414,
+      "vertex_start": 4576,
+      "vertex_count": 96,
+      "face_start": 8096,
+      "face_count": 136,
+      "bounds_mm": {
+        "min": [
+          69.7722,
+          -53.0783,
+          1243.05
+        ],
+        "max": [
+          92.8914,
+          -40.113,
+          1256.75
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2902",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2902.obj",
+      "source_obj_sha256": "23875d0f6ee363ba4ce26c2e742ce69fab8c7634330e9f4eb9778316ccd902b8",
+      "source_bytes": 43609,
+      "vertex_start": 4672,
+      "vertex_count": 400,
+      "face_start": 8232,
+      "face_count": 692,
+      "bounds_mm": {
+        "min": [
+          47.4642,
+          -118.322,
+          1266.08
+        ],
+        "max": [
+          87.1355,
+          -66.1157,
+          1287.09
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2903",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2903.obj",
+      "source_obj_sha256": "05c973d111b02754c02206fe101cda69e83a24ffcb4b0f788c4eb1fc4d68cac4",
+      "source_bytes": 38759,
+      "vertex_start": 5072,
+      "vertex_count": 354,
+      "face_start": 8924,
+      "face_count": 618,
+      "bounds_mm": {
+        "min": [
+          39.4222,
+          -55.5829,
+          1147.48
+        ],
+        "max": [
+          82.6043,
+          -32.414,
+          1204.09
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2904",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2904.obj",
+      "source_obj_sha256": "f36eafda5102fd0c4de1e364aea22e31663e8436b6c4b6e5009dd05519efa593",
+      "source_bytes": 13212,
+      "vertex_start": 5426,
+      "vertex_count": 127,
+      "face_start": 9542,
+      "face_count": 210,
+      "bounds_mm": {
+        "min": [
+          79.2388,
+          -122.783,
+          1264.64
+        ],
+        "max": [
+          93.4593,
+          -110.219,
+          1280.06
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2905",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2905.obj",
+      "source_obj_sha256": "32cc6acd5fdf81bc1100b59c6d009ea21098eaafc012c221e767ffe0b88fb672",
+      "source_bytes": 16342,
+      "vertex_start": 5553,
+      "vertex_count": 147,
+      "face_start": 9752,
+      "face_count": 280,
+      "bounds_mm": {
+        "min": [
+          79.074,
+          -126.661,
+          1280.38
+        ],
+        "max": [
+          82.9643,
+          -112.894,
+          1283.78
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2906",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2906.obj",
+      "source_obj_sha256": "31b12f04efe6a0692f7d9f81cbe5cdb8bb38cbfc1d6f18b94c1bb74f31e2a9a3",
+      "source_bytes": 61311,
+      "vertex_start": 5700,
+      "vertex_count": 543,
+      "face_start": 10032,
+      "face_count": 1006,
+      "bounds_mm": {
+        "min": [
+          42.2272,
+          -160.694,
+          1246.72
+        ],
+        "max": [
+          61.6648,
+          -78.2506,
+          1280.65
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2907",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2907.obj",
+      "source_obj_sha256": "b8c1877af9f078506c014c9e54a0181118c53da32f5747cc062bf6d10af34899",
+      "source_bytes": 11978,
+      "vertex_start": 6243,
+      "vertex_count": 131,
+      "face_start": 11038,
+      "face_count": 150,
+      "bounds_mm": {
+        "min": [
+          42.916,
+          -141.501,
+          1264.77
+        ],
+        "max": [
+          55.2579,
+          -129.054,
+          1276.75
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2908",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2908.obj",
+      "source_obj_sha256": "2a712a6f06c93e243186958635991d44c709e0d628d2140378398be5a6fede22",
+      "source_bytes": 48514,
+      "vertex_start": 6374,
+      "vertex_count": 435,
+      "face_start": 11188,
+      "face_count": 786,
+      "bounds_mm": {
+        "min": [
+          31.0199,
+          -130.71,
+          1273.55
+        ],
+        "max": [
+          62.2873,
+          -77.4308,
+          1290.8
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2909",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2909.obj",
+      "source_obj_sha256": "839fad0bb73387e30eba955eae475bae3f82fa67de92fde8cd45b972c2e14a29",
+      "source_bytes": 9381,
+      "vertex_start": 6809,
+      "vertex_count": 101,
+      "face_start": 11974,
+      "face_count": 120,
+      "bounds_mm": {
+        "min": [
+          49.7939,
+          -132.978,
+          1279.8
+        ],
+        "max": [
+          55.3796,
+          -118.593,
+          1290.23
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2910",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2910.obj",
+      "source_obj_sha256": "93a28ddbf18ddef08c4e27d7eae71cc66e9fcd664fde90bde60dc08dd0925ec7",
+      "source_bytes": 14428,
+      "vertex_start": 6910,
+      "vertex_count": 146,
+      "face_start": 12094,
+      "face_count": 210,
+      "bounds_mm": {
+        "min": [
+          55.7261,
+          -136.243,
+          1275.83
+        ],
+        "max": [
+          70.2022,
+          -109.2,
+          1285.43
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2911",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2911.obj",
+      "source_obj_sha256": "68dbb8593222b414fd5e5ad73842cbfb11c41f525eef42f2f3eee5c0486bf966",
+      "source_bytes": 19738,
+      "vertex_start": 7056,
+      "vertex_count": 184,
+      "face_start": 12304,
+      "face_count": 318,
+      "bounds_mm": {
+        "min": [
+          37.5904,
+          -85.8442,
+          1272.97
+        ],
+        "max": [
+          73.4593,
+          -54.6277,
+          1319.52
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2912",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2912.obj",
+      "source_obj_sha256": "6f730d880c0a79587b24f8c8b1bc83056efaede4d7aab76638085abb7566d978",
+      "source_bytes": 11141,
+      "vertex_start": 7240,
+      "vertex_count": 118,
+      "face_start": 12622,
+      "face_count": 150,
+      "bounds_mm": {
+        "min": [
+          68.6195,
+          -76.4467,
+          1301.73
+        ],
+        "max": [
+          80.6777,
+          -54.749,
+          1308.96
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2913",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2913.obj",
+      "source_obj_sha256": "4936e7c72d76224afd96d13043e9a7289407eac60bff18e0e80e36da56805782",
+      "source_bytes": 12702,
+      "vertex_start": 7358,
+      "vertex_count": 125,
+      "face_start": 12772,
+      "face_count": 198,
+      "bounds_mm": {
+        "min": [
+          63.8446,
+          -82.5029,
+          1291.61
+        ],
+        "max": [
+          80.9007,
+          -61.6915,
+          1297.87
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2914",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2914.obj",
+      "source_obj_sha256": "a7688a81452a84efa9bab01ba4ce5caecf37f52595d5c192f57e247b797cebcb",
+      "source_bytes": 7396,
+      "vertex_start": 7483,
+      "vertex_count": 79,
+      "face_start": 12970,
+      "face_count": 92,
+      "bounds_mm": {
+        "min": [
+          47.8043,
+          -37.0431,
+          1145.39
+        ],
+        "max": [
+          57.8216,
+          -30.2088,
+          1159.72
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2915",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2915.obj",
+      "source_obj_sha256": "c1243bba41b9bf8e7d653dc87c2ee3d44794e181fb2eb2dc90125796f281a800",
+      "source_bytes": 24794,
+      "vertex_start": 7562,
+      "vertex_count": 220,
+      "face_start": 13062,
+      "face_count": 418,
+      "bounds_mm": {
+        "min": [
+          27.0238,
+          -98.2286,
+          1275.48
+        ],
+        "max": [
+          53.2204,
+          -78.0984,
+          1348.56
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2916",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2916.obj",
+      "source_obj_sha256": "fbfff75d26deb68fd550025e6e7566a523af95e84f03c3670b31b6039f859180",
+      "source_bytes": 11889,
+      "vertex_start": 7782,
+      "vertex_count": 121,
+      "face_start": 13480,
+      "face_count": 174,
+      "bounds_mm": {
+        "min": [
+          45.5304,
+          -89.0527,
+          1302.54
+        ],
+        "max": [
+          52.6674,
+          -69.1295,
+          1342.93
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2917",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2917.obj",
+      "source_obj_sha256": "7cae7fcbf70c5ebc56bf057f34225e66bcc37362ee6932c5d84c68c7d0c48aad",
+      "source_bytes": 13200,
+      "vertex_start": 7903,
+      "vertex_count": 133,
+      "face_start": 13654,
+      "face_count": 196,
+      "bounds_mm": {
+        "min": [
+          19.6494,
+          -92.5679,
+          1329.61
+        ],
+        "max": [
+          43.5919,
+          -88.8534,
+          1344.58
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2918",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2918.obj",
+      "source_obj_sha256": "28e665ef0994bb3e8ffc02e8bda5fb0b970a23f1a320e0aaf5bf3fc9b1676533",
+      "source_bytes": 12357,
+      "vertex_start": 8036,
+      "vertex_count": 123,
+      "face_start": 13850,
+      "face_count": 188,
+      "bounds_mm": {
+        "min": [
+          47.5548,
+          -86.7545,
+          1313.77
+        ],
+        "max": [
+          56.775,
+          -78.5788,
+          1330.23
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2919",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2919.obj",
+      "source_obj_sha256": "9c1eaf17f330259874b90e906373aa1da51e326ef7a9a0dd3896259d5c8a5cb4",
+      "source_bytes": 35556,
+      "vertex_start": 8159,
+      "vertex_count": 330,
+      "face_start": 14038,
+      "face_count": 560,
+      "bounds_mm": {
+        "min": [
+          62.5626,
+          -62.9809,
+          1188.28
+        ],
+        "max": [
+          77.4562,
+          -22.076,
+          1226.83
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2920",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2920.obj",
+      "source_obj_sha256": "ac4833fc2019d4955ef0729ac14e07cf836135625c48ad2c25c5b190caa99557",
+      "source_bytes": 16901,
+      "vertex_start": 8489,
+      "vertex_count": 164,
+      "face_start": 14598,
+      "face_count": 262,
+      "bounds_mm": {
+        "min": [
+          55.7319,
+          -45.6874,
+          1160.18
+        ],
+        "max": [
+          67.9713,
+          -28.6671,
+          1201.18
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2921",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2921.obj",
+      "source_obj_sha256": "35a721530266089dc3fd4eab9a946fc9f0173e76ff048cc6d4a62498ce103b6f",
+      "source_bytes": 100628,
+      "vertex_start": 8653,
+      "vertex_count": 861,
+      "face_start": 14860,
+      "face_count": 1710,
+      "bounds_mm": {
+        "min": [
+          63.011,
+          -90.0651,
+          1136.29
+        ],
+        "max": [
+          123.85,
+          -57.0522,
+          1245.21
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2922",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2922.obj",
+      "source_obj_sha256": "1dec6ac7c766169cdc1e096e6cb4d6afe507ccd43d7192b1a6ef1734b5b67bf1",
+      "source_bytes": 42812,
+      "vertex_start": 9514,
+      "vertex_count": 397,
+      "face_start": 16570,
+      "face_count": 670,
+      "bounds_mm": {
+        "min": [
+          90.9416,
+          -62.9519,
+          1126.71
+        ],
+        "max": [
+          110.22,
+          -52.9199,
+          1195.7
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2923",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2923.obj",
+      "source_obj_sha256": "9f49cebddf11bc380e358a6efc79987f5223a7384189434a68773eedb855ff02",
+      "source_bytes": 15414,
+      "vertex_start": 9911,
+      "vertex_count": 151,
+      "face_start": 17240,
+      "face_count": 236,
+      "bounds_mm": {
+        "min": [
+          111.901,
+          -78.009,
+          1123.11
+        ],
+        "max": [
+          117.774,
+          -69.0729,
+          1158.38
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2924",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2924.obj",
+      "source_obj_sha256": "eba9d0431d0d3f6db2ec2934b092337814d5994ffdfafd43f20cb72530f1091a",
+      "source_bytes": 342261,
+      "vertex_start": 10062,
+      "vertex_count": 2727,
+      "face_start": 17476,
+      "face_count": 5450,
+      "bounds_mm": {
+        "min": [
+          14.7515,
+          -136.595,
+          1226.21
+        ],
+        "max": [
+          79.084,
+          -58.0499,
+          1294.05
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2966",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2966.obj",
+      "source_obj_sha256": "5da4132e171716c7a0f78806a14520bee79b993f814de83b1e1f2f2f8cf95edd",
+      "source_bytes": 89643,
+      "vertex_start": 12789,
+      "vertex_count": 871,
+      "face_start": 22926,
+      "face_count": 1302,
+      "bounds_mm": {
+        "min": [
+          11.2747,
+          -158.864,
+          1256.5
+        ],
+        "max": [
+          42.075,
+          -116.516,
+          1293.61
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2967",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2967.obj",
+      "source_obj_sha256": "3b18d2e99aebc749e230f9994fbe677313bf2a14bf79e3573bc8ac7859bb73da",
+      "source_bytes": 24191,
+      "vertex_start": 13660,
+      "vertex_count": 234,
+      "face_start": 24228,
+      "face_count": 360,
+      "bounds_mm": {
+        "min": [
+          -44.1533,
+          -102.746,
+          1281.49
+        ],
+        "max": [
+          -21.5306,
+          -85.067,
+          1337.91
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2968",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2968.obj",
+      "source_obj_sha256": "0267770d371d5c3928cd7ed558bb234644c852007ea7e0a5c340fd65cd743bb8",
+      "source_bytes": 8015,
+      "vertex_start": 13894,
+      "vertex_count": 88,
+      "face_start": 24588,
+      "face_count": 90,
+      "bounds_mm": {
+        "min": [
+          -70.7477,
+          -52.7279,
+          1306.84
+        ],
+        "max": [
+          -62.6824,
+          -46.9711,
+          1320.97
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2969",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2969.obj",
+      "source_obj_sha256": "6c3bbe60cde8152bdd21bcc0d864a0fda94174a1bb75e6b55530695e7b9c3ce2",
+      "source_bytes": 9404,
+      "vertex_start": 13982,
+      "vertex_count": 100,
+      "face_start": 24678,
+      "face_count": 120,
+      "bounds_mm": {
+        "min": [
+          -64.7244,
+          -50.3135,
+          1300.45
+        ],
+        "max": [
+          -61.3327,
+          -41.1388,
+          1307.86
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2970",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2970.obj",
+      "source_obj_sha256": "69d361d775022c820afe6d8fe784d834482d4c0ce55a1df0f94370f4f963a46e",
+      "source_bytes": 45414,
+      "vertex_start": 14082,
+      "vertex_count": 408,
+      "face_start": 24798,
+      "face_count": 726,
+      "bounds_mm": {
+        "min": [
+          -87.6075,
+          -91.6783,
+          1261.24
+        ],
+        "max": [
+          -30.1653,
+          -44.9547,
+          1285.95
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2971",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2971.obj",
+      "source_obj_sha256": "29c805a2b89a9587df2b158395b20ed4c905f56e643c0441f6485dcac82199a2",
+      "source_bytes": 11089,
+      "vertex_start": 14490,
+      "vertex_count": 121,
+      "face_start": 25524,
+      "face_count": 134,
+      "bounds_mm": {
+        "min": [
+          -98.8724,
+          -69.3239,
+          1279.74
+        ],
+        "max": [
+          -78.8005,
+          -51.3084,
+          1282.65
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2972",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2972.obj",
+      "source_obj_sha256": "da6aa85ff26d46e5ee3feb9b9b483a80a99965f3eba76df42d83b9299ae1f4fa",
+      "source_bytes": 16609,
+      "vertex_start": 14611,
+      "vertex_count": 167,
+      "face_start": 25658,
+      "face_count": 236,
+      "bounds_mm": {
+        "min": [
+          -82.4314,
+          -52.3736,
+          1280.34
+        ],
+        "max": [
+          -78.7414,
+          -41.5709,
+          1282.78
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2973",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2973.obj",
+      "source_obj_sha256": "e741ad502c67f78ae98f918193e34286224f8380b0551c03ae7a1a7e1d2af9c5",
+      "source_bytes": 33454,
+      "vertex_start": 14778,
+      "vertex_count": 325,
+      "face_start": 25894,
+      "face_count": 486,
+      "bounds_mm": {
+        "min": [
+          -44.6468,
+          -106.386,
+          1264.98
+        ],
+        "max": [
+          4.83465,
+          -85.9203,
+          1292.41
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2974",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2974.obj",
+      "source_obj_sha256": "623910c3664b645dbdebae004130f124965453dfb6cfd4166f976eb2bea78391",
+      "source_bytes": 18325,
+      "vertex_start": 15103,
+      "vertex_count": 165,
+      "face_start": 26380,
+      "face_count": 302,
+      "bounds_mm": {
+        "min": [
+          -91.0654,
+          -100.985,
+          1276.66
+        ],
+        "max": [
+          -39.422,
+          -90.7466,
+          1292.26
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2975",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2975.obj",
+      "source_obj_sha256": "8e912f0d152e037c81eddd8f86ae84722f7a21ab32e4b3ca4e341594c3eeec28",
+      "source_bytes": 16338,
+      "vertex_start": 15268,
+      "vertex_count": 162,
+      "face_start": 26682,
+      "face_count": 240,
+      "bounds_mm": {
+        "min": [
+          -44.6653,
+          -148.739,
+          1262.47
+        ],
+        "max": [
+          -27.6106,
+          -94.4848,
+          1289.75
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2976",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2976.obj",
+      "source_obj_sha256": "7148c08361207cbf9887834bcbadbb361e84cd2aa185a4b6d49ab45c9f719666",
+      "source_bytes": 8419,
+      "vertex_start": 15430,
+      "vertex_count": 90,
+      "face_start": 26922,
+      "face_count": 102,
+      "bounds_mm": {
+        "min": [
+          -33.6488,
+          -141.006,
+          1267.57
+        ],
+        "max": [
+          -20.9074,
+          -138.424,
+          1272.19
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2977",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2977.obj",
+      "source_obj_sha256": "9d877f080e66dc6d7222d950dbf1a4e4916fa24ece279d92bce62f88145310ec",
+      "source_bytes": 12403,
+      "vertex_start": 15520,
+      "vertex_count": 125,
+      "face_start": 27024,
+      "face_count": 178,
+      "bounds_mm": {
+        "min": [
+          -56.0334,
+          -147.013,
+          1263.7
+        ],
+        "max": [
+          -37.2746,
+          -126.756,
+          1278.38
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2978",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2978.obj",
+      "source_obj_sha256": "0c8a4ec2f2755fde9e89835f8df28862f8666e77b72185731b2aec694f88b8ab",
+      "source_bytes": 16973,
+      "vertex_start": 15645,
+      "vertex_count": 167,
+      "face_start": 27202,
+      "face_count": 250,
+      "bounds_mm": {
+        "min": [
+          -38.8704,
+          -92.2758,
+          1291.15
+        ],
+        "max": [
+          -26.3898,
+          -73.0406,
+          1347.79
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2979",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2979.obj",
+      "source_obj_sha256": "80c8df6c3859ba8b68a6d839f16877d06b7733c3903e41f0fb4dbec9b6002c8d",
+      "source_bytes": 10210,
+      "vertex_start": 15812,
+      "vertex_count": 109,
+      "face_start": 27452,
+      "face_count": 130,
+      "bounds_mm": {
+        "min": [
+          -47.8218,
+          -138.879,
+          1276.62
+        ],
+        "max": [
+          -38.2178,
+          -124.063,
+          1287.18
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2980",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2980.obj",
+      "source_obj_sha256": "0fa70de8164718985d303a9b8645f10d56d15938ece1c9516616c062695cca3d",
+      "source_bytes": 9804,
+      "vertex_start": 15921,
+      "vertex_count": 102,
+      "face_start": 27582,
+      "face_count": 130,
+      "bounds_mm": {
+        "min": [
+          -93.1788,
+          -100.311,
+          1282.63
+        ],
+        "max": [
+          -76.2537,
+          -91.9934,
+          1291.7
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2981",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2981.obj",
+      "source_obj_sha256": "01ad75de79e0a9d4dc4281c40a750ec17daa5b8b3a321ca6eca23fa1f0f72c50",
+      "source_bytes": 27728,
+      "vertex_start": 16023,
+      "vertex_count": 263,
+      "face_start": 27712,
+      "face_count": 424,
+      "bounds_mm": {
+        "min": [
+          -80.0322,
+          -108.85,
+          1272.15
+        ],
+        "max": [
+          -73.0749,
+          -97.8078,
+          1286.45
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2982",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2982.obj",
+      "source_obj_sha256": "7494dcce5d01681979d19b8ca6b9e47f50a070798448ca5d6758e436ff4eaff9",
+      "source_bytes": 31721,
+      "vertex_start": 16286,
+      "vertex_count": 296,
+      "face_start": 28136,
+      "face_count": 490,
+      "bounds_mm": {
+        "min": [
+          -111.014,
+          -136.415,
+          1197.14
+        ],
+        "max": [
+          -49.8665,
+          -105.423,
+          1236.41
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2983",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2983.obj",
+      "source_obj_sha256": "0124c45a5e00914f90eff4118dad2f4d384fcff423e3371af2a4cda69d984854",
+      "source_bytes": 15351,
+      "vertex_start": 16582,
+      "vertex_count": 149,
+      "face_start": 28626,
+      "face_count": 232,
+      "bounds_mm": {
+        "min": [
+          -113.595,
+          -115.976,
+          1222.47
+        ],
+        "max": [
+          -59.9509,
+          -103.351,
+          1232.74
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2984",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2984.obj",
+      "source_obj_sha256": "3df3920fed60f9116b8c1ef8370b3bef41bc1eda4282cd76cbf76e1b4d097151",
+      "source_bytes": 6290,
+      "vertex_start": 16731,
+      "vertex_count": 68,
+      "face_start": 28858,
+      "face_count": 68,
+      "bounds_mm": {
+        "min": [
+          -105.624,
+          -108.787,
+          1228.18
+        ],
+        "max": [
+          -90.0358,
+          -98.7995,
+          1237.63
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2985",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2985.obj",
+      "source_obj_sha256": "190e3dce0b1a866fef0302d90eac21f9ae617631a7dff2a8ef3b57def6daab7d",
+      "source_bytes": 7445,
+      "vertex_start": 16799,
+      "vertex_count": 83,
+      "face_start": 28926,
+      "face_count": 80,
+      "bounds_mm": {
+        "min": [
+          -95.1484,
+          -146.218,
+          1192.01
+        ],
+        "max": [
+          -83.6069,
+          -126.723,
+          1209.71
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2986",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2986.obj",
+      "source_obj_sha256": "77e49deba75b03615e15e81ebf1495006c9d29cbfeeec0bb035095b1bca54cd9",
+      "source_bytes": 6882,
+      "vertex_start": 16882,
+      "vertex_count": 76,
+      "face_start": 29006,
+      "face_count": 72,
+      "bounds_mm": {
+        "min": [
+          -61.6726,
+          -171.757,
+          1202.22
+        ],
+        "max": [
+          -53.8485,
+          -148.079,
+          1212.36
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2987",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2987.obj",
+      "source_obj_sha256": "d16ffeaf8b5da0884b2773c781f2763d1b170f3f296d3e717c34cdf30153a80e",
+      "source_bytes": 8471,
+      "vertex_start": 16958,
+      "vertex_count": 89,
+      "face_start": 29078,
+      "face_count": 108,
+      "bounds_mm": {
+        "min": [
+          -49.2985,
+          -155.382,
+          1191.57
+        ],
+        "max": [
+          -31.3745,
+          -134.459,
+          1217.17
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2988",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2988.obj",
+      "source_obj_sha256": "3d7d7ffe312bfe4e516edfb67421f19eee24ad614abb5be782d6d9ffc63bb7fc",
+      "source_bytes": 12753,
+      "vertex_start": 17047,
+      "vertex_count": 130,
+      "face_start": 29186,
+      "face_count": 180,
+      "bounds_mm": {
+        "min": [
+          -55.6734,
+          -161.295,
+          1213.76
+        ],
+        "max": [
+          -39.5097,
+          -119.285,
+          1227.79
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2989",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2989.obj",
+      "source_obj_sha256": "ffc5e7b5ef204d6f66b1582dd13a6e4b60952c1fd95b933390fde464ff01718b",
+      "source_bytes": 39956,
+      "vertex_start": 17177,
+      "vertex_count": 368,
+      "face_start": 29366,
+      "face_count": 620,
+      "bounds_mm": {
+        "min": [
+          -32.4848,
+          -77.8218,
+          1329.41
+        ],
+        "max": [
+          -24.5911,
+          -62.0807,
+          1338.48
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2990",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2990.obj",
+      "source_obj_sha256": "bb9345ace85f5b8c35412b953d51aadb5ccfa4d2e51d85af655c42c83d8dcd9b",
+      "source_bytes": 36073,
+      "vertex_start": 17545,
+      "vertex_count": 313,
+      "face_start": 29986,
+      "face_count": 604,
+      "bounds_mm": {
+        "min": [
+          -77.099,
+          -163.038,
+          1209.07
+        ],
+        "max": [
+          -36.6035,
+          -79.9792,
+          1259.67
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2991",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2991.obj",
+      "source_obj_sha256": "022d7193227b41d25fe639a8ec4d49b05a9048bc41edebcbf88e353f94ef9be2",
+      "source_bytes": 39729,
+      "vertex_start": 17858,
+      "vertex_count": 366,
+      "face_start": 30590,
+      "face_count": 630,
+      "bounds_mm": {
+        "min": [
+          -83.5,
+          -87.2676,
+          1238.97
+        ],
+        "max": [
+          -35.5,
+          -20.9425,
+          1261.65
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2992",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2992.obj",
+      "source_obj_sha256": "fe994778e6a7659b9ff1f65d70b190f4d7388e4eb6704674845c375708151875",
+      "source_bytes": 13387,
+      "vertex_start": 18224,
+      "vertex_count": 143,
+      "face_start": 31220,
+      "face_count": 172,
+      "bounds_mm": {
+        "min": [
+          -77.0224,
+          -46.7688,
+          1250.21
+        ],
+        "max": [
+          -57.8908,
+          -38.3516,
+          1262.19
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2993",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2993.obj",
+      "source_obj_sha256": "07cfb61f8620bc29d8962738b405102fb00e8728e66e95a477a4b7a51c7781e9",
+      "source_bytes": 5564,
+      "vertex_start": 18367,
+      "vertex_count": 60,
+      "face_start": 31392,
+      "face_count": 56,
+      "bounds_mm": {
+        "min": [
+          -82.6919,
+          -44.0125,
+          1251.49
+        ],
+        "max": [
+          -71.0692,
+          -40.2674,
+          1254.59
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2994",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2994.obj",
+      "source_obj_sha256": "be8bc186033d93f6a104537972d14f646cfc8f16ec30564ccdbcee637973144f",
+      "source_bytes": 16622,
+      "vertex_start": 18427,
+      "vertex_count": 167,
+      "face_start": 31448,
+      "face_count": 236,
+      "bounds_mm": {
+        "min": [
+          -45.0577,
+          -67.9284,
+          1221.34
+        ],
+        "max": [
+          -31.7159,
+          -30.0048,
+          1260.78
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2995",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2995.obj",
+      "source_obj_sha256": "e60f9f58a24e683a0eb4c4c8423ee69fca0d62690b7d548b148b9b399a02d828",
+      "source_bytes": 38529,
+      "vertex_start": 18594,
+      "vertex_count": 353,
+      "face_start": 31684,
+      "face_count": 604,
+      "bounds_mm": {
+        "min": [
+          -56.4943,
+          -32.7534,
+          1231.48
+        ],
+        "max": [
+          -37.9667,
+          -25.8352,
+          1242.58
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2996",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2996.obj",
+      "source_obj_sha256": "5e8197cb11567126932629538de9c407a6af49368617c1857a87fba920c43989",
+      "source_bytes": 20264,
+      "vertex_start": 18947,
+      "vertex_count": 200,
+      "face_start": 32288,
+      "face_count": 296,
+      "bounds_mm": {
+        "min": [
+          -40.6811,
+          -35.9161,
+          1241.21
+        ],
+        "max": [
+          -32.7188,
+          -33.2712,
+          1250.77
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2997",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2997.obj",
+      "source_obj_sha256": "09ff589f6aab4edc59cee6e2439efa426cb636033682bb5d2bfb22dbd68f153b",
+      "source_bytes": 18952,
+      "vertex_start": 19147,
+      "vertex_count": 178,
+      "face_start": 32584,
+      "face_count": 294,
+      "bounds_mm": {
+        "min": [
+          -60.0464,
+          -77.8717,
+          1255.37
+        ],
+        "max": [
+          -38.8108,
+          -37.3427,
+          1292.13
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2998",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2998.obj",
+      "source_obj_sha256": "ac138f3e6f044a94dd5306e3edb9a25bc1849996d88fa6fdd635de9b39b92c68",
+      "source_bytes": 17441,
+      "vertex_start": 19325,
+      "vertex_count": 173,
+      "face_start": 32878,
+      "face_count": 254,
+      "bounds_mm": {
+        "min": [
+          -63.1524,
+          -43.6759,
+          1281.18
+        ],
+        "max": [
+          -52.6334,
+          -39.4754,
+          1284.21
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2999",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2999.obj",
+      "source_obj_sha256": "bf597ef5eee13e22cd83f4d78d9ff1aaf074a513dc98fc223060b59a4b4dd4d3",
+      "source_bytes": 55410,
+      "vertex_start": 19498,
+      "vertex_count": 511,
+      "face_start": 33132,
+      "face_count": 854,
+      "bounds_mm": {
+        "min": [
+          -47.8624,
+          -49.7248,
+          1264.72
+        ],
+        "max": [
+          -34.1964,
+          -44.6626,
+          1282.42
+        ]
+      }
+    },
+    {
+      "element_id": "FJ3000",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ3000.obj",
+      "source_obj_sha256": "f50a98d1a391ae137702cdbf47603d75d1300735d65e4ca9fd84c1ebbe7500f4",
+      "source_bytes": 13631,
+      "vertex_start": 20009,
+      "vertex_count": 134,
+      "face_start": 33986,
+      "face_count": 202,
+      "bounds_mm": {
+        "min": [
+          -30.7322,
+          -74.0556,
+          1334.43
+        ],
+        "max": [
+          -27.6115,
+          -69.3423,
+          1343.4
+        ]
+      }
+    },
+    {
+      "element_id": "FJ3001",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ3001.obj",
+      "source_obj_sha256": "3f8a4a113437bc9bd097d7cceb5d82934458e5562f8d7f1c6b1ab80a6037823c",
+      "source_bytes": 26149,
+      "vertex_start": 20143,
+      "vertex_count": 241,
+      "face_start": 34188,
+      "face_count": 414,
+      "bounds_mm": {
+        "min": [
+          -106.288,
+          -82.1616,
+          1203.82
+        ],
+        "max": [
+          -48.5412,
+          -58.9901,
+          1242.23
+        ]
+      }
+    },
+    {
+      "element_id": "FJ3002",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ3002.obj",
+      "source_obj_sha256": "d66ec5db20772fbce61e563d4804be9aed680f91141ff13a02c25b1b26e47675",
+      "source_bytes": 10546,
+      "vertex_start": 20384,
+      "vertex_count": 109,
+      "face_start": 34602,
+      "face_count": 144,
+      "bounds_mm": {
+        "min": [
+          -114.302,
+          -88.6357,
+          1191.6
+        ],
+        "max": [
+          -77.2577,
+          -75.076,
+          1212.21
+        ]
+      }
+    },
+    {
+      "element_id": "FJ3003",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ3003.obj",
+      "source_obj_sha256": "c906af931a973815637ad5524e4f946b8ea1c41a5b01ead598b6c5941c7fc240",
+      "source_bytes": 22808,
+      "vertex_start": 20493,
+      "vertex_count": 232,
+      "face_start": 34746,
+      "face_count": 316,
+      "bounds_mm": {
+        "min": [
+          -108.928,
+          -94.5523,
+          1185.89
+        ],
+        "max": [
+          -103.982,
+          -82.5702,
+          1197.17
+        ]
+      }
+    },
+    {
+      "element_id": "FJ3004",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ3004.obj",
+      "source_obj_sha256": "dfc3321ef449d7a274a485617437a43c611048c38f9a27690eff849bb61b66a8",
+      "source_bytes": 11785,
+      "vertex_start": 20725,
+      "vertex_count": 111,
+      "face_start": 35062,
+      "face_count": 190,
+      "bounds_mm": {
+        "min": [
+          -104.419,
+          -53.5966,
+          1145.64
+        ],
+        "max": [
+          -98.4296,
+          -45.9667,
+          1160.14
+        ]
+      }
+    },
+    {
+      "element_id": "FJ3005",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ3005.obj",
+      "source_obj_sha256": "4829d47c6937364d4841f1aa5d645c0672323b5196c1162a6b0c85e78384ec6a",
+      "source_bytes": 25994,
+      "vertex_start": 20836,
+      "vertex_count": 237,
+      "face_start": 35252,
+      "face_count": 416,
+      "bounds_mm": {
+        "min": [
+          -109.891,
+          -62.1166,
+          1145.73
+        ],
+        "max": [
+          -50.0744,
+          -50.0342,
+          1213.55
+        ]
+      }
+    },
+    {
+      "element_id": "FJ3006",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ3006.obj",
+      "source_obj_sha256": "afb6adf3c58e47bf5a08666c6e5570ae23feb7d51ba079b9466d29c19f2c8d13",
+      "source_bytes": 86387,
+      "vertex_start": 21073,
+      "vertex_count": 730,
+      "face_start": 35668,
+      "face_count": 1456,
+      "bounds_mm": {
+        "min": [
+          -100.669,
+          -55.3114,
+          1179.83
+        ],
+        "max": [
+          -68.5249,
+          -49.4842,
+          1191.51
+        ]
+      }
+    },
+    {
+      "element_id": "FJ3007",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ3007.obj",
+      "source_obj_sha256": "48ab550f68716d5e9bc228c71733604c368eb47c946a3f23be72a974801ee615",
+      "source_bytes": 22041,
+      "vertex_start": 21803,
+      "vertex_count": 222,
+      "face_start": 37124,
+      "face_count": 310,
+      "bounds_mm": {
+        "min": [
+          -92.0435,
+          -60.6616,
+          1178.68
+        ],
+        "max": [
+          -79.9629,
+          -51.9981,
+          1185.88
+        ]
+      }
+    },
+    {
+      "element_id": "FJ3008",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ3008.obj",
+      "source_obj_sha256": "f3956466989e7d0b92405aa4059bf8f75b473da60176b238906ab7adc6e1e4b0",
+      "source_bytes": 51249,
+      "vertex_start": 22025,
+      "vertex_count": 466,
+      "face_start": 37434,
+      "face_count": 806,
+      "bounds_mm": {
+        "min": [
+          -59.4266,
+          -74.0159,
+          1137.95
+        ],
+        "max": [
+          -45.8701,
+          -37.8867,
+          1234.19
+        ]
+      }
+    },
+    {
+      "element_id": "FJ3009",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ3009.obj",
+      "source_obj_sha256": "56762f7e7766a85140e50964848d0d56a11252c76b02811d2d8e5e895bf78363",
+      "source_bytes": 11411,
+      "vertex_start": 22491,
+      "vertex_count": 118,
+      "face_start": 38240,
+      "face_count": 154,
+      "bounds_mm": {
+        "min": [
+          -55.6917,
+          -60.3916,
+          1175.07
+        ],
+        "max": [
+          -37.6064,
+          -38.0663,
+          1208.45
+        ]
+      }
+    },
+    {
+      "element_id": "FJ3010",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ3010.obj",
+      "source_obj_sha256": "40c1e43cc4948a5e497ea7a740ba7d1c8eb89b4e8137adfee0bf19fc929a9b5a",
+      "source_bytes": 6705,
+      "vertex_start": 22609,
+      "vertex_count": 75,
+      "face_start": 38394,
+      "face_count": 68,
+      "bounds_mm": {
+        "min": [
+          -46.3819,
+          -47.2476,
+          1173.0
+        ],
+        "max": [
+          -44.3972,
+          -33.8875,
+          1183.85
+        ]
+      }
+    },
+    {
+      "element_id": "FJ3011",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ3011.obj",
+      "source_obj_sha256": "ca0f4ca7d3032444d952190c3e50cc8c03090b311ad88df5428582a00619a85d",
+      "source_bytes": 12631,
+      "vertex_start": 22684,
+      "vertex_count": 130,
+      "face_start": 38462,
+      "face_count": 174,
+      "bounds_mm": {
+        "min": [
+          -34.7313,
+          -80.0425,
+          1339.75
+        ],
+        "max": [
+          -30.4494,
+          -74.5311,
+          1348.02
+        ]
+      }
+    },
+    {
+      "element_id": "FJ3012",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ3012.obj",
+      "source_obj_sha256": "b62ce0956c98fe8ccb9e92aa7f1e04979a2fc67eea9011b9fec267e970efb6f9",
+      "source_bytes": 6532,
+      "vertex_start": 22814,
+      "vertex_count": 71,
+      "face_start": 38636,
+      "face_count": 70,
+      "bounds_mm": {
+        "min": [
+          -54.7762,
+          -41.5629,
+          1138.49
+        ],
+        "max": [
+          -48.6424,
+          -31.9555,
+          1146.45
+        ]
+      }
+    },
+    {
+      "element_id": "FJ3013",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ3013.obj",
+      "source_obj_sha256": "7d462f3de4c52328332787ef529a7e673f444411bfd437eec0c766ea5e4568c3",
+      "source_bytes": 94541,
+      "vertex_start": 22885,
+      "vertex_count": 841,
+      "face_start": 38706,
+      "face_count": 1506,
+      "bounds_mm": {
+        "min": [
+          -80.4162,
+          -50.3314,
+          1155.0
+        ],
+        "max": [
+          -50.9906,
+          -21.747,
+          1177.76
+        ]
+      }
+    },
+    {
+      "element_id": "FJ3014",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ3014.obj",
+      "source_obj_sha256": "cfe69f44c2f72fdc7928319ab389759d2b329fb0d12d93ee2b3b4c17135b1ad3",
+      "source_bytes": 41132,
+      "vertex_start": 23726,
+      "vertex_count": 376,
+      "face_start": 40212,
+      "face_count": 642,
+      "bounds_mm": {
+        "min": [
+          -70.061,
+          -40.5947,
+          1149.67
+        ],
+        "max": [
+          -58.2441,
+          -24.3437,
+          1166.76
+        ]
+      }
+    },
+    {
+      "element_id": "FJ3015",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ3015.obj",
+      "source_obj_sha256": "de6f61d587d4c8176f16f86ffd4442ec5c69208bc8e8d7625e9b7aa1dc6579f9",
+      "source_bytes": 9244,
+      "vertex_start": 24102,
+      "vertex_count": 101,
+      "face_start": 40854,
+      "face_count": 112,
+      "bounds_mm": {
+        "min": [
+          -41.6044,
+          -94.7929,
+          1327.35
+        ],
+        "max": [
+          -37.0543,
+          -88.0138,
+          1342.39
+        ]
+      }
+    },
+    {
+      "element_id": "FJ3016",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ3016.obj",
+      "source_obj_sha256": "e7bb5644f4853c91d74a4691e520b58d937b840b60d1b87792fac2562428ded0",
+      "source_bytes": 55975,
+      "vertex_start": 24203,
+      "vertex_count": 517,
+      "face_start": 40966,
+      "face_count": 856,
+      "bounds_mm": {
+        "min": [
+          -37.867,
+          -116.206,
+          1317.68
+        ],
+        "max": [
+          -34.4765,
+          -89.9082,
+          1324.18
+        ]
+      }
+    },
+    {
+      "element_id": "FJ3017",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ3017.obj",
+      "source_obj_sha256": "0363f0de71395705d583533706645f83bcd27f486953b0a7cf74754ed96b3214",
+      "source_bytes": 14696,
+      "vertex_start": 24720,
+      "vertex_count": 148,
+      "face_start": 41822,
+      "face_count": 212,
+      "bounds_mm": {
+        "min": [
+          -43.1439,
+          -108.87,
+          1321.64
+        ],
+        "max": [
+          -35.7854,
+          -105.201,
+          1328.71
+        ]
+      }
+    },
+    {
+      "element_id": "FJ3018",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ3018.obj",
+      "source_obj_sha256": "5d16b04e44b0979df0f0346ced1d49096e3be79a53962c129ec3ab2fe487ae10",
+      "source_bytes": 56305,
+      "vertex_start": 24868,
+      "vertex_count": 498,
+      "face_start": 42034,
+      "face_count": 912,
+      "bounds_mm": {
+        "min": [
+          -66.9209,
+          -93.2771,
+          1281.59
+        ],
+        "max": [
+          -22.1761,
+          -47.132,
+          1323.29
+        ]
+      }
+    },
+    {
+      "element_id": "FJ3019",
+      "label": 0,
+      "group": "arteries",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ3019.obj",
+      "source_obj_sha256": "784b8f09e13a5dba817ae175126aa96fc653af4b87a7694bc169ff76e3fef31f",
+      "source_bytes": 39751,
+      "vertex_start": 25366,
+      "vertex_count": 341,
+      "face_start": 42946,
+      "face_count": 678,
+      "bounds_mm": {
+        "min": [
+          -58.9455,
+          -131.2,
+          1224.4
+        ],
+        "max": [
+          36.938,
+          -62.9648,
+          1294.01
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2925",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2925.obj",
+      "source_obj_sha256": "79b6f7b1761fb181ff351aa6b011144d56eb1e38845c9667880810eb81b121f2",
+      "source_bytes": 23982,
+      "vertex_start": 25707,
+      "vertex_count": 209,
+      "face_start": 43624,
+      "face_count": 414,
+      "bounds_mm": {
+        "min": [
+          34.7494,
+          -99.608,
+          1251.45
+        ],
+        "max": [
+          55.1678,
+          -82.1238,
+          1273.22
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2926",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2926.obj",
+      "source_obj_sha256": "fad414b395ab2c152b6a1e325a52035bd7ca9e01227e20bc80581e47b8b01343",
+      "source_bytes": 15299,
+      "vertex_start": 25916,
+      "vertex_count": 144,
+      "face_start": 44038,
+      "face_count": 250,
+      "bounds_mm": {
+        "min": [
+          44.1213,
+          -99.1692,
+          1294.17
+        ],
+        "max": [
+          82.0595,
+          -84.3573,
+          1300.32
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2927",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2927.obj",
+      "source_obj_sha256": "363b208397100681a7f4bbc8b85d78eb997dccf970545cd849dc2d8c03d040bc",
+      "source_bytes": 19753,
+      "vertex_start": 26060,
+      "vertex_count": 178,
+      "face_start": 44288,
+      "face_count": 332,
+      "bounds_mm": {
+        "min": [
+          43.1725,
+          -99.3,
+          1283.89
+        ],
+        "max": [
+          50.7582,
+          -63.3258,
+          1318.86
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2928",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2928.obj",
+      "source_obj_sha256": "ac55e50920077e8bb9040abbf2b5a738d62574fc4d4fb0cdc070bc3e05802e43",
+      "source_bytes": 22005,
+      "vertex_start": 26238,
+      "vertex_count": 216,
+      "face_start": 44620,
+      "face_count": 334,
+      "bounds_mm": {
+        "min": [
+          43.3178,
+          -100.118,
+          1299.5
+        ],
+        "max": [
+          81.9147,
+          -56.8472,
+          1307.62
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2929",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2929.obj",
+      "source_obj_sha256": "58648f6a537960d1fbbf2fb281f8bd6aaac6592defbaca89ad33d331336ceba2",
+      "source_bytes": 9863,
+      "vertex_start": 26454,
+      "vertex_count": 98,
+      "face_start": 44954,
+      "face_count": 150,
+      "bounds_mm": {
+        "min": [
+          76.8345,
+          -81.5795,
+          1305.65
+        ],
+        "max": [
+          88.8019,
+          -70.307,
+          1310.2
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2930",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2930.obj",
+      "source_obj_sha256": "77ffddd9e5caeb43f2209b994563c4790be69b62d4e476418ed1e3fbc74ff62a",
+      "source_bytes": 27312,
+      "vertex_start": 26552,
+      "vertex_count": 239,
+      "face_start": 45104,
+      "face_count": 468,
+      "bounds_mm": {
+        "min": [
+          40.7026,
+          -127.591,
+          1251.17
+        ],
+        "max": [
+          93.4103,
+          -83.2152,
+          1265.65
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2931",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2931.obj",
+      "source_obj_sha256": "49225dadab2ba06e6050123a56b02266297f4cf0083a04dd91d4e304026b6613",
+      "source_bytes": 15421,
+      "vertex_start": 26791,
+      "vertex_count": 150,
+      "face_start": 45572,
+      "face_count": 242,
+      "bounds_mm": {
+        "min": [
+          63.9429,
+          -134.656,
+          1252.29
+        ],
+        "max": [
+          94.4309,
+          -94.5827,
+          1261.31
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2932",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2932.obj",
+      "source_obj_sha256": "6104f828c75ee74f80283a01a6ca46a6e23ced0b3b009527bcaad13d6ef3f55d",
+      "source_bytes": 8783,
+      "vertex_start": 26941,
+      "vertex_count": 88,
+      "face_start": 45814,
+      "face_count": 128,
+      "bounds_mm": {
+        "min": [
+          78.2093,
+          -129.268,
+          1250.49
+        ],
+        "max": [
+          85.8216,
+          -111.645,
+          1254.72
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2933",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2933.obj",
+      "source_obj_sha256": "6c50d97d88d3e503f2211043fcc3d6503ae9e375e597e372dbc0bc1267a9bfcc",
+      "source_bytes": 27462,
+      "vertex_start": 27029,
+      "vertex_count": 239,
+      "face_start": 45942,
+      "face_count": 472,
+      "bounds_mm": {
+        "min": [
+          33.6998,
+          -110.848,
+          1218.88
+        ],
+        "max": [
+          81.8161,
+          -81.5478,
+          1258.09
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2934",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2934.obj",
+      "source_obj_sha256": "793374cff1ad399a5d33239b76e919c534fffd7680ce2c6125a535330ef7d54c",
+      "source_bytes": 17149,
+      "vertex_start": 27268,
+      "vertex_count": 161,
+      "face_start": 46414,
+      "face_count": 278,
+      "bounds_mm": {
+        "min": [
+          76.7867,
+          -157.894,
+          1176.88
+        ],
+        "max": [
+          90.6891,
+          -105.583,
+          1224.72
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2935",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2935.obj",
+      "source_obj_sha256": "38e8748bbc3211d87c5a07ac58f18951fb304373d5306e8eaf969fa6e0ef0e82",
+      "source_bytes": 10605,
+      "vertex_start": 27429,
+      "vertex_count": 115,
+      "face_start": 46692,
+      "face_count": 136,
+      "bounds_mm": {
+        "min": [
+          87.2704,
+          -157.963,
+          1174.51
+        ],
+        "max": [
+          95.1495,
+          -122.285,
+          1201.62
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2936",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2936.obj",
+      "source_obj_sha256": "59d31a9d4a8bce89ce9cb9679d6453e9a60bb64ec1af6ef6a76dacdeebd3f022",
+      "source_bytes": 26127,
+      "vertex_start": 27544,
+      "vertex_count": 228,
+      "face_start": 46828,
+      "face_count": 448,
+      "bounds_mm": {
+        "min": [
+          27.967,
+          -100.083,
+          1266.0
+        ],
+        "max": [
+          54.7475,
+          -88.0503,
+          1355.94
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2937",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2937.obj",
+      "source_obj_sha256": "d756defc0690df98dfe2f3d8dcd921e27d7808f6da6b02f5f91fbf72b2610f46",
+      "source_bytes": 24524,
+      "vertex_start": 27772,
+      "vertex_count": 218,
+      "face_start": 47276,
+      "face_count": 416,
+      "bounds_mm": {
+        "min": [
+          43.9511,
+          -147.099,
+          1223.96
+        ],
+        "max": [
+          94.0873,
+          -86.224,
+          1255.17
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2938",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2938.obj",
+      "source_obj_sha256": "29cbd44a1a23886d928581749cb55f11eb8d1a373f3729d950529837e2f0efa4",
+      "source_bytes": 12317,
+      "vertex_start": 27990,
+      "vertex_count": 125,
+      "face_start": 47692,
+      "face_count": 180,
+      "bounds_mm": {
+        "min": [
+          64.735,
+          -149.751,
+          1222.21
+        ],
+        "max": [
+          76.8581,
+          -109.208,
+          1242.96
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2939",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2939.obj",
+      "source_obj_sha256": "3554e5004bc079d3f6b4285903df1ac9cb6e786a825a036cfb7ae50b852e9ef6",
+      "source_bytes": 32254,
+      "vertex_start": 28115,
+      "vertex_count": 293,
+      "face_start": 47872,
+      "face_count": 522,
+      "bounds_mm": {
+        "min": [
+          37.024,
+          -79.1055,
+          1229.04
+        ],
+        "max": [
+          80.2913,
+          -29.9997,
+          1251.18
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2940",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2940.obj",
+      "source_obj_sha256": "d16c3735ac73b3c4350d40dac386159ab33e0c89478f82d3e3b29e0aa788953a",
+      "source_bytes": 8606,
+      "vertex_start": 28408,
+      "vertex_count": 90,
+      "face_start": 48394,
+      "face_count": 112,
+      "bounds_mm": {
+        "min": [
+          71.7242,
+          -41.9576,
+          1241.27
+        ],
+        "max": [
+          75.0462,
+          -37.9165,
+          1254.32
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2941",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2941.obj",
+      "source_obj_sha256": "84244ca55e36c864f120e50386e1ef7222421dac701d025a6ca8e1b7e6193f66",
+      "source_bytes": 11330,
+      "vertex_start": 28498,
+      "vertex_count": 106,
+      "face_start": 48506,
+      "face_count": 190,
+      "bounds_mm": {
+        "min": [
+          60.0021,
+          -40.6844,
+          1233.52
+        ],
+        "max": [
+          72.7757,
+          -25.5158,
+          1236.97
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2942",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2942.obj",
+      "source_obj_sha256": "06c2e1f33d64582246b2f7c72d1e280e405eefc74eb416adb434174db7174feb",
+      "source_bytes": 10733,
+      "vertex_start": 28604,
+      "vertex_count": 105,
+      "face_start": 48696,
+      "face_count": 168,
+      "bounds_mm": {
+        "min": [
+          63.9395,
+          -34.9172,
+          1230.14
+        ],
+        "max": [
+          66.9898,
+          -26.929,
+          1236.97
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2943",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2943.obj",
+      "source_obj_sha256": "8e0ca7020bd35705642118266421daaa6465b257f8972e8f7e5577c96200ea36",
+      "source_bytes": 11174,
+      "vertex_start": 28709,
+      "vertex_count": 109,
+      "face_start": 48864,
+      "face_count": 176,
+      "bounds_mm": {
+        "min": [
+          65.8579,
+          -48.2518,
+          1228.56
+        ],
+        "max": [
+          83.5782,
+          -25.3693,
+          1237.53
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2944",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2944.obj",
+      "source_obj_sha256": "232ab083823605c8eac632a5888536a99c901b7971203a6dd3662e60f2382063",
+      "source_bytes": 17824,
+      "vertex_start": 28818,
+      "vertex_count": 157,
+      "face_start": 49040,
+      "face_count": 310,
+      "bounds_mm": {
+        "min": [
+          42.6331,
+          -78.0178,
+          1201.54
+        ],
+        "max": [
+          56.0191,
+          -53.5181,
+          1229.51
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2945",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2945.obj",
+      "source_obj_sha256": "d9323f8364e3f36ee32ccaf41142fd321acd9fc4adce54687a7e0ce420cb65df",
+      "source_bytes": 22978,
+      "vertex_start": 28975,
+      "vertex_count": 209,
+      "face_start": 49350,
+      "face_count": 376,
+      "bounds_mm": {
+        "min": [
+          52.1803,
+          -57.4596,
+          1145.03
+        ],
+        "max": [
+          59.6866,
+          -48.3128,
+          1205.53
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2946",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2946.obj",
+      "source_obj_sha256": "ac29bbb11a29e54c93f03840ad052316e8d45de9153ce9c802f13e70418cb97a",
+      "source_bytes": 12296,
+      "vertex_start": 29184,
+      "vertex_count": 117,
+      "face_start": 49726,
+      "face_count": 200,
+      "bounds_mm": {
+        "min": [
+          54.7107,
+          -53.5933,
+          1143.34
+        ],
+        "max": [
+          58.6166,
+          -40.6917,
+          1164.03
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2947",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2947.obj",
+      "source_obj_sha256": "371fed38231d406a72f3b1711e0d8df8c065952055b2993a7487b67e4d764f61",
+      "source_bytes": 9988,
+      "vertex_start": 29301,
+      "vertex_count": 90,
+      "face_start": 49926,
+      "face_count": 174,
+      "bounds_mm": {
+        "min": [
+          27.1193,
+          -98.3022,
+          1321.43
+        ],
+        "max": [
+          39.4218,
+          -94.2125,
+          1343.06
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2948",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2948.obj",
+      "source_obj_sha256": "778cc361cd4c1b56c192e686d04b26ba0bc1a9b21bcb9363f91dbf062fee7aaf",
+      "source_bytes": 7925,
+      "vertex_start": 29391,
+      "vertex_count": 83,
+      "face_start": 50100,
+      "face_count": 104,
+      "bounds_mm": {
+        "min": [
+          58.2716,
+          -41.0233,
+          1141.08
+        ],
+        "max": [
+          66.5603,
+          -25.9792,
+          1158.4
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2949",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2949.obj",
+      "source_obj_sha256": "ee8a3c9bc9a97f8b9bbd1c8d0be4a34357511f175ceab098e4bbd95a3201a97f",
+      "source_bytes": 12148,
+      "vertex_start": 29474,
+      "vertex_count": 119,
+      "face_start": 50204,
+      "face_count": 190,
+      "bounds_mm": {
+        "min": [
+          56.3589,
+          -52.025,
+          1145.29
+        ],
+        "max": [
+          70.3898,
+          -23.4817,
+          1170.54
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2950",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2950.obj",
+      "source_obj_sha256": "32911e5c9c02f131249aafaa7515db651f1c0e382eb927fc0528fbf1ad819e77",
+      "source_bytes": 18782,
+      "vertex_start": 29593,
+      "vertex_count": 165,
+      "face_start": 50394,
+      "face_count": 326,
+      "bounds_mm": {
+        "min": [
+          37.6384,
+          -83.4903,
+          1210.4
+        ],
+        "max": [
+          65.3636,
+          -71.841,
+          1229.82
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2951",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2951.obj",
+      "source_obj_sha256": "d63bcdb232e79e2bf88e3da62994b5bcdddc1e1821a0e6057b1bb7b8902dc6f0",
+      "source_bytes": 40358,
+      "vertex_start": 29758,
+      "vertex_count": 355,
+      "face_start": 50720,
+      "face_count": 678,
+      "bounds_mm": {
+        "min": [
+          60.4402,
+          -83.331,
+          1127.02
+        ],
+        "max": [
+          109.092,
+          -57.7557,
+          1214.7
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2952",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2952.obj",
+      "source_obj_sha256": "6830d54b9b35e1062cb57807a6ef582206148cc8e35cc8199975bbe4ddaf51f7",
+      "source_bytes": 8810,
+      "vertex_start": 30113,
+      "vertex_count": 82,
+      "face_start": 51398,
+      "face_count": 144,
+      "bounds_mm": {
+        "min": [
+          100.626,
+          -74.3545,
+          1134.02
+        ],
+        "max": [
+          111.776,
+          -67.5318,
+          1158.49
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2953",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2953.obj",
+      "source_obj_sha256": "0517ed1e8c48d39d815a881e92ffcdf48295f453ae27305c05038bc00536c943",
+      "source_bytes": 11248,
+      "vertex_start": 30195,
+      "vertex_count": 114,
+      "face_start": 51542,
+      "face_count": 168,
+      "bounds_mm": {
+        "min": [
+          75.0407,
+          -83.1483,
+          1172.07
+        ],
+        "max": [
+          119.306,
+          -76.1703,
+          1196.72
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2954",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2954.obj",
+      "source_obj_sha256": "d3bcc4279b58b38171861b577c1d3fc211de998cb73bdd7c2c1a8255a2bf248e",
+      "source_bytes": 8567,
+      "vertex_start": 30309,
+      "vertex_count": 92,
+      "face_start": 51710,
+      "face_count": 110,
+      "bounds_mm": {
+        "min": [
+          92.0324,
+          -86.9664,
+          1154.57
+        ],
+        "max": [
+          118.397,
+          -80.1663,
+          1185.97
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2955",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2955.obj",
+      "source_obj_sha256": "0e122eabac946b34ad09ec2174b1941d53ccd46a6dff86c7000dd272465aa4fb",
+      "source_bytes": 32320,
+      "vertex_start": 30401,
+      "vertex_count": 280,
+      "face_start": 51820,
+      "face_count": 556,
+      "bounds_mm": {
+        "min": [
+          32.8489,
+          -91.3169,
+          1214.12
+        ],
+        "max": [
+          72.9742,
+          -70.9183,
+          1236.36
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2956",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2956.obj",
+      "source_obj_sha256": "40b055d9eba6dc8ce90def14f4f74d52481edc931821e1f394c2aacbf5694746",
+      "source_bytes": 35283,
+      "vertex_start": 30681,
+      "vertex_count": 312,
+      "face_start": 52376,
+      "face_count": 590,
+      "bounds_mm": {
+        "min": [
+          67.5049,
+          -121.073,
+          1140.06
+        ],
+        "max": [
+          119.087,
+          -85.8956,
+          1219.96
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2957",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2957.obj",
+      "source_obj_sha256": "94ce2b6eb030ae026730d7690cfbc25bb7c584dd0ac0abc66a855e7ae15a022f",
+      "source_bytes": 9289,
+      "vertex_start": 30993,
+      "vertex_count": 93,
+      "face_start": 52966,
+      "face_count": 136,
+      "bounds_mm": {
+        "min": [
+          101.395,
+          -133.721,
+          1164.63
+        ],
+        "max": [
+          117.973,
+          -108.002,
+          1179.57
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2958",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2958.obj",
+      "source_obj_sha256": "07e806d97e0a0a79d0b7dc6a4e633bdfa5016bb3956cd04548681e3bb81e8ef0",
+      "source_bytes": 19704,
+      "vertex_start": 31086,
+      "vertex_count": 186,
+      "face_start": 53102,
+      "face_count": 314,
+      "bounds_mm": {
+        "min": [
+          42.1317,
+          -98.3931,
+          1300.03
+        ],
+        "max": [
+          59.9516,
+          -91.213,
+          1336.4
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2959",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2959.obj",
+      "source_obj_sha256": "bcbcb7fd063492bbf82b413fca1b1aa92963cb60bb3c5a07ab3e8c7ff74def85",
+      "source_bytes": 30550,
+      "vertex_start": 31272,
+      "vertex_count": 274,
+      "face_start": 53416,
+      "face_count": 504,
+      "bounds_mm": {
+        "min": [
+          66.615,
+          -132.576,
+          1167.0
+        ],
+        "max": [
+          111.132,
+          -85.4592,
+          1220.6
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2960",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2960.obj",
+      "source_obj_sha256": "909c5e1c806f948c8b260ced4c4ecb00c09048e4bd9f66038337427ff26de439",
+      "source_bytes": 10362,
+      "vertex_start": 31546,
+      "vertex_count": 101,
+      "face_start": 53920,
+      "face_count": 162,
+      "bounds_mm": {
+        "min": [
+          78.5382,
+          -108.859,
+          1197.48
+        ],
+        "max": [
+          107.149,
+          -91.7156,
+          1211.24
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2961",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2961.obj",
+      "source_obj_sha256": "1406206eb57cc1044d8490254d8ec55a37bf274b279c98db14e5fca11941b358",
+      "source_bytes": 11096,
+      "vertex_start": 31647,
+      "vertex_count": 103,
+      "face_start": 54082,
+      "face_count": 188,
+      "bounds_mm": {
+        "min": [
+          38.8909,
+          -123.714,
+          1292.67
+        ],
+        "max": [
+          46.9147,
+          -95.9038,
+          1311.61
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2962",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2962.obj",
+      "source_obj_sha256": "0d2d819e42c32c550dcb4bcd2e3c5bb792b3d11479dae12b32f07c9ce4751d37",
+      "source_bytes": 12265,
+      "vertex_start": 31750,
+      "vertex_count": 117,
+      "face_start": 54270,
+      "face_count": 200,
+      "bounds_mm": {
+        "min": [
+          40.7179,
+          -124.949,
+          1298.59
+        ],
+        "max": [
+          60.1237,
+          -107.355,
+          1303.4
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2963",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2963.obj",
+      "source_obj_sha256": "05d14aa9f4220464c00ad01a581176a56460714dfa2ac67858345ffdaa012a4b",
+      "source_bytes": 7752,
+      "vertex_start": 31867,
+      "vertex_count": 76,
+      "face_start": 54470,
+      "face_count": 114,
+      "bounds_mm": {
+        "min": [
+          58.5206,
+          -98.1633,
+          1317.5
+        ],
+        "max": [
+          67.2512,
+          -96.2354,
+          1320.66
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2964",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2964.obj",
+      "source_obj_sha256": "1740fff7638d1eb24e5d1a5f414f4809e929181202c87d14ae214413fb3fac73",
+      "source_bytes": 10830,
+      "vertex_start": 31943,
+      "vertex_count": 104,
+      "face_start": 54584,
+      "face_count": 174,
+      "bounds_mm": {
+        "min": [
+          52.9197,
+          -97.844,
+          1322.68
+        ],
+        "max": [
+          59.3129,
+          -95.6059,
+          1331.47
+        ]
+      }
+    },
+    {
+      "element_id": "FJ2965",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ2965.obj",
+      "source_obj_sha256": "f224fab88bea0cff03a42e6582182e8503ff11b7b17b7bf803c6ba03fa1be803",
+      "source_bytes": 9821,
+      "vertex_start": 32047,
+      "vertex_count": 100,
+      "face_start": 54758,
+      "face_count": 142,
+      "bounds_mm": {
+        "min": [
+          70.2896,
+          -92.5061,
+          1294.67
+        ],
+        "max": [
+          77.3732,
+          -79.4332,
+          1303.33
+        ]
+      }
+    },
+    {
+      "element_id": "FJ3020",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ3020.obj",
+      "source_obj_sha256": "78036903d30f5f2084a469044fe0fad1e8dd31da95a86ccbaa7d9a05e4690e7b",
+      "source_bytes": 19240,
+      "vertex_start": 32147,
+      "vertex_count": 171,
+      "face_start": 54900,
+      "face_count": 324,
+      "bounds_mm": {
+        "min": [
+          -37.1408,
+          -106.536,
+          1234.93
+        ],
+        "max": [
+          -14.0164,
+          -88.3313,
+          1261.77
+        ]
+      }
+    },
+    {
+      "element_id": "FJ3021",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ3021.obj",
+      "source_obj_sha256": "d7c046ef6d3d84c58c33b55cee9bafb14170862bed5b9d4fe1dc897a35aa961b",
+      "source_bytes": 16400,
+      "vertex_start": 32318,
+      "vertex_count": 158,
+      "face_start": 55224,
+      "face_count": 254,
+      "bounds_mm": {
+        "min": [
+          -44.5921,
+          -139.145,
+          1255.46
+        ],
+        "max": [
+          -28.3194,
+          -103.638,
+          1266.41
+        ]
+      }
+    },
+    {
+      "element_id": "FJ3022",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ3022.obj",
+      "source_obj_sha256": "1fcfdf4d6bb75498f20cde31a18d3a6a9abb19f52ab3d7b3399ebf42699b28fd",
+      "source_bytes": 14703,
+      "vertex_start": 32476,
+      "vertex_count": 141,
+      "face_start": 55478,
+      "face_count": 228,
+      "bounds_mm": {
+        "min": [
+          -58.8619,
+          -107.446,
+          1257.04
+        ],
+        "max": [
+          -42.5444,
+          -58.7073,
+          1268.17
+        ]
+      }
+    },
+    {
+      "element_id": "FJ3023",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ3023.obj",
+      "source_obj_sha256": "9853554488b7e9879f2f1a96b34b19cbeaecd01a8720b8752d55755913513151",
+      "source_bytes": 11110,
+      "vertex_start": 32617,
+      "vertex_count": 109,
+      "face_start": 55706,
+      "face_count": 168,
+      "bounds_mm": {
+        "min": [
+          -81.3117,
+          -89.4548,
+          1288.8
+        ],
+        "max": [
+          -54.0002,
+          -49.978,
+          1296.23
+        ]
+      }
+    },
+    {
+      "element_id": "FJ3024",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ3024.obj",
+      "source_obj_sha256": "aa19f43fea57296c8330c017ea0f307489c7a73a6470de755910a801051d824a",
+      "source_bytes": 7793,
+      "vertex_start": 32726,
+      "vertex_count": 77,
+      "face_start": 55874,
+      "face_count": 110,
+      "bounds_mm": {
+        "min": [
+          -75.5965,
+          -60.3701,
+          1292.07
+        ],
+        "max": [
+          -72.942,
+          -52.0346,
+          1298.11
+        ]
+      }
+    },
+    {
+      "element_id": "FJ3025",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ3025.obj",
+      "source_obj_sha256": "0ab47fe8dd1f565d6455447b5a615ee1e9cb4aa9a53e9e6500119c1ef6aa31e7",
+      "source_bytes": 10436,
+      "vertex_start": 32803,
+      "vertex_count": 100,
+      "face_start": 55984,
+      "face_count": 164,
+      "bounds_mm": {
+        "min": [
+          -56.2365,
+          -81.6982,
+          1314.1
+        ],
+        "max": [
+          -44.4403,
+          -74.2382,
+          1334.54
+        ]
+      }
+    },
+    {
+      "element_id": "FJ3026",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ3026.obj",
+      "source_obj_sha256": "ef1032250149dfcf88673cd8c944d6f201040000469e7f0b949af6afabda4e8e",
+      "source_bytes": 11379,
+      "vertex_start": 32903,
+      "vertex_count": 106,
+      "face_start": 56148,
+      "face_count": 188,
+      "bounds_mm": {
+        "min": [
+          -56.9737,
+          -72.0347,
+          1319.45
+        ],
+        "max": [
+          -45.6206,
+          -61.362,
+          1332.01
+        ]
+      }
+    },
+    {
+      "element_id": "FJ3027",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ3027.obj",
+      "source_obj_sha256": "fe4643b42c0fe785c0e60b09c715132da7e03225564233d34b3e094f8d9febf9",
+      "source_bytes": 18551,
+      "vertex_start": 33009,
+      "vertex_count": 171,
+      "face_start": 56336,
+      "face_count": 298,
+      "bounds_mm": {
+        "min": [
+          -52.5,
+          -127.015,
+          1262.86
+        ],
+        "max": [
+          -39.0283,
+          -106.16,
+          1288.91
+        ]
+      }
+    },
+    {
+      "element_id": "FJ3028",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ3028.obj",
+      "source_obj_sha256": "01915769535411ec4597c1582620b5821cd636f54dc79331de3bdcfc89cab720",
+      "source_bytes": 12086,
+      "vertex_start": 33180,
+      "vertex_count": 111,
+      "face_start": 56634,
+      "face_count": 202,
+      "bounds_mm": {
+        "min": [
+          -83.2404,
+          -106.042,
+          1261.87
+        ],
+        "max": [
+          -45.7438,
+          -100.114,
+          1270.41
+        ]
+      }
+    },
+    {
+      "element_id": "FJ3029",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ3029.obj",
+      "source_obj_sha256": "6378d522355f810c3b42281438e0f6fc990239b1e812d679cb1295260a194bd4",
+      "source_bytes": 8695,
+      "vertex_start": 33291,
+      "vertex_count": 86,
+      "face_start": 56836,
+      "face_count": 124,
+      "bounds_mm": {
+        "min": [
+          -83.8989,
+          -104.947,
+          1265.28
+        ],
+        "max": [
+          -72.325,
+          -102.391,
+          1272.81
+        ]
+      }
+    },
+    {
+      "element_id": "FJ3030",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ3030.obj",
+      "source_obj_sha256": "0aea211bdc5bd1ab4fababacf2c31bd781c98b33a25b9cbab887caea90336079",
+      "source_bytes": 31966,
+      "vertex_start": 33377,
+      "vertex_count": 282,
+      "face_start": 56960,
+      "face_count": 526,
+      "bounds_mm": {
+        "min": [
+          -46.933,
+          -165.888,
+          1200.63
+        ],
+        "max": [
+          -20.2207,
+          -89.7226,
+          1245.92
+        ]
+      }
+    },
+    {
+      "element_id": "FJ3031",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ3031.obj",
+      "source_obj_sha256": "5b36e47a88886de1ab64453c6f97cad458794d861e7367544fd920e3ff648cdb",
+      "source_bytes": 15661,
+      "vertex_start": 33659,
+      "vertex_count": 140,
+      "face_start": 57486,
+      "face_count": 266,
+      "bounds_mm": {
+        "min": [
+          -37.7076,
+          -110.784,
+          1254.49
+        ],
+        "max": [
+          -24.1332,
+          -99.3426,
+          1296.03
+        ]
+      }
+    },
+    {
+      "element_id": "FJ3032",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ3032.obj",
+      "source_obj_sha256": "e88becca7ddf38d900a78c4d192959ecd589ce0032026e09a9fdbfc2b278937a",
+      "source_bytes": 29296,
+      "vertex_start": 33799,
+      "vertex_count": 258,
+      "face_start": 57752,
+      "face_count": 486,
+      "bounds_mm": {
+        "min": [
+          -46.0086,
+          -149.063,
+          1192.78
+        ],
+        "max": [
+          -19.0468,
+          -89.2221,
+          1246.58
+        ]
+      }
+    },
+    {
+      "element_id": "FJ3033",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ3033.obj",
+      "source_obj_sha256": "c9d23ebe4835a50e0ea13109292d451c7c34026effee27a764b11b4b9fabd318",
+      "source_bytes": 7594,
+      "vertex_start": 34057,
+      "vertex_count": 75,
+      "face_start": 58238,
+      "face_count": 106,
+      "bounds_mm": {
+        "min": [
+          -56.2941,
+          -150.636,
+          1192.32
+        ],
+        "max": [
+          -42.4391,
+          -120.747,
+          1208.53
+        ]
+      }
+    },
+    {
+      "element_id": "FJ3034",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ3034.obj",
+      "source_obj_sha256": "0d84a80aa138f074f4caad194e7d930d88a62f478f9c73dcbf5db2ccf87c007e",
+      "source_bytes": 22775,
+      "vertex_start": 34132,
+      "vertex_count": 197,
+      "face_start": 58344,
+      "face_count": 390,
+      "bounds_mm": {
+        "min": [
+          -73.948,
+          -114.158,
+          1211.93
+        ],
+        "max": [
+          -19.0102,
+          -89.1998,
+          1242.8
+        ]
+      }
+    },
+    {
+      "element_id": "FJ3035",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ3035.obj",
+      "source_obj_sha256": "00cfa5c5489240f21d0efd7b20009f120bace9909699b400f497321bdc65ac22",
+      "source_bytes": 13148,
+      "vertex_start": 34329,
+      "vertex_count": 117,
+      "face_start": 58734,
+      "face_count": 226,
+      "bounds_mm": {
+        "min": [
+          -107.525,
+          -124.754,
+          1211.01
+        ],
+        "max": [
+          -68.2909,
+          -109.909,
+          1215.73
+        ]
+      }
+    },
+    {
+      "element_id": "FJ3036",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ3036.obj",
+      "source_obj_sha256": "8bccfc47d20659b4772080af6948e9c01f0356e35e05ef131756d7661b1f6457",
+      "source_bytes": 18165,
+      "vertex_start": 34446,
+      "vertex_count": 161,
+      "face_start": 58960,
+      "face_count": 308,
+      "bounds_mm": {
+        "min": [
+          -95.2245,
+          -111.931,
+          1213.16
+        ],
+        "max": [
+          -66.1831,
+          -94.1505,
+          1236.39
+        ]
+      }
+    },
+    {
+      "element_id": "FJ3037",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ3037.obj",
+      "source_obj_sha256": "aaf657ee22b9749e365462c729d557be0ddcd3026d9ffa33429169f921e63f08",
+      "source_bytes": 24420,
+      "vertex_start": 34607,
+      "vertex_count": 212,
+      "face_start": 59268,
+      "face_count": 416,
+      "bounds_mm": {
+        "min": [
+          -87.0298,
+          -159.713,
+          1206.04
+        ],
+        "max": [
+          -41.8253,
+          -97.6507,
+          1224.4
+        ]
+      }
+    },
+    {
+      "element_id": "FJ3038",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ3038.obj",
+      "source_obj_sha256": "3300d4e15ff24574cdcb750d9e03909ebf3499242b238f5eefa792fd8a4132c6",
+      "source_bytes": 15112,
+      "vertex_start": 34819,
+      "vertex_count": 137,
+      "face_start": 59684,
+      "face_count": 250,
+      "bounds_mm": {
+        "min": [
+          -102.735,
+          -149.447,
+          1205.56
+        ],
+        "max": [
+          -62.5438,
+          -124.9,
+          1210.92
+        ]
+      }
+    },
+    {
+      "element_id": "FJ3039",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ3039.obj",
+      "source_obj_sha256": "3c7d62a01349f154d8d3496ca0f6f84a6858b50b3c95e2a82c51cb13d31691e4",
+      "source_bytes": 13464,
+      "vertex_start": 34956,
+      "vertex_count": 123,
+      "face_start": 59934,
+      "face_count": 224,
+      "bounds_mm": {
+        "min": [
+          -74.8062,
+          -169.046,
+          1196.81
+        ],
+        "max": [
+          -60.7996,
+          -123.121,
+          1211.32
+        ]
+      }
+    },
+    {
+      "element_id": "FJ3040",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ3040.obj",
+      "source_obj_sha256": "149ff96bc5ff992bf9704618872ac1733a49bd47d823e381fea5c82bb5c9d8fc",
+      "source_bytes": 12050,
+      "vertex_start": 35079,
+      "vertex_count": 113,
+      "face_start": 60158,
+      "face_count": 196,
+      "bounds_mm": {
+        "min": [
+          -33.8068,
+          -89.0205,
+          1211.28
+        ],
+        "max": [
+          -6.28302,
+          -76.0429,
+          1228.89
+        ]
+      }
+    },
+    {
+      "element_id": "FJ3041",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ3041.obj",
+      "source_obj_sha256": "dba8530e4e021d6378881c6315f21377ef6819352b0d48dab32f971f55b68e29",
+      "source_bytes": 34501,
+      "vertex_start": 35192,
+      "vertex_count": 297,
+      "face_start": 60354,
+      "face_count": 586,
+      "bounds_mm": {
+        "min": [
+          -88.8591,
+          -81.8439,
+          1134.49
+        ],
+        "max": [
+          -27.7651,
+          -37.7418,
+          1217.08
+        ]
+      }
+    },
+    {
+      "element_id": "FJ3042",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ3042.obj",
+      "source_obj_sha256": "8348cb98ec1bc66b5852ddcf254d9923ffdbfccf6d162776dbfc8dd907bc327b",
+      "source_bytes": 13213,
+      "vertex_start": 35489,
+      "vertex_count": 134,
+      "face_start": 60940,
+      "face_count": 188,
+      "bounds_mm": {
+        "min": [
+          -35.3609,
+          -124.78,
+          1296.41
+        ],
+        "max": [
+          -23.7872,
+          -103.26,
+          1315.95
+        ]
+      }
+    },
+    {
+      "element_id": "FJ3043",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ3043.obj",
+      "source_obj_sha256": "05d961534e19451d65531109a40a9bd2276b35b1f2f3b612f5a5d06168226b99",
+      "source_bytes": 16615,
+      "vertex_start": 35623,
+      "vertex_count": 159,
+      "face_start": 61128,
+      "face_count": 254,
+      "bounds_mm": {
+        "min": [
+          -51.6719,
+          -68.0207,
+          1141.08
+        ],
+        "max": [
+          -32.402,
+          -54.2952,
+          1194.71
+        ]
+      }
+    },
+    {
+      "element_id": "FJ3044",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ3044.obj",
+      "source_obj_sha256": "30ad07679245f56ec20b383e4665df228f9acf59f357a2aacaf9fad402299dd2",
+      "source_bytes": 9439,
+      "vertex_start": 35782,
+      "vertex_count": 98,
+      "face_start": 61382,
+      "face_count": 126,
+      "bounds_mm": {
+        "min": [
+          -46.789,
+          -59.2864,
+          1151.54
+        ],
+        "max": [
+          -32.8593,
+          -39.3986,
+          1166.48
+        ]
+      }
+    },
+    {
+      "element_id": "FJ3045",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ3045.obj",
+      "source_obj_sha256": "a1a70bb44cecb8a52796d02f7958a43388a9308a9fd0ad064c95e66b49e95aa5",
+      "source_bytes": 13219,
+      "vertex_start": 35880,
+      "vertex_count": 127,
+      "face_start": 61508,
+      "face_count": 206,
+      "bounds_mm": {
+        "min": [
+          -60.3481,
+          -57.4552,
+          1159.07
+        ],
+        "max": [
+          -57.514,
+          -39.7901,
+          1178.48
+        ]
+      }
+    },
+    {
+      "element_id": "FJ3046",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ3046.obj",
+      "source_obj_sha256": "74d6222055c21c6581ab154e351b91f4e57bba2f3abfb8da17364b8917e34229",
+      "source_bytes": 12107,
+      "vertex_start": 36007,
+      "vertex_count": 121,
+      "face_start": 61714,
+      "face_count": 178,
+      "bounds_mm": {
+        "min": [
+          -68.1285,
+          -61.7837,
+          1160.53
+        ],
+        "max": [
+          -55.5883,
+          -49.2725,
+          1185.37
+        ]
+      }
+    },
+    {
+      "element_id": "FJ3047",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ3047.obj",
+      "source_obj_sha256": "6c7990555ce97dea123932a1fb56135cf82b2d6c309e7083387d53c8f690bfb5",
+      "source_bytes": 14015,
+      "vertex_start": 36128,
+      "vertex_count": 131,
+      "face_start": 61892,
+      "face_count": 226,
+      "bounds_mm": {
+        "min": [
+          -104.706,
+          -51.0926,
+          1144.15
+        ],
+        "max": [
+          -71.1719,
+          -44.0862,
+          1166.83
+        ]
+      }
+    },
+    {
+      "element_id": "FJ3048",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ3048.obj",
+      "source_obj_sha256": "655dabe52638e598cc552cbf7bb7c31ffd8cd1d37a92dab2129b3282e8bb504a",
+      "source_bytes": 10652,
+      "vertex_start": 36259,
+      "vertex_count": 101,
+      "face_start": 62118,
+      "face_count": 170,
+      "bounds_mm": {
+        "min": [
+          -94.3399,
+          -46.2712,
+          1140.49
+        ],
+        "max": [
+          -86.7625,
+          -37.8358,
+          1157.63
+        ]
+      }
+    },
+    {
+      "element_id": "FJ3049",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ3049.obj",
+      "source_obj_sha256": "d8668404e9a9fe58cec2c8676751550c856e62b660cbb7d1ecaff8f152b5a7c9",
+      "source_bytes": 19215,
+      "vertex_start": 36360,
+      "vertex_count": 171,
+      "face_start": 62288,
+      "face_count": 322,
+      "bounds_mm": {
+        "min": [
+          -67.5046,
+          -82.4934,
+          1193.29
+        ],
+        "max": [
+          -24.6219,
+          -36.6626,
+          1221.39
+        ]
+      }
+    },
+    {
+      "element_id": "FJ3050",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ3050.obj",
+      "source_obj_sha256": "848e258c0bfa7ef596e3a96646e43d89da1dad8633d04c9531e56454f4efcc53",
+      "source_bytes": 32745,
+      "vertex_start": 36531,
+      "vertex_count": 284,
+      "face_start": 62610,
+      "face_count": 548,
+      "bounds_mm": {
+        "min": [
+          -107.03,
+          -86.3841,
+          1213.24
+        ],
+        "max": [
+          -16.5596,
+          -60.5577,
+          1228.6
+        ]
+      }
+    },
+    {
+      "element_id": "FJ3051",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ3051.obj",
+      "source_obj_sha256": "001e64913b5efc2af0cee710f0891586f1a9e8de0b0e214ce9be1f0536d620de",
+      "source_bytes": 21755,
+      "vertex_start": 36815,
+      "vertex_count": 205,
+      "face_start": 63158,
+      "face_count": 338,
+      "bounds_mm": {
+        "min": [
+          -79.8518,
+          -79.6426,
+          1223.8
+        ],
+        "max": [
+          -27.8148,
+          -42.3522,
+          1253.56
+        ]
+      }
+    },
+    {
+      "element_id": "FJ3052",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ3052.obj",
+      "source_obj_sha256": "2c68df1784d024669e0e37a4fb1d0e22b0bb804547f4ecbfcc814b8832ddf902",
+      "source_bytes": 7088,
+      "vertex_start": 37020,
+      "vertex_count": 68,
+      "face_start": 63496,
+      "face_count": 102,
+      "bounds_mm": {
+        "min": [
+          -75.0192,
+          -44.3873,
+          1244.77
+        ],
+        "max": [
+          -71.9013,
+          -34.0987,
+          1249.65
+        ]
+      }
+    },
+    {
+      "element_id": "FJ3053",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ3053.obj",
+      "source_obj_sha256": "73f302620f1d778175b9fe6067f93e9253f92ecd170f7770ccefcd4d038b40a1",
+      "source_bytes": 11020,
+      "vertex_start": 37088,
+      "vertex_count": 103,
+      "face_start": 63598,
+      "face_count": 178,
+      "bounds_mm": {
+        "min": [
+          -49.4726,
+          -116.797,
+          1310.74
+        ],
+        "max": [
+          -29.4374,
+          -112.041,
+          1315.51
+        ]
+      }
+    },
+    {
+      "element_id": "FJ3054",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ3054.obj",
+      "source_obj_sha256": "cf8013a7e9aff9db39703108ddcd3a3cff95210f608afea2a9aeb31e684fbb1f",
+      "source_bytes": 14232,
+      "vertex_start": 37191,
+      "vertex_count": 143,
+      "face_start": 63776,
+      "face_count": 206,
+      "bounds_mm": {
+        "min": [
+          -64.4034,
+          -45.4472,
+          1232.88
+        ],
+        "max": [
+          -55.5109,
+          -31.0052,
+          1246.62
+        ]
+      }
+    },
+    {
+      "element_id": "FJ3055",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ3055.obj",
+      "source_obj_sha256": "e581441e67fed5b6225b401529610d65f3b199f24ed32a61c84d212a5061c24c",
+      "source_bytes": 6827,
+      "vertex_start": 37334,
+      "vertex_count": 73,
+      "face_start": 63982,
+      "face_count": 80,
+      "bounds_mm": {
+        "min": [
+          -57.5501,
+          -37.8729,
+          1238.85
+        ],
+        "max": [
+          -41.733,
+          -35.831,
+          1243.68
+        ]
+      }
+    },
+    {
+      "element_id": "FJ3056",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ3056.obj",
+      "source_obj_sha256": "6ab8a75fa921d473dc53ea2f233a806ed0e5227c1cb1cf1693cd0c76f013d85a",
+      "source_bytes": 15394,
+      "vertex_start": 37407,
+      "vertex_count": 136,
+      "face_start": 64062,
+      "face_count": 264,
+      "bounds_mm": {
+        "min": [
+          -48.3898,
+          -65.5758,
+          1182.56
+        ],
+        "max": [
+          -38.1411,
+          -41.5357,
+          1210.65
+        ]
+      }
+    },
+    {
+      "element_id": "FJ3057",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ3057.obj",
+      "source_obj_sha256": "7e5b47ae7217398ed3604484ffe2c8d9c9ecf7da7b9fba9261518891fa2b5a31",
+      "source_bytes": 8854,
+      "vertex_start": 37543,
+      "vertex_count": 89,
+      "face_start": 64326,
+      "face_count": 122,
+      "bounds_mm": {
+        "min": [
+          -42.0325,
+          -74.1361,
+          1176.31
+        ],
+        "max": [
+          -34.633,
+          -69.3817,
+          1209.31
+        ]
+      }
+    },
+    {
+      "element_id": "FJ3058",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ3058.obj",
+      "source_obj_sha256": "5f3dd61a518b3d46bc903797e37b5f1df9c9bf0459ed4c8715cca31d114be2da",
+      "source_bytes": 10683,
+      "vertex_start": 37632,
+      "vertex_count": 100,
+      "face_start": 64448,
+      "face_count": 174,
+      "bounds_mm": {
+        "min": [
+          -37.3093,
+          -74.332,
+          1178.5
+        ],
+        "max": [
+          -28.6147,
+          -70.7075,
+          1197.45
+        ]
+      }
+    },
+    {
+      "element_id": "FJ3059",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ3059.obj",
+      "source_obj_sha256": "0869acb61038b06dbfa8adc90e77faac650913070b5733b377e8d6242ee5def2",
+      "source_bytes": 25864,
+      "vertex_start": 37732,
+      "vertex_count": 231,
+      "face_start": 64622,
+      "face_count": 424,
+      "bounds_mm": {
+        "min": [
+          -113.847,
+          -82.4866,
+          1162.74
+        ],
+        "max": [
+          -28.0325,
+          -60.3347,
+          1217.32
+        ]
+      }
+    },
+    {
+      "element_id": "FJ3060",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ3060.obj",
+      "source_obj_sha256": "ee39c7e79005aaa920afba4a21517de78e2cb8674ff9ff60535131242cc7f92e",
+      "source_bytes": 13233,
+      "vertex_start": 37963,
+      "vertex_count": 123,
+      "face_start": 65046,
+      "face_count": 216,
+      "bounds_mm": {
+        "min": [
+          -102.338,
+          -88.254,
+          1194.54
+        ],
+        "max": [
+          -45.4038,
+          -73.7927,
+          1206.84
+        ]
+      }
+    },
+    {
+      "element_id": "FJ3061",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ3061.obj",
+      "source_obj_sha256": "75536e65550d3bf1fd7a3c15ca8c6b9c4497fe9945d1d12a221dca0e90d59660",
+      "source_bytes": 9264,
+      "vertex_start": 38086,
+      "vertex_count": 85,
+      "face_start": 65262,
+      "face_count": 152,
+      "bounds_mm": {
+        "min": [
+          -113.611,
+          -79.2047,
+          1186.68
+        ],
+        "max": [
+          -96.8393,
+          -73.762,
+          1190.49
+        ]
+      }
+    },
+    {
+      "element_id": "FJ3062",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ3062.obj",
+      "source_obj_sha256": "5389d53834968728a52dbba765230e533b3c1c2dcc53d797a68e328cf65500ad",
+      "source_bytes": 13104,
+      "vertex_start": 38171,
+      "vertex_count": 120,
+      "face_start": 65414,
+      "face_count": 218,
+      "bounds_mm": {
+        "min": [
+          -113.609,
+          -81.7734,
+          1180.35
+        ],
+        "max": [
+          -78.426,
+          -67.5209,
+          1193.2
+        ]
+      }
+    },
+    {
+      "element_id": "FJ3063",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ3063.obj",
+      "source_obj_sha256": "ed8211f4f7b5e5439f70c98333f15c79d791676ce76595633278444949d941bd",
+      "source_bytes": 9521,
+      "vertex_start": 38291,
+      "vertex_count": 97,
+      "face_start": 65632,
+      "face_count": 134,
+      "bounds_mm": {
+        "min": [
+          -34.3633,
+          -75.8918,
+          1210.63
+        ],
+        "max": [
+          -25.5708,
+          -58.8538,
+          1227.77
+        ]
+      }
+    },
+    {
+      "element_id": "FJ3064",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ3064.obj",
+      "source_obj_sha256": "7aea5192bb926177f306944c21f866d3d35c2fd307f8b00349a1eb8c1b2bb758",
+      "source_bytes": 14207,
+      "vertex_start": 38388,
+      "vertex_count": 132,
+      "face_start": 65766,
+      "face_count": 230,
+      "bounds_mm": {
+        "min": [
+          -32.823,
+          -107.527,
+          1291.95
+        ],
+        "max": [
+          -22.7837,
+          -94.2012,
+          1346.37
+        ]
+      }
+    },
+    {
+      "element_id": "FJ3065",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ3065.obj",
+      "source_obj_sha256": "dc4249b117762f15f6adc2e03b8dc96822bf4b61cc29053b53b4e752a435ccbd",
+      "source_bytes": 9724,
+      "vertex_start": 38520,
+      "vertex_count": 95,
+      "face_start": 65996,
+      "face_count": 146,
+      "bounds_mm": {
+        "min": [
+          -39.7484,
+          -74.8197,
+          1211.31
+        ],
+        "max": [
+          -31.7874,
+          -54.961,
+          1227.28
+        ]
+      }
+    },
+    {
+      "element_id": "FJ3066",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ3066.obj",
+      "source_obj_sha256": "e5c53904242f77732a33d793184c4cf422e36e7712c480b276ab019237082c82",
+      "source_bytes": 9818,
+      "vertex_start": 38615,
+      "vertex_count": 100,
+      "face_start": 66142,
+      "face_count": 136,
+      "bounds_mm": {
+        "min": [
+          -64.8653,
+          -69.7564,
+          1203.2
+        ],
+        "max": [
+          -52.4263,
+          -49.0712,
+          1223.24
+        ]
+      }
+    },
+    {
+      "element_id": "FJ3067",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ3067.obj",
+      "source_obj_sha256": "c16c1e6158bc3523a6dbaca1691aeff61efa43eeb4cdb4a5a8f7b1be8a596b33",
+      "source_bytes": 11917,
+      "vertex_start": 38715,
+      "vertex_count": 107,
+      "face_start": 66278,
+      "face_count": 204,
+      "bounds_mm": {
+        "min": [
+          -34.4508,
+          -102.524,
+          1320.97
+        ],
+        "max": [
+          -24.5432,
+          -94.5013,
+          1331.41
+        ]
+      }
+    },
+    {
+      "element_id": "FJ3068",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ3068.obj",
+      "source_obj_sha256": "0e13303935659ec4b5bb05fb1765ce986e72b77acff8a177fe6ac765d9b1a798",
+      "source_bytes": 7804,
+      "vertex_start": 38822,
+      "vertex_count": 81,
+      "face_start": 66482,
+      "face_count": 102,
+      "bounds_mm": {
+        "min": [
+          -26.1566,
+          -101.808,
+          1327.35
+        ],
+        "max": [
+          -20.1292,
+          -99.052,
+          1336.1
+        ]
+      }
+    },
+    {
+      "element_id": "FJ3069",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ3069.obj",
+      "source_obj_sha256": "fac24171ab61e7b50ac353600cf5d58dab4b5417c3922f4e1781c80aabc27661",
+      "source_bytes": 21044,
+      "vertex_start": 38903,
+      "vertex_count": 185,
+      "face_start": 66584,
+      "face_count": 356,
+      "bounds_mm": {
+        "min": [
+          -55.5365,
+          -107.818,
+          1248.06
+        ],
+        "max": [
+          -30.4607,
+          -89.1799,
+          1278.69
+        ]
+      }
+    },
+    {
+      "element_id": "FJ3070",
+      "label": 1,
+      "group": "veins",
+      "source_archive_member": "partof_BP3D_4.0_obj_99/FJ3070.obj",
+      "source_obj_sha256": "79b6af3a5d4fa81c2aac0e7d665cf4e8e489f850ae3a6ae4345e3d95f2ac619a",
+      "source_bytes": 14178,
+      "vertex_start": 39088,
+      "vertex_count": 132,
+      "face_start": 66940,
+      "face_count": 230,
+      "bounds_mm": {
+        "min": [
+          -57.9108,
+          -93.9216,
+          1274.15
+        ],
+        "max": [
+          -50.6347,
+          -62.6294,
+          1332.18
+        ]
+      }
+    }
+  ]
+}

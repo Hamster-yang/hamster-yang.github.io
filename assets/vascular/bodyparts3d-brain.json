@@ -1,0 +1,2920 @@
+{
+  "dataset": "BodyParts3D release 4.0, IS-A Tree, publisher-described polygon reduction rate 99%",
+  "source_url": "https://dbarchive.biosciencedbc.jp/en/bodyparts3d/download.html",
+  "archive_url": "https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/isa_BP3D_4.0_obj_99.zip",
+  "archive_sha256": "40665852c49f218326590e204db91064a1ecfc3c6f8cbd7bbbcaac62c7cd409e",
+  "archive_bytes": 142903898,
+  "element_table_url": "https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/isa_element_parts.txt",
+  "element_table_sha256": "a3de74423f943b0d724ae8f59b3a817f87c423a544f8db98113b1980817cbeaf",
+  "license": "CC BY 4.0 International (publisher license updated 2025-02-27)",
+  "license_url": "https://dbarchive.biosciencedbc.jp/en/bodyparts3d/lic.html",
+  "attribution": "BodyParts3D, © The Database Center for Life Science licensed under CC Attribution 4.0 International",
+  "methodology_source": "https://doi.org/10.1093/nar/gkn613",
+  "prepared_on": "2026-11-12",
+  "selection": "Named left/right cerebral gyri and lobes, both cerebellar components, and paired midbrain, cerebral peduncles, colliculi, pons and medulla. Internal white matter, ventricular spaces, internal capsules and deep nuclei are excluded. No geometry is synthesized.",
+  "coordinates": "Source whole-body XYZ in millimetres. No translation, rotation, rescaling, mirroring, remeshing, or spatial registration is applied to delivered source coordinates.",
+  "exposure_filter": {
+    "method": "Two-sided orthographic z-buffer of all candidate surfaces together in common millimetre coordinates. Keep any original triangle frontmost in any view, or with one of four barycentric probe points at most 0.8 mm behind the depth buffer. Finally include all original triangles sharing a source vertex with a retained face, one pass within each source OBJ. This conservative neighborhood retains adjacent sulcal surfaces; the result is an external display subset, not a watertight tissue mesh.",
+    "views": 126,
+    "direction_recipe": "120 Fibonacci-sphere directions with z=1-(2i+1)/120 and azimuth=i*pi*(3-sqrt(5)), i=0..119, plus the six signed XYZ axes.",
+    "pixel_size_mm": 0.3,
+    "depth_tolerance_mm": 0.8,
+    "probe_barycentric_weights": [
+      [
+        0.3333333333333333,
+        0.3333333333333333,
+        0.3333333333333333
+      ],
+      [
+        0.8,
+        0.1,
+        0.1
+      ],
+      [
+        0.1,
+        0.8,
+        0.1
+      ],
+      [
+        0.1,
+        0.1,
+        0.8
+      ]
+    ],
+    "neighbor_expansion": "one vertex-sharing face ring per original OBJ",
+    "input_faces": 217046,
+    "frontmost_faces": 91086,
+    "frontmost_or_near_faces": 113791,
+    "retained_faces": 137062,
+    "retained_ratio": 0.6314882559457442
+  },
+  "winding_audit": {
+    "scope": "Source-face winding and signed volume checked per unfiltered source OBJ. For signed volume a local origin is used to avoid cancellation at whole-body coordinates. Facet cross product is compared with the mean of the three supplied OBJ corner normals. Original corner order is retained.",
+    "positive_source_parts": 50,
+    "source_parts": 50,
+    "source_face_vs_OBJ_normal_negative_dot_count": 0,
+    "source_faces_checked": 217046
+  },
+  "geometry": {
+    "file": "bodyparts3d-brain.npz",
+    "bytes": 1491419,
+    "sha256": "f2114429139a3e2a7812cdaa2f4b6867295288a5f580d8b5768d0414995e5724",
+    "canonical_array_sha256": "34a4292041321a8f48961a55a5b37d860d5852e92e515ff0fb5de79d85574b24",
+    "canonical_array_hash_definition": "C-order vertices <f8, then faces <u4, then face_labels u1, concatenated without separators.",
+    "arrays": {
+      "vertices": {
+        "shape": [
+          79689,
+          3
+        ],
+        "dtype": "<f8",
+        "sha256": "ef2c2653446f35404f2b7d4befbbaaa8c5c294395de16c36fd335b2b638d6dee"
+      },
+      "faces": {
+        "shape": [
+          137062,
+          3
+        ],
+        "dtype": "<u4",
+        "sha256": "ab4f1e796296c856f675cdb36860ca57ff4b874685318303bc4ca856a4c62f3d"
+      },
+      "face_labels": {
+        "shape": [
+          137062
+        ],
+        "dtype": "|u1",
+        "sha256": "a36141d28a5e1d8da394358e0793b46c27bda089c94c6d3f081f7b87e607f16b"
+      }
+    },
+    "bounds_mm": {
+      "min": [
+        -71.1499,
+        -169.677,
+        1464.5
+      ],
+      "max": [
+        69.6987,
+        10.3293,
+        1630.46
+      ]
+    },
+    "groups": {
+      "0": {
+        "name": "cerebral cortex",
+        "source_parts": 36,
+        "parts_with_retained_faces": 36,
+        "source_faces": 112238,
+        "retained_faces": 51206,
+        "retained_vertices": 31704,
+        "retained_area_mm2": 206975.0495173531,
+        "bounds_mm": {
+          "min": [
+            -71.1499,
+            -169.677,
+            1513.5
+          ],
+          "max": [
+            69.6987,
+            10.3293,
+            1630.46
+          ]
+        }
+      },
+      "1": {
+        "name": "cerebellum",
+        "source_parts": 2,
+        "parts_with_retained_faces": 2,
+        "source_faces": 47700,
+        "retained_faces": 44740,
+        "retained_vertices": 23086,
+        "retained_area_mm2": 18018.74665097909,
+        "bounds_mm": {
+          "min": [
+            -53.9299,
+            -68.4661,
+            1487.24
+          ],
+          "max": [
+            52.6099,
+            -12.1743,
+            1540.51
+          ]
+        }
+      },
+      "2": {
+        "name": "brainstem",
+        "source_parts": 12,
+        "parts_with_retained_faces": 12,
+        "source_faces": 57108,
+        "retained_faces": 41116,
+        "retained_vertices": 24899,
+        "retained_area_mm2": 12768.904228149346,
+        "bounds_mm": {
+          "min": [
+            -21.9219,
+            -99.2735,
+            1464.5
+          ],
+          "max": [
+            20.6028,
+            -51.2391,
+            1545.79
+          ]
+        }
+      }
+    }
+  },
+  "source_parts": [
+    {
+      "element_id": "FJ1732",
+      "concept_id": "FMA72670",
+      "representation_id": "BP10462",
+      "english_name": "Left angular gyrus",
+      "source_sha256": "d24f6c5647b751706d3f7c4dd4b62518fb3e9cd281ed7d2a2437fafbbcd0e1b3",
+      "source_bytes": 236788,
+      "source_vertices": 2048,
+      "source_faces": 3588,
+      "source_bounds_mm": {
+        "min": [
+          21.9721,
+          -44.554,
+          1539.29
+        ],
+        "max": [
+          64.6114,
+          1.04246,
+          1602.66
+        ]
+      },
+      "source_signed_volume_mm3": 23819.482994967864,
+      "source_facet_winding_vs_OBJ_normals": {
+        "negative_dot_count": 0,
+        "nonnegative_dot_count": 3588,
+        "median_dot": 0.994075030077174,
+        "minimum_dot": 0.9339174541941875
+      },
+      "source_boundary_edges_after_exact_position_welding": 0,
+      "source_non_manifold_edges_after_exact_position_welding": 0,
+      "source_degenerate_faces": 0,
+      "label": 0,
+      "group": "cerebral cortex",
+      "source_member": "isa_BP3D_4.0_obj_99/FJ1732.obj",
+      "candidate_face_count": 3588,
+      "frontmost_faces": 1314,
+      "frontmost_or_near_faces": 1421,
+      "retained_faces": 1921,
+      "retained_vertices": 1153,
+      "retained_fraction": 0.5353957636566332,
+      "vertex_start": 0,
+      "face_start": 0,
+      "visible_bounds_mm": {
+        "min": [
+          21.9721,
+          -44.554,
+          1539.29
+        ],
+        "max": [
+          64.6114,
+          1.04246,
+          1602.66
+        ]
+      }
+    },
+    {
+      "element_id": "FJ1733",
+      "concept_id": "FMA72669",
+      "representation_id": "BP10465",
+      "english_name": "Right angular gyrus",
+      "source_sha256": "a8e5d63d28890e42861f2b1c4c7b898dba84b169507315d77e9ebeb2433171e9",
+      "source_bytes": 239530,
+      "source_vertices": 2084,
+      "source_faces": 3554,
+      "source_bounds_mm": {
+        "min": [
+          -65.9613,
+          -44.7505,
+          1539.39
+        ],
+        "max": [
+          -23.1652,
+          1.1586,
+          1602.78
+        ]
+      },
+      "source_signed_volume_mm3": 23996.543939661624,
+      "source_facet_winding_vs_OBJ_normals": {
+        "negative_dot_count": 0,
+        "nonnegative_dot_count": 3554,
+        "median_dot": 0.994404531156141,
+        "minimum_dot": 0.9302485266259426
+      },
+      "source_boundary_edges_after_exact_position_welding": 0,
+      "source_non_manifold_edges_after_exact_position_welding": 0,
+      "source_degenerate_faces": 0,
+      "label": 0,
+      "group": "cerebral cortex",
+      "source_member": "isa_BP3D_4.0_obj_99/FJ1733.obj",
+      "candidate_face_count": 3554,
+      "frontmost_faces": 1373,
+      "frontmost_or_near_faces": 1466,
+      "retained_faces": 1969,
+      "retained_vertices": 1221,
+      "retained_fraction": 0.5540236353404615,
+      "vertex_start": 1153,
+      "face_start": 1921,
+      "visible_bounds_mm": {
+        "min": [
+          -65.9613,
+          -44.7505,
+          1539.39
+        ],
+        "max": [
+          -23.1652,
+          1.1586,
+          1602.78
+        ]
+      }
+    },
+    {
+      "element_id": "FJ1739",
+      "concept_id": "FMA72718",
+      "representation_id": "BP10471",
+      "english_name": "Left cingulate gyrus",
+      "source_sha256": "0926a6839371b0179bbf7d0040b3925f338995be63d18fc1b176721db12c82d3",
+      "source_bytes": 154389,
+      "source_vertices": 1365,
+      "source_faces": 2416,
+      "source_bounds_mm": {
+        "min": [
+          0.0412312,
+          -142.072,
+          1530.58
+        ],
+        "max": [
+          28.3306,
+          -30.7274,
+          1597.23
+        ]
+      },
+      "source_signed_volume_mm3": 15310.309641453927,
+      "source_facet_winding_vs_OBJ_normals": {
+        "negative_dot_count": 0,
+        "nonnegative_dot_count": 2416,
+        "median_dot": 0.9942868214135299,
+        "minimum_dot": 0.9367131872098089
+      },
+      "source_boundary_edges_after_exact_position_welding": 0,
+      "source_non_manifold_edges_after_exact_position_welding": 0,
+      "source_degenerate_faces": 0,
+      "label": 0,
+      "group": "cerebral cortex",
+      "source_member": "isa_BP3D_4.0_obj_99/FJ1739.obj",
+      "candidate_face_count": 2416,
+      "frontmost_faces": 579,
+      "frontmost_or_near_faces": 661,
+      "retained_faces": 1259,
+      "retained_vertices": 849,
+      "retained_fraction": 0.5211092715231788,
+      "vertex_start": 2374,
+      "face_start": 3890,
+      "visible_bounds_mm": {
+        "min": [
+          0.0412312,
+          -141.421,
+          1530.58
+        ],
+        "max": [
+          28.3306,
+          -32.091,
+          1597.03
+        ]
+      }
+    },
+    {
+      "element_id": "FJ1740",
+      "concept_id": "FMA72717",
+      "representation_id": "BP10488",
+      "english_name": "Right cingulate gyrus",
+      "source_sha256": "9e8c3b086c0cd15b9f85189b37529c6d044c153cbd3f16c678a5b79d02efb656",
+      "source_bytes": 151331,
+      "source_vertices": 1330,
+      "source_faces": 2346,
+      "source_bounds_mm": {
+        "min": [
+          -29.6157,
+          -142.106,
+          1530.61
+        ],
+        "max": [
+          -1.45084,
+          -30.829,
+          1597.22
+        ]
+      },
+      "source_signed_volume_mm3": 15473.356815308065,
+      "source_facet_winding_vs_OBJ_normals": {
+        "negative_dot_count": 0,
+        "nonnegative_dot_count": 2346,
+        "median_dot": 0.9938026022852335,
+        "minimum_dot": 0.9426050952566852
+      },
+      "source_boundary_edges_after_exact_position_welding": 0,
+      "source_non_manifold_edges_after_exact_position_welding": 0,
+      "source_degenerate_faces": 0,
+      "label": 0,
+      "group": "cerebral cortex",
+      "source_member": "isa_BP3D_4.0_obj_99/FJ1740.obj",
+      "candidate_face_count": 2346,
+      "frontmost_faces": 642,
+      "frontmost_or_near_faces": 717,
+      "retained_faces": 1230,
+      "retained_vertices": 814,
+      "retained_fraction": 0.5242966751918159,
+      "vertex_start": 3223,
+      "face_start": 5149,
+      "visible_bounds_mm": {
+        "min": [
+          -27.0377,
+          -141.598,
+          1530.61
+        ],
+        "max": [
+          -1.45084,
+          -32.1088,
+          1597.05
+        ]
+      }
+    },
+    {
+      "element_id": "FJ1744",
+      "concept_id": "FMA72658",
+      "representation_id": "BP10475",
+      "english_name": "Left inferior frontal gyrus",
+      "source_sha256": "3de90fe338da50f60859e591089e5882cf8ce2df2d0e4acbfc5dae7364c184a5",
+      "source_bytes": 218647,
+      "source_vertices": 1927,
+      "source_faces": 3290,
+      "source_bounds_mm": {
+        "min": [
+          25.9424,
+          -152.928,
+          1546.9
+        ],
+        "max": [
+          60.9161,
+          -89.6785,
+          1607.07
+        ]
+      },
+      "source_signed_volume_mm3": 22248.575489471816,
+      "source_facet_winding_vs_OBJ_normals": {
+        "negative_dot_count": 0,
+        "nonnegative_dot_count": 3290,
+        "median_dot": 0.9941537923245074,
+        "minimum_dot": 0.9447452762683368
+      },
+      "source_boundary_edges_after_exact_position_welding": 0,
+      "source_non_manifold_edges_after_exact_position_welding": 0,
+      "source_degenerate_faces": 0,
+      "label": 0,
+      "group": "cerebral cortex",
+      "source_member": "isa_BP3D_4.0_obj_99/FJ1744.obj",
+      "candidate_face_count": 3290,
+      "frontmost_faces": 807,
+      "frontmost_or_near_faces": 860,
+      "retained_faces": 1146,
+      "retained_vertices": 652,
+      "retained_fraction": 0.34832826747720363,
+      "vertex_start": 4037,
+      "face_start": 6379,
+      "visible_bounds_mm": {
+        "min": [
+          25.9424,
+          -152.928,
+          1546.9
+        ],
+        "max": [
+          60.9161,
+          -89.6785,
+          1607.07
+        ]
+      }
+    },
+    {
+      "element_id": "FJ1745",
+      "concept_id": "FMA72657",
+      "representation_id": "BP10442",
+      "english_name": "Right inferior frontal gyrus",
+      "source_sha256": "b3eafbe2d1289be8c24dde82d8a5475f86a13cb6bcc7d5dbc0b4cfcb2d340132",
+      "source_bytes": 220234,
+      "source_vertices": 1928,
+      "source_faces": 3292,
+      "source_bounds_mm": {
+        "min": [
+          -62.2117,
+          -152.971,
+          1546.48
+        ],
+        "max": [
+          -27.2581,
+          -89.8858,
+          1607.06
+        ]
+      },
+      "source_signed_volume_mm3": 22303.87713282567,
+      "source_facet_winding_vs_OBJ_normals": {
+        "negative_dot_count": 0,
+        "nonnegative_dot_count": 3292,
+        "median_dot": 0.9939467189584912,
+        "minimum_dot": 0.903763877940714
+      },
+      "source_boundary_edges_after_exact_position_welding": 0,
+      "source_non_manifold_edges_after_exact_position_welding": 0,
+      "source_degenerate_faces": 0,
+      "label": 0,
+      "group": "cerebral cortex",
+      "source_member": "isa_BP3D_4.0_obj_99/FJ1745.obj",
+      "candidate_face_count": 3292,
+      "frontmost_faces": 849,
+      "frontmost_or_near_faces": 903,
+      "retained_faces": 1171,
+      "retained_vertices": 682,
+      "retained_fraction": 0.35571081409477523,
+      "vertex_start": 4689,
+      "face_start": 7525,
+      "visible_bounds_mm": {
+        "min": [
+          -62.2117,
+          -152.971,
+          1546.48
+        ],
+        "max": [
+          -27.2581,
+          -89.8858,
+          1607.06
+        ]
+      }
+    },
+    {
+      "element_id": "FJ1746",
+      "concept_id": "FMA72688",
+      "representation_id": "BP10437",
+      "english_name": "Left inferior temporal gyrus",
+      "source_sha256": "aefe572e69d8b7687b29644b0a855ced4e64b255f1cb3ca0e6640cab7292d132",
+      "source_bytes": 177780,
+      "source_vertices": 1573,
+      "source_faces": 2732,
+      "source_bounds_mm": {
+        "min": [
+          16.9989,
+          -122.205,
+          1513.5
+        ],
+        "max": [
+          60.6468,
+          -26.4603,
+          1542.84
+        ]
+      },
+      "source_signed_volume_mm3": 20204.19699880853,
+      "source_facet_winding_vs_OBJ_normals": {
+        "negative_dot_count": 0,
+        "nonnegative_dot_count": 2732,
+        "median_dot": 0.9939559893224326,
+        "minimum_dot": 0.9360474749360893
+      },
+      "source_boundary_edges_after_exact_position_welding": 0,
+      "source_non_manifold_edges_after_exact_position_welding": 0,
+      "source_degenerate_faces": 0,
+      "label": 0,
+      "group": "cerebral cortex",
+      "source_member": "isa_BP3D_4.0_obj_99/FJ1746.obj",
+      "candidate_face_count": 2732,
+      "frontmost_faces": 849,
+      "frontmost_or_near_faces": 938,
+      "retained_faces": 1371,
+      "retained_vertices": 874,
+      "retained_fraction": 0.5018301610541728,
+      "vertex_start": 5371,
+      "face_start": 8696,
+      "visible_bounds_mm": {
+        "min": [
+          16.9989,
+          -122.205,
+          1513.5
+        ],
+        "max": [
+          60.6468,
+          -26.4603,
+          1542.42
+        ]
+      }
+    },
+    {
+      "element_id": "FJ1747",
+      "concept_id": "FMA72687",
+      "representation_id": "BP10483",
+      "english_name": "Right inferior temporal gyrus",
+      "source_sha256": "dd358cac91394ee511250be17f7a0184defecb23a19b921388fb267e23132195",
+      "source_bytes": 182921,
+      "source_vertices": 1610,
+      "source_faces": 2768,
+      "source_bounds_mm": {
+        "min": [
+          -61.1894,
+          -122.427,
+          1513.55
+        ],
+        "max": [
+          -18.0979,
+          -26.5085,
+          1542.82
+        ]
+      },
+      "source_signed_volume_mm3": 20544.051642567087,
+      "source_facet_winding_vs_OBJ_normals": {
+        "negative_dot_count": 0,
+        "nonnegative_dot_count": 2768,
+        "median_dot": 0.9942993514711764,
+        "minimum_dot": 0.8931427818505274
+      },
+      "source_boundary_edges_after_exact_position_welding": 0,
+      "source_non_manifold_edges_after_exact_position_welding": 0,
+      "source_degenerate_faces": 0,
+      "label": 0,
+      "group": "cerebral cortex",
+      "source_member": "isa_BP3D_4.0_obj_99/FJ1747.obj",
+      "candidate_face_count": 2768,
+      "frontmost_faces": 786,
+      "frontmost_or_near_faces": 869,
+      "retained_faces": 1306,
+      "retained_vertices": 874,
+      "retained_fraction": 0.4718208092485549,
+      "vertex_start": 6245,
+      "face_start": 10067,
+      "visible_bounds_mm": {
+        "min": [
+          -61.1894,
+          -122.427,
+          1513.55
+        ],
+        "max": [
+          -18.0979,
+          -26.5085,
+          1542.82
+        ]
+      }
+    },
+    {
+      "element_id": "FJ1748",
+      "concept_id": "FMA72978",
+      "representation_id": "BP10486",
+      "english_name": "Left insula",
+      "source_sha256": "b7553aaa8a282d5882d9d2809f5fedd7b35ef50710773ac103cfa82f9f184245",
+      "source_bytes": 148027,
+      "source_vertices": 1250,
+      "source_faces": 2448,
+      "source_bounds_mm": {
+        "min": [
+          25.0155,
+          -122.271,
+          1545.53
+        ],
+        "max": [
+          44.2794,
+          -70.6417,
+          1580.1
+        ]
+      },
+      "source_signed_volume_mm3": 11245.666574515446,
+      "source_facet_winding_vs_OBJ_normals": {
+        "negative_dot_count": 0,
+        "nonnegative_dot_count": 2448,
+        "median_dot": 0.9970547029021692,
+        "minimum_dot": 0.9482711587717487
+      },
+      "source_boundary_edges_after_exact_position_welding": 0,
+      "source_non_manifold_edges_after_exact_position_welding": 0,
+      "source_degenerate_faces": 0,
+      "label": 0,
+      "group": "cerebral cortex",
+      "source_member": "isa_BP3D_4.0_obj_99/FJ1748.obj",
+      "candidate_face_count": 2448,
+      "frontmost_faces": 222,
+      "frontmost_or_near_faces": 268,
+      "retained_faces": 590,
+      "retained_vertices": 379,
+      "retained_fraction": 0.24101307189542484,
+      "vertex_start": 7119,
+      "face_start": 11373,
+      "visible_bounds_mm": {
+        "min": [
+          25.3341,
+          -120.314,
+          1545.53
+        ],
+        "max": [
+          43.899,
+          -70.6417,
+          1578.95
+        ]
+      }
+    },
+    {
+      "element_id": "FJ1749",
+      "concept_id": "FMA72977",
+      "representation_id": "BP10476",
+      "english_name": "Right insula",
+      "source_sha256": "0c8e4e39ba935c4f5b24168b46c99782057ba73379844173de56c60210b45c72",
+      "source_bytes": 150490,
+      "source_vertices": 1261,
+      "source_faces": 2448,
+      "source_bounds_mm": {
+        "min": [
+          -45.5903,
+          -122.423,
+          1545.58
+        ],
+        "max": [
+          -26.3446,
+          -70.6754,
+          1580.06
+        ]
+      },
+      "source_signed_volume_mm3": 11231.619186660027,
+      "source_facet_winding_vs_OBJ_normals": {
+        "negative_dot_count": 0,
+        "nonnegative_dot_count": 2448,
+        "median_dot": 0.9967947792082876,
+        "minimum_dot": 0.9253664054822058
+      },
+      "source_boundary_edges_after_exact_position_welding": 0,
+      "source_non_manifold_edges_after_exact_position_welding": 0,
+      "source_degenerate_faces": 0,
+      "label": 0,
+      "group": "cerebral cortex",
+      "source_member": "isa_BP3D_4.0_obj_99/FJ1749.obj",
+      "candidate_face_count": 2448,
+      "frontmost_faces": 242,
+      "frontmost_or_near_faces": 324,
+      "retained_faces": 674,
+      "retained_vertices": 414,
+      "retained_fraction": 0.27532679738562094,
+      "vertex_start": 7498,
+      "face_start": 11963,
+      "visible_bounds_mm": {
+        "min": [
+          -45.2692,
+          -118.651,
+          1545.58
+        ],
+        "max": [
+          -28.7371,
+          -70.6754,
+          1579.79
+        ]
+      }
+    },
+    {
+      "element_id": "FJ1783",
+      "concept_id": "FMA72690",
+      "representation_id": "BP10449",
+      "english_name": "Left fusiform gyrus",
+      "source_sha256": "f0cc5fbc23f9846e881e91cb2221e691694895c7584506d560aca48324d079b5",
+      "source_bytes": 96372,
+      "source_vertices": 869,
+      "source_faces": 1550,
+      "source_bounds_mm": {
+        "min": [
+          10.5379,
+          -110.613,
+          1515.75
+        ],
+        "max": [
+          42.1819,
+          -49.6757,
+          1542.24
+        ]
+      },
+      "source_signed_volume_mm3": 9459.937281085053,
+      "source_facet_winding_vs_OBJ_normals": {
+        "negative_dot_count": 0,
+        "nonnegative_dot_count": 1550,
+        "median_dot": 0.9941218252800575,
+        "minimum_dot": 0.9315210369093988
+      },
+      "source_boundary_edges_after_exact_position_welding": 0,
+      "source_non_manifold_edges_after_exact_position_welding": 0,
+      "source_degenerate_faces": 0,
+      "label": 0,
+      "group": "cerebral cortex",
+      "source_member": "isa_BP3D_4.0_obj_99/FJ1783.obj",
+      "candidate_face_count": 1550,
+      "frontmost_faces": 584,
+      "frontmost_or_near_faces": 654,
+      "retained_faces": 925,
+      "retained_vertices": 553,
+      "retained_fraction": 0.5967741935483871,
+      "vertex_start": 7912,
+      "face_start": 12637,
+      "visible_bounds_mm": {
+        "min": [
+          10.5379,
+          -110.613,
+          1515.75
+        ],
+        "max": [
+          42.1819,
+          -49.6757,
+          1542.24
+        ]
+      }
+    },
+    {
+      "element_id": "FJ1784",
+      "concept_id": "FMA72689",
+      "representation_id": "BP10450",
+      "english_name": "Right fusiform gyrus",
+      "source_sha256": "ecfd67d495a6f5f3bf391f2455f124edf444122d79299fb8fa0b01493e450f29",
+      "source_bytes": 101913,
+      "source_vertices": 909,
+      "source_faces": 1626,
+      "source_bounds_mm": {
+        "min": [
+          -43.4271,
+          -110.484,
+          1515.61
+        ],
+        "max": [
+          -11.8315,
+          -49.7002,
+          1542.27
+        ]
+      },
+      "source_signed_volume_mm3": 9450.344841733655,
+      "source_facet_winding_vs_OBJ_normals": {
+        "negative_dot_count": 0,
+        "nonnegative_dot_count": 1626,
+        "median_dot": 0.9946041937877144,
+        "minimum_dot": 0.9457736183413378
+      },
+      "source_boundary_edges_after_exact_position_welding": 0,
+      "source_non_manifold_edges_after_exact_position_welding": 0,
+      "source_degenerate_faces": 0,
+      "label": 0,
+      "group": "cerebral cortex",
+      "source_member": "isa_BP3D_4.0_obj_99/FJ1784.obj",
+      "candidate_face_count": 1626,
+      "frontmost_faces": 507,
+      "frontmost_or_near_faces": 584,
+      "retained_faces": 820,
+      "retained_vertices": 491,
+      "retained_fraction": 0.5043050430504306,
+      "vertex_start": 8465,
+      "face_start": 13562,
+      "visible_bounds_mm": {
+        "min": [
+          -43.4271,
+          -110.484,
+          1515.61
+        ],
+        "max": [
+          -11.8315,
+          -49.7002,
+          1541.47
+        ]
+      }
+    },
+    {
+      "element_id": "FJ1785",
+      "concept_id": "FMA72706",
+      "representation_id": "BP10439",
+      "english_name": "Left parahippocampal gyrus",
+      "source_sha256": "d328f96770816958f290e2461214dd52c38d3e7395d113eed55ba6065ec76c37",
+      "source_bytes": 47143,
+      "source_vertices": 435,
+      "source_faces": 740,
+      "source_bounds_mm": {
+        "min": [
+          8.93218,
+          -100.708,
+          1521.64
+        ],
+        "max": [
+          29.9186,
+          -51.2824,
+          1543.69
+        ]
+      },
+      "source_signed_volume_mm3": 3603.835166547975,
+      "source_facet_winding_vs_OBJ_normals": {
+        "negative_dot_count": 0,
+        "nonnegative_dot_count": 740,
+        "median_dot": 0.9941128917602637,
+        "minimum_dot": 0.9294126314608717
+      },
+      "source_boundary_edges_after_exact_position_welding": 0,
+      "source_non_manifold_edges_after_exact_position_welding": 0,
+      "source_degenerate_faces": 0,
+      "label": 0,
+      "group": "cerebral cortex",
+      "source_member": "isa_BP3D_4.0_obj_99/FJ1785.obj",
+      "candidate_face_count": 740,
+      "frontmost_faces": 236,
+      "frontmost_or_near_faces": 262,
+      "retained_faces": 439,
+      "retained_vertices": 297,
+      "retained_fraction": 0.5932432432432433,
+      "vertex_start": 8956,
+      "face_start": 14382,
+      "visible_bounds_mm": {
+        "min": [
+          8.93218,
+          -100.708,
+          1521.64
+        ],
+        "max": [
+          29.8542,
+          -51.2824,
+          1542.17
+        ]
+      }
+    },
+    {
+      "element_id": "FJ1786",
+      "concept_id": "FMA72705",
+      "representation_id": "BP10447",
+      "english_name": "Right parahippocampal gyrus",
+      "source_sha256": "2453959db95754c9f3fe6dbe435bbcff98e79f6bbd77c12f1d063c30941fa05f",
+      "source_bytes": 54449,
+      "source_vertices": 482,
+      "source_faces": 882,
+      "source_bounds_mm": {
+        "min": [
+          -31.2721,
+          -100.797,
+          1521.77
+        ],
+        "max": [
+          -10.1802,
+          -51.2669,
+          1543.69
+        ]
+      },
+      "source_signed_volume_mm3": 3664.9489042821892,
+      "source_facet_winding_vs_OBJ_normals": {
+        "negative_dot_count": 0,
+        "nonnegative_dot_count": 882,
+        "median_dot": 0.9949795292678782,
+        "minimum_dot": 0.9375799882105194
+      },
+      "source_boundary_edges_after_exact_position_welding": 0,
+      "source_non_manifold_edges_after_exact_position_welding": 0,
+      "source_degenerate_faces": 0,
+      "label": 0,
+      "group": "cerebral cortex",
+      "source_member": "isa_BP3D_4.0_obj_99/FJ1786.obj",
+      "candidate_face_count": 882,
+      "frontmost_faces": 336,
+      "frontmost_or_near_faces": 377,
+      "retained_faces": 551,
+      "retained_vertices": 336,
+      "retained_fraction": 0.6247165532879818,
+      "vertex_start": 9253,
+      "face_start": 14821,
+      "visible_bounds_mm": {
+        "min": [
+          -30.4425,
+          -100.797,
+          1521.77
+        ],
+        "max": [
+          -10.1802,
+          -51.2669,
+          1542.21
+        ]
+      }
+    },
+    {
+      "element_id": "FJ1787",
+      "concept_id": "FMA72656",
+      "representation_id": "BP10463",
+      "english_name": "Left middle frontal gyrus",
+      "source_sha256": "de3c1098d95fc81060b72603e72a4a2a55529b0fb82063dbd0dfc4f3955d720c",
+      "source_bytes": 226086,
+      "source_vertices": 1973,
+      "source_faces": 3416,
+      "source_bounds_mm": {
+        "min": [
+          14.5999,
+          -159.172,
+          1560.42
+        ],
+        "max": [
+          49.143,
+          -74.1993,
+          1622.39
+        ]
+      },
+      "source_signed_volume_mm3": 21006.574038329734,
+      "source_facet_winding_vs_OBJ_normals": {
+        "negative_dot_count": 0,
+        "nonnegative_dot_count": 3416,
+        "median_dot": 0.9936665174317049,
+        "minimum_dot": 0.9271041886971585
+      },
+      "source_boundary_edges_after_exact_position_welding": 0,
+      "source_non_manifold_edges_after_exact_position_welding": 0,
+      "source_degenerate_faces": 0,
+      "label": 0,
+      "group": "cerebral cortex",
+      "source_member": "isa_BP3D_4.0_obj_99/FJ1787.obj",
+      "candidate_face_count": 3416,
+      "frontmost_faces": 1051,
+      "frontmost_or_near_faces": 1151,
+      "retained_faces": 1630,
+      "retained_vertices": 1040,
+      "retained_fraction": 0.4771662763466042,
+      "vertex_start": 9589,
+      "face_start": 15372,
+      "visible_bounds_mm": {
+        "min": [
+          14.5999,
+          -159.172,
+          1560.42
+        ],
+        "max": [
+          49.143,
+          -74.1993,
+          1622.39
+        ]
+      }
+    },
+    {
+      "element_id": "FJ1788",
+      "concept_id": "FMA72655",
+      "representation_id": "BP10461",
+      "english_name": "Right middle frontal gyrus",
+      "source_sha256": "216015b568cc446ae3e7c2ad256f47a352479a6e36c0df025cde311e913fde0c",
+      "source_bytes": 224095,
+      "source_vertices": 1960,
+      "source_faces": 3326,
+      "source_bounds_mm": {
+        "min": [
+          -50.5134,
+          -159.2,
+          1560.43
+        ],
+        "max": [
+          -15.9333,
+          -73.8383,
+          1622.3
+        ]
+      },
+      "source_signed_volume_mm3": 21182.09093218361,
+      "source_facet_winding_vs_OBJ_normals": {
+        "negative_dot_count": 0,
+        "nonnegative_dot_count": 3326,
+        "median_dot": 0.9937479543204559,
+        "minimum_dot": 0.9358314756482541
+      },
+      "source_boundary_edges_after_exact_position_welding": 0,
+      "source_non_manifold_edges_after_exact_position_welding": 0,
+      "source_degenerate_faces": 0,
+      "label": 0,
+      "group": "cerebral cortex",
+      "source_member": "isa_BP3D_4.0_obj_99/FJ1788.obj",
+      "candidate_face_count": 3326,
+      "frontmost_faces": 1102,
+      "frontmost_or_near_faces": 1199,
+      "retained_faces": 1622,
+      "retained_vertices": 984,
+      "retained_fraction": 0.48767288033674083,
+      "vertex_start": 10629,
+      "face_start": 17002,
+      "visible_bounds_mm": {
+        "min": [
+          -50.5134,
+          -159.2,
+          1560.43
+        ],
+        "max": [
+          -16.2189,
+          -73.8383,
+          1622.3
+        ]
+      }
+    },
+    {
+      "element_id": "FJ1789",
+      "concept_id": "FMA72686",
+      "representation_id": "BP10446",
+      "english_name": "Left middle temporal gyrus",
+      "source_sha256": "52396a1feaedfb7f8f1a334dd02acb35f2897362b0f1a37658edc4e69556db6d",
+      "source_bytes": 174631,
+      "source_vertices": 1528,
+      "source_faces": 2710,
+      "source_bounds_mm": {
+        "min": [
+          33.121,
+          -124.954,
+          1522.26
+        ],
+        "max": [
+          68.8934,
+          -13.9933,
+          1555.85
+        ]
+      },
+      "source_signed_volume_mm3": 21369.53151181653,
+      "source_facet_winding_vs_OBJ_normals": {
+        "negative_dot_count": 0,
+        "nonnegative_dot_count": 2710,
+        "median_dot": 0.9945606536554256,
+        "minimum_dot": 0.9171968810003036
+      },
+      "source_boundary_edges_after_exact_position_welding": 0,
+      "source_non_manifold_edges_after_exact_position_welding": 0,
+      "source_degenerate_faces": 0,
+      "label": 0,
+      "group": "cerebral cortex",
+      "source_member": "isa_BP3D_4.0_obj_99/FJ1789.obj",
+      "candidate_face_count": 2710,
+      "frontmost_faces": 1010,
+      "frontmost_or_near_faces": 1127,
+      "retained_faces": 1614,
+      "retained_vertices": 990,
+      "retained_fraction": 0.5955719557195572,
+      "vertex_start": 11613,
+      "face_start": 18624,
+      "visible_bounds_mm": {
+        "min": [
+          33.121,
+          -124.954,
+          1522.26
+        ],
+        "max": [
+          68.8934,
+          -13.9933,
+          1555.85
+        ]
+      }
+    },
+    {
+      "element_id": "FJ1790",
+      "concept_id": "FMA72685",
+      "representation_id": "BP10448",
+      "english_name": "Right middle temporal gyrus",
+      "source_sha256": "f2c8ba988026b991559d5195a702675a0a222e9a03711dcb127a909f18ae0fb4",
+      "source_bytes": 179357,
+      "source_vertices": 1563,
+      "source_faces": 2754,
+      "source_bounds_mm": {
+        "min": [
+          -69.9404,
+          -124.952,
+          1522.44
+        ],
+        "max": [
+          -34.3913,
+          -14.2936,
+          1555.7
+        ]
+      },
+      "source_signed_volume_mm3": 21116.436915559196,
+      "source_facet_winding_vs_OBJ_normals": {
+        "negative_dot_count": 0,
+        "nonnegative_dot_count": 2754,
+        "median_dot": 0.9947264146782089,
+        "minimum_dot": 0.9314751514886488
+      },
+      "source_boundary_edges_after_exact_position_welding": 0,
+      "source_non_manifold_edges_after_exact_position_welding": 0,
+      "source_degenerate_faces": 0,
+      "label": 0,
+      "group": "cerebral cortex",
+      "source_member": "isa_BP3D_4.0_obj_99/FJ1790.obj",
+      "candidate_face_count": 2754,
+      "frontmost_faces": 995,
+      "frontmost_or_near_faces": 1146,
+      "retained_faces": 1718,
+      "retained_vertices": 1069,
+      "retained_fraction": 0.6238198983297023,
+      "vertex_start": 12603,
+      "face_start": 20238,
+      "visible_bounds_mm": {
+        "min": [
+          -69.9404,
+          -124.952,
+          1522.44
+        ],
+        "max": [
+          -34.3913,
+          -14.2936,
+          1555.7
+        ]
+      }
+    },
+    {
+      "element_id": "FJ1791",
+      "concept_id": "FMA72976",
+      "representation_id": "BP10477",
+      "english_name": "Left occipital lobe",
+      "source_sha256": "d504be1cf6f085be1b885b31ac3b1fb1a1fc475855aeda56baa142a600911fe5",
+      "source_bytes": 293610,
+      "source_vertices": 2538,
+      "source_faces": 4390,
+      "source_bounds_mm": {
+        "min": [
+          0.111047,
+          -52.9323,
+          1517.78
+        ],
+        "max": [
+          43.527,
+          10.3293,
+          1571.53
+        ]
+      },
+      "source_signed_volume_mm3": 36889.946065582444,
+      "source_facet_winding_vs_OBJ_normals": {
+        "negative_dot_count": 0,
+        "nonnegative_dot_count": 4390,
+        "median_dot": 0.993839619257636,
+        "minimum_dot": 0.9322259300506227
+      },
+      "source_boundary_edges_after_exact_position_welding": 0,
+      "source_non_manifold_edges_after_exact_position_welding": 0,
+      "source_degenerate_faces": 0,
+      "label": 0,
+      "group": "cerebral cortex",
+      "source_member": "isa_BP3D_4.0_obj_99/FJ1791.obj",
+      "candidate_face_count": 4390,
+      "frontmost_faces": 877,
+      "frontmost_or_near_faces": 941,
+      "retained_faces": 1237,
+      "retained_vertices": 749,
+      "retained_fraction": 0.2817767653758542,
+      "vertex_start": 13672,
+      "face_start": 21956,
+      "visible_bounds_mm": {
+        "min": [
+          0.111047,
+          -52.6857,
+          1517.78
+        ],
+        "max": [
+          43.527,
+          10.3293,
+          1571.53
+        ]
+      }
+    },
+    {
+      "element_id": "FJ1792",
+      "concept_id": "FMA72975",
+      "representation_id": "BP10440",
+      "english_name": "Right occipital lobe",
+      "source_sha256": "e9e4bb82648576fbe6256992771f0ab0917cfea10d15325c86869283573a64ad",
+      "source_bytes": 307991,
+      "source_vertices": 2625,
+      "source_faces": 4564,
+      "source_bounds_mm": {
+        "min": [
+          -44.8244,
+          -52.9515,
+          1517.74
+        ],
+        "max": [
+          -1.55616,
+          10.2618,
+          1571.56
+        ]
+      },
+      "source_signed_volume_mm3": 36599.730657702436,
+      "source_facet_winding_vs_OBJ_normals": {
+        "negative_dot_count": 0,
+        "nonnegative_dot_count": 4564,
+        "median_dot": 0.9940020684346518,
+        "minimum_dot": 0.9197547699825881
+      },
+      "source_boundary_edges_after_exact_position_welding": 0,
+      "source_non_manifold_edges_after_exact_position_welding": 0,
+      "source_degenerate_faces": 0,
+      "label": 0,
+      "group": "cerebral cortex",
+      "source_member": "isa_BP3D_4.0_obj_99/FJ1792.obj",
+      "candidate_face_count": 4564,
+      "frontmost_faces": 845,
+      "frontmost_or_near_faces": 908,
+      "retained_faces": 1227,
+      "retained_vertices": 766,
+      "retained_fraction": 0.26884312007011396,
+      "vertex_start": 14421,
+      "face_start": 23193,
+      "visible_bounds_mm": {
+        "min": [
+          -44.8244,
+          -52.7131,
+          1517.74
+        ],
+        "max": [
+          -1.55616,
+          10.2618,
+          1571.56
+        ]
+      }
+    },
+    {
+      "element_id": "FJ1793",
+      "concept_id": "FMA256194",
+      "representation_id": "BP5675",
+      "english_name": "Orbital gyrus",
+      "source_sha256": "b47d45c7f6a419e69a9c5b6af00b80cc4f1269593a260e34b662b850801e354c",
+      "source_bytes": 179022,
+      "source_vertices": 1587,
+      "source_faces": 2750,
+      "source_bounds_mm": {
+        "min": [
+          0.741065,
+          -165.265,
+          1533.76
+        ],
+        "max": [
+          41.0849,
+          -98.0674,
+          1563.93
+        ]
+      },
+      "source_signed_volume_mm3": 15724.168468278278,
+      "source_facet_winding_vs_OBJ_normals": {
+        "negative_dot_count": 0,
+        "nonnegative_dot_count": 2750,
+        "median_dot": 0.9934744012599781,
+        "minimum_dot": 0.9082496056933669
+      },
+      "source_boundary_edges_after_exact_position_welding": 0,
+      "source_non_manifold_edges_after_exact_position_welding": 0,
+      "source_degenerate_faces": 0,
+      "label": 0,
+      "group": "cerebral cortex",
+      "source_member": "isa_BP3D_4.0_obj_99/FJ1793.obj",
+      "candidate_face_count": 2750,
+      "frontmost_faces": 1155,
+      "frontmost_or_near_faces": 1341,
+      "retained_faces": 1638,
+      "retained_vertices": 1035,
+      "retained_fraction": 0.5956363636363636,
+      "vertex_start": 15187,
+      "face_start": 24420,
+      "visible_bounds_mm": {
+        "min": [
+          0.741065,
+          -165.265,
+          1533.76
+        ],
+        "max": [
+          41.0849,
+          -98.0674,
+          1563.83
+        ]
+      }
+    },
+    {
+      "element_id": "FJ1794",
+      "concept_id": "FMA256194",
+      "representation_id": "BP5675",
+      "english_name": "Orbital gyrus",
+      "source_sha256": "8fe535cdf4054a6a395ea2250e1c66719d551818eaf96802a4c7883af00a8170",
+      "source_bytes": 173187,
+      "source_vertices": 1568,
+      "source_faces": 2568,
+      "source_bounds_mm": {
+        "min": [
+          -42.3143,
+          -165.258,
+          1534.05
+        ],
+        "max": [
+          -2.11883,
+          -98.0043,
+          1563.91
+        ]
+      },
+      "source_signed_volume_mm3": 15759.936346604905,
+      "source_facet_winding_vs_OBJ_normals": {
+        "negative_dot_count": 0,
+        "nonnegative_dot_count": 2568,
+        "median_dot": 0.993659966872074,
+        "minimum_dot": 0.9108340735405586
+      },
+      "source_boundary_edges_after_exact_position_welding": 0,
+      "source_non_manifold_edges_after_exact_position_welding": 0,
+      "source_degenerate_faces": 0,
+      "label": 0,
+      "group": "cerebral cortex",
+      "source_member": "isa_BP3D_4.0_obj_99/FJ1794.obj",
+      "candidate_face_count": 2568,
+      "frontmost_faces": 1075,
+      "frontmost_or_near_faces": 1274,
+      "retained_faces": 1578,
+      "retained_vertices": 1013,
+      "retained_fraction": 0.6144859813084113,
+      "vertex_start": 16222,
+      "face_start": 26058,
+      "visible_bounds_mm": {
+        "min": [
+          -42.3143,
+          -165.258,
+          1534.05
+        ],
+        "max": [
+          -2.11883,
+          -98.0043,
+          1563.69
+        ]
+      }
+    },
+    {
+      "element_id": "FJ1797",
+      "concept_id": "FMA72666",
+      "representation_id": "BP10473",
+      "english_name": "Left postcentral gyrus",
+      "source_sha256": "e05f6ec80fa902f5334cc5e8c029359674d39c39a90f86476a6d1d190ca1f30a",
+      "source_bytes": 236182,
+      "source_vertices": 2033,
+      "source_faces": 3604,
+      "source_bounds_mm": {
+        "min": [
+          0.609649,
+          -87.9167,
+          1563.9
+        ],
+        "max": [
+          67.1837,
+          -24.271,
+          1623.68
+        ]
+      },
+      "source_signed_volume_mm3": 25472.686356344886,
+      "source_facet_winding_vs_OBJ_normals": {
+        "negative_dot_count": 0,
+        "nonnegative_dot_count": 3604,
+        "median_dot": 0.9946864474548316,
+        "minimum_dot": 0.93084719251478
+      },
+      "source_boundary_edges_after_exact_position_welding": 0,
+      "source_non_manifold_edges_after_exact_position_welding": 0,
+      "source_degenerate_faces": 0,
+      "label": 0,
+      "group": "cerebral cortex",
+      "source_member": "isa_BP3D_4.0_obj_99/FJ1797.obj",
+      "candidate_face_count": 3604,
+      "frontmost_faces": 1067,
+      "frontmost_or_near_faces": 1176,
+      "retained_faces": 1577,
+      "retained_vertices": 921,
+      "retained_fraction": 0.43756936736958935,
+      "vertex_start": 17235,
+      "face_start": 27636,
+      "visible_bounds_mm": {
+        "min": [
+          0.609649,
+          -87.9167,
+          1564.07
+        ],
+        "max": [
+          67.1837,
+          -24.271,
+          1623.68
+        ]
+      }
+    },
+    {
+      "element_id": "FJ1798",
+      "concept_id": "FMA72665",
+      "representation_id": "BP10480",
+      "english_name": "Right postcentral gyrus",
+      "source_sha256": "ce476b98e79e988bbf2efa1b8593019d0cc64114cf455d00347ed6e95ee5f037",
+      "source_bytes": 238993,
+      "source_vertices": 2045,
+      "source_faces": 3604,
+      "source_bounds_mm": {
+        "min": [
+          -68.3975,
+          -87.7679,
+          1564.14
+        ],
+        "max": [
+          -1.7481,
+          -24.2573,
+          1623.69
+        ]
+      },
+      "source_signed_volume_mm3": 25259.580641105626,
+      "source_facet_winding_vs_OBJ_normals": {
+        "negative_dot_count": 0,
+        "nonnegative_dot_count": 3604,
+        "median_dot": 0.9942912529520302,
+        "minimum_dot": 0.9180576167638819
+      },
+      "source_boundary_edges_after_exact_position_welding": 0,
+      "source_non_manifold_edges_after_exact_position_welding": 0,
+      "source_degenerate_faces": 0,
+      "label": 0,
+      "group": "cerebral cortex",
+      "source_member": "isa_BP3D_4.0_obj_99/FJ1798.obj",
+      "candidate_face_count": 3604,
+      "frontmost_faces": 979,
+      "frontmost_or_near_faces": 1035,
+      "retained_faces": 1440,
+      "retained_vertices": 856,
+      "retained_fraction": 0.3995560488346282,
+      "vertex_start": 18156,
+      "face_start": 29213,
+      "visible_bounds_mm": {
+        "min": [
+          -68.3975,
+          -87.7679,
+          1564.24
+        ],
+        "max": [
+          -1.7481,
+          -24.2573,
+          1623.69
+        ]
+      }
+    },
+    {
+      "element_id": "FJ1800",
+      "concept_id": "FMA72662",
+      "representation_id": "BP10466",
+      "english_name": "Left precentral gyrus",
+      "source_sha256": "9f375219acb0aed075860e5afe3562be19bde6061a007d3096d52f96aa59e944",
+      "source_bytes": 270175,
+      "source_vertices": 2336,
+      "source_faces": 4042,
+      "source_bounds_mm": {
+        "min": [
+          0.594719,
+          -104.839,
+          1560.7
+        ],
+        "max": [
+          62.8854,
+          -39.2726,
+          1626.69
+        ]
+      },
+      "source_signed_volume_mm3": 23856.481251905952,
+      "source_facet_winding_vs_OBJ_normals": {
+        "negative_dot_count": 0,
+        "nonnegative_dot_count": 4042,
+        "median_dot": 0.9949587839106602,
+        "minimum_dot": 0.935494884921571
+      },
+      "source_boundary_edges_after_exact_position_welding": 0,
+      "source_non_manifold_edges_after_exact_position_welding": 0,
+      "source_degenerate_faces": 0,
+      "label": 0,
+      "group": "cerebral cortex",
+      "source_member": "isa_BP3D_4.0_obj_99/FJ1800.obj",
+      "candidate_face_count": 4042,
+      "frontmost_faces": 869,
+      "frontmost_or_near_faces": 980,
+      "retained_faces": 1523,
+      "retained_vertices": 952,
+      "retained_fraction": 0.3767936665017318,
+      "vertex_start": 19012,
+      "face_start": 30653,
+      "visible_bounds_mm": {
+        "min": [
+          0.594719,
+          -104.839,
+          1561.97
+        ],
+        "max": [
+          62.8854,
+          -39.9015,
+          1626.69
+        ]
+      }
+    },
+    {
+      "element_id": "FJ1801",
+      "concept_id": "FMA72661",
+      "representation_id": "BP10459",
+      "english_name": "Right precentral gyrus",
+      "source_sha256": "89e9017a488f4854ef4daaa5488bbe0bada8aed4cd81352553305beda8caef85",
+      "source_bytes": 274741,
+      "source_vertices": 2382,
+      "source_faces": 4042,
+      "source_bounds_mm": {
+        "min": [
+          -64.1509,
+          -104.658,
+          1560.55
+        ],
+        "max": [
+          -1.62149,
+          -39.3459,
+          1626.55
+        ]
+      },
+      "source_signed_volume_mm3": 23830.04389647562,
+      "source_facet_winding_vs_OBJ_normals": {
+        "negative_dot_count": 0,
+        "nonnegative_dot_count": 4042,
+        "median_dot": 0.9951757429973657,
+        "minimum_dot": 0.9255738101459451
+      },
+      "source_boundary_edges_after_exact_position_welding": 0,
+      "source_non_manifold_edges_after_exact_position_welding": 0,
+      "source_degenerate_faces": 0,
+      "label": 0,
+      "group": "cerebral cortex",
+      "source_member": "isa_BP3D_4.0_obj_99/FJ1801.obj",
+      "candidate_face_count": 4042,
+      "frontmost_faces": 884,
+      "frontmost_or_near_faces": 978,
+      "retained_faces": 1501,
+      "retained_vertices": 915,
+      "retained_fraction": 0.3713508164275111,
+      "vertex_start": 19964,
+      "face_start": 32176,
+      "visible_bounds_mm": {
+        "min": [
+          -64.1509,
+          -104.658,
+          1560.55
+        ],
+        "max": [
+          -1.62149,
+          -40.0083,
+          1626.55
+        ]
+      }
+    },
+    {
+      "element_id": "FJ1833",
+      "concept_id": "FMA72654",
+      "representation_id": "BP10453",
+      "english_name": "Left superior frontal gyrus",
+      "source_sha256": "b1705a60646438f5c1bd8d215c738f90e7aed9c9360a8ab94993a1e6b5649851",
+      "source_bytes": 432276,
+      "source_vertices": 3625,
+      "source_faces": 6452,
+      "source_bounds_mm": {
+        "min": [
+          0.190459,
+          -169.677,
+          1552.18
+        ],
+        "max": [
+          31.7068,
+          -53.6994,
+          1630.46
+        ]
+      },
+      "source_signed_volume_mm3": 44783.54996328396,
+      "source_facet_winding_vs_OBJ_normals": {
+        "negative_dot_count": 0,
+        "nonnegative_dot_count": 6452,
+        "median_dot": 0.9942060347431172,
+        "minimum_dot": 0.9255013013851072
+      },
+      "source_boundary_edges_after_exact_position_welding": 0,
+      "source_non_manifold_edges_after_exact_position_welding": 0,
+      "source_degenerate_faces": 0,
+      "label": 0,
+      "group": "cerebral cortex",
+      "source_member": "isa_BP3D_4.0_obj_99/FJ1833.obj",
+      "candidate_face_count": 6452,
+      "frontmost_faces": 2286,
+      "frontmost_or_near_faces": 2542,
+      "retained_faces": 3364,
+      "retained_vertices": 1994,
+      "retained_fraction": 0.5213887166769994,
+      "vertex_start": 20879,
+      "face_start": 33677,
+      "visible_bounds_mm": {
+        "min": [
+          0.190459,
+          -169.677,
+          1552.18
+        ],
+        "max": [
+          31.7068,
+          -54.4202,
+          1630.46
+        ]
+      }
+    },
+    {
+      "element_id": "FJ1834",
+      "concept_id": "FMA72653",
+      "representation_id": "BP10457",
+      "english_name": "Right superior frontal gyrus",
+      "source_sha256": "505aff0f5fba6160aa273af517d8ef9f9e4d7bd6ee904e2739ccf41f8d7af441",
+      "source_bytes": 437650,
+      "source_vertices": 3671,
+      "source_faces": 6450,
+      "source_bounds_mm": {
+        "min": [
+          -33.1443,
+          -169.669,
+          1552.01
+        ],
+        "max": [
+          -1.55451,
+          -53.7094,
+          1630.42
+        ]
+      },
+      "source_signed_volume_mm3": 44725.38843694675,
+      "source_facet_winding_vs_OBJ_normals": {
+        "negative_dot_count": 0,
+        "nonnegative_dot_count": 6450,
+        "median_dot": 0.9940850416171638,
+        "minimum_dot": 0.9198625407518881
+      },
+      "source_boundary_edges_after_exact_position_welding": 0,
+      "source_non_manifold_edges_after_exact_position_welding": 0,
+      "source_degenerate_faces": 0,
+      "label": 0,
+      "group": "cerebral cortex",
+      "source_member": "isa_BP3D_4.0_obj_99/FJ1834.obj",
+      "candidate_face_count": 6450,
+      "frontmost_faces": 2330,
+      "frontmost_or_near_faces": 2609,
+      "retained_faces": 3431,
+      "retained_vertices": 2070,
+      "retained_fraction": 0.5319379844961241,
+      "vertex_start": 22873,
+      "face_start": 37041,
+      "visible_bounds_mm": {
+        "min": [
+          -33.1443,
+          -169.669,
+          1552.01
+        ],
+        "max": [
+          -1.55451,
+          -53.7094,
+          1630.42
+        ]
+      }
+    },
+    {
+      "element_id": "FJ1835",
+      "concept_id": "FMA72672",
+      "representation_id": "BP10458",
+      "english_name": "Left superior parietal lobule",
+      "source_sha256": "6d1cc1963191120c07eb557c728b4cd00ccf63467b3858a408a6b5ba4564719c",
+      "source_bytes": 366912,
+      "source_vertices": 3181,
+      "source_faces": 5364,
+      "source_bounds_mm": {
+        "min": [
+          0.18333,
+          -50.2444,
+          1549.61
+        ],
+        "max": [
+          36.0748,
+          6.30488,
+          1617.11
+        ]
+      },
+      "source_signed_volume_mm3": 32806.49238823805,
+      "source_facet_winding_vs_OBJ_normals": {
+        "negative_dot_count": 0,
+        "nonnegative_dot_count": 5364,
+        "median_dot": 0.9941344115015337,
+        "minimum_dot": 0.9280732546977076
+      },
+      "source_boundary_edges_after_exact_position_welding": 0,
+      "source_non_manifold_edges_after_exact_position_welding": 0,
+      "source_degenerate_faces": 0,
+      "label": 0,
+      "group": "cerebral cortex",
+      "source_member": "isa_BP3D_4.0_obj_99/FJ1835.obj",
+      "candidate_face_count": 5364,
+      "frontmost_faces": 1515,
+      "frontmost_or_near_faces": 1611,
+      "retained_faces": 2045,
+      "retained_vertices": 1317,
+      "retained_fraction": 0.3812453392990306,
+      "vertex_start": 24943,
+      "face_start": 40472,
+      "visible_bounds_mm": {
+        "min": [
+          0.18333,
+          -49.9903,
+          1549.7
+        ],
+        "max": [
+          36.0748,
+          6.30488,
+          1617.11
+        ]
+      }
+    },
+    {
+      "element_id": "FJ1836",
+      "concept_id": "FMA72671",
+      "representation_id": "BP10460",
+      "english_name": "Right superior parietal lobule",
+      "source_sha256": "e3291cc04dcdc3743d8fe67951d2b1589294062d116873515194e0c6c979c770",
+      "source_bytes": 383555,
+      "source_vertices": 3241,
+      "source_faces": 5640,
+      "source_bounds_mm": {
+        "min": [
+          -37.5771,
+          -50.2329,
+          1549.61
+        ],
+        "max": [
+          -1.44547,
+          6.4577,
+          1617.08
+        ]
+      },
+      "source_signed_volume_mm3": 32778.88750842722,
+      "source_facet_winding_vs_OBJ_normals": {
+        "negative_dot_count": 0,
+        "nonnegative_dot_count": 5640,
+        "median_dot": 0.9942070759663599,
+        "minimum_dot": 0.9156109213083277
+      },
+      "source_boundary_edges_after_exact_position_welding": 0,
+      "source_non_manifold_edges_after_exact_position_welding": 0,
+      "source_degenerate_faces": 0,
+      "label": 0,
+      "group": "cerebral cortex",
+      "source_member": "isa_BP3D_4.0_obj_99/FJ1836.obj",
+      "candidate_face_count": 5640,
+      "frontmost_faces": 1491,
+      "frontmost_or_near_faces": 1565,
+      "retained_faces": 2046,
+      "retained_vertices": 1288,
+      "retained_fraction": 0.3627659574468085,
+      "vertex_start": 26260,
+      "face_start": 42517,
+      "visible_bounds_mm": {
+        "min": [
+          -37.5771,
+          -50.0098,
+          1549.71
+        ],
+        "max": [
+          -1.44547,
+          6.4577,
+          1617.08
+        ]
+      }
+    },
+    {
+      "element_id": "FJ1837",
+      "concept_id": "FMA72801",
+      "representation_id": "BP10464",
+      "english_name": "Anterior part of left superior temporal gyrus",
+      "source_sha256": "2fb61c24b880e134ff2034558fa6abbfcbcd8506b0aca18ee2cc844fa6783de6",
+      "source_bytes": 114207,
+      "source_vertices": 1039,
+      "source_faces": 1804,
+      "source_bounds_mm": {
+        "min": [
+          26.6374,
+          -128.034,
+          1523.8
+        ],
+        "max": [
+          62.4139,
+          -54.233,
+          1572.75
+        ]
+      },
+      "source_signed_volume_mm3": 10265.347052212339,
+      "source_facet_winding_vs_OBJ_normals": {
+        "negative_dot_count": 0,
+        "nonnegative_dot_count": 1804,
+        "median_dot": 0.9947690642168039,
+        "minimum_dot": 0.9404190697194765
+      },
+      "source_boundary_edges_after_exact_position_welding": 0,
+      "source_non_manifold_edges_after_exact_position_welding": 0,
+      "source_degenerate_faces": 0,
+      "label": 0,
+      "group": "cerebral cortex",
+      "source_member": "isa_BP3D_4.0_obj_99/FJ1837.obj",
+      "candidate_face_count": 1804,
+      "frontmost_faces": 587,
+      "frontmost_or_near_faces": 708,
+      "retained_faces": 1070,
+      "retained_vertices": 681,
+      "retained_fraction": 0.5931263858093127,
+      "vertex_start": 27548,
+      "face_start": 44563,
+      "visible_bounds_mm": {
+        "min": [
+          26.6374,
+          -128.034,
+          1523.8
+        ],
+        "max": [
+          62.4139,
+          -54.233,
+          1572.08
+        ]
+      }
+    },
+    {
+      "element_id": "FJ1838",
+      "concept_id": "FMA72800",
+      "representation_id": "BP10484",
+      "english_name": "Anterior part of right superior temporal gyrus",
+      "source_sha256": "342678a0d5a35ca049870e95536c19b9d66915c7f636f0b738162e5db833746b",
+      "source_bytes": 120477,
+      "source_vertices": 1082,
+      "source_faces": 1892,
+      "source_bounds_mm": {
+        "min": [
+          -63.6027,
+          -128.082,
+          1523.79
+        ],
+        "max": [
+          -28.0005,
+          -54.2086,
+          1572.77
+        ]
+      },
+      "source_signed_volume_mm3": 10120.217031006689,
+      "source_facet_winding_vs_OBJ_normals": {
+        "negative_dot_count": 0,
+        "nonnegative_dot_count": 1892,
+        "median_dot": 0.9949405373354286,
+        "minimum_dot": 0.91761233886017
+      },
+      "source_boundary_edges_after_exact_position_welding": 0,
+      "source_non_manifold_edges_after_exact_position_welding": 0,
+      "source_degenerate_faces": 0,
+      "label": 0,
+      "group": "cerebral cortex",
+      "source_member": "isa_BP3D_4.0_obj_99/FJ1838.obj",
+      "candidate_face_count": 1892,
+      "frontmost_faces": 542,
+      "frontmost_or_near_faces": 641,
+      "retained_faces": 1038,
+      "retained_vertices": 675,
+      "retained_fraction": 0.5486257928118393,
+      "vertex_start": 28229,
+      "face_start": 45633,
+      "visible_bounds_mm": {
+        "min": [
+          -63.6027,
+          -128.082,
+          1523.79
+        ],
+        "max": [
+          -28.0005,
+          -54.8941,
+          1572.61
+        ]
+      }
+    },
+    {
+      "element_id": "FJ1839",
+      "concept_id": "FMA72805",
+      "representation_id": "BP10444",
+      "english_name": "Posterior part of left superior temporal gyrus",
+      "source_sha256": "a26f20cb2f22b373ea82a0ab8d8adc815d5e7ec81fd7ea93947c3322ce79ad77",
+      "source_bytes": 139270,
+      "source_vertices": 1200,
+      "source_faces": 2264,
+      "source_bounds_mm": {
+        "min": [
+          37.9849,
+          -95.583,
+          1533.9
+        ],
+        "max": [
+          69.6987,
+          -21.8681,
+          1572.99
+        ]
+      },
+      "source_signed_volume_mm3": 16183.540843443741,
+      "source_facet_winding_vs_OBJ_normals": {
+        "negative_dot_count": 0,
+        "nonnegative_dot_count": 2264,
+        "median_dot": 0.99559824957471,
+        "minimum_dot": 0.948542737838405
+      },
+      "source_boundary_edges_after_exact_position_welding": 0,
+      "source_non_manifold_edges_after_exact_position_welding": 0,
+      "source_degenerate_faces": 0,
+      "label": 0,
+      "group": "cerebral cortex",
+      "source_member": "isa_BP3D_4.0_obj_99/FJ1839.obj",
+      "candidate_face_count": 2264,
+      "frontmost_faces": 797,
+      "frontmost_or_near_faces": 912,
+      "retained_faces": 1408,
+      "retained_vertices": 829,
+      "retained_fraction": 0.6219081272084805,
+      "vertex_start": 28904,
+      "face_start": 46671,
+      "visible_bounds_mm": {
+        "min": [
+          37.9849,
+          -95.583,
+          1533.9
+        ],
+        "max": [
+          69.6987,
+          -21.8681,
+          1572.99
+        ]
+      }
+    },
+    {
+      "element_id": "FJ1840",
+      "concept_id": "FMA72804",
+      "representation_id": "BP10433",
+      "english_name": "Posterior part of right superior temporal gyrus",
+      "source_sha256": "4d68654bdf8e258a8253decbd2f246d388f693b6b2a37f809ffcfdd4d4bc25f7",
+      "source_bytes": 141396,
+      "source_vertices": 1220,
+      "source_faces": 2264,
+      "source_bounds_mm": {
+        "min": [
+          -71.1499,
+          -95.608,
+          1533.93
+        ],
+        "max": [
+          -39.2986,
+          -21.7206,
+          1572.85
+        ]
+      },
+      "source_signed_volume_mm3": 16147.299925299192,
+      "source_facet_winding_vs_OBJ_normals": {
+        "negative_dot_count": 0,
+        "nonnegative_dot_count": 2264,
+        "median_dot": 0.9956991303560108,
+        "minimum_dot": 0.9512348263449311
+      },
+      "source_boundary_edges_after_exact_position_welding": 0,
+      "source_non_manifold_edges_after_exact_position_welding": 0,
+      "source_degenerate_faces": 0,
+      "label": 0,
+      "group": "cerebral cortex",
+      "source_member": "isa_BP3D_4.0_obj_99/FJ1840.obj",
+      "candidate_face_count": 2264,
+      "frontmost_faces": 784,
+      "frontmost_or_near_faces": 867,
+      "retained_faces": 1343,
+      "retained_vertices": 807,
+      "retained_fraction": 0.5931978798586572,
+      "vertex_start": 29733,
+      "face_start": 48079,
+      "visible_bounds_mm": {
+        "min": [
+          -71.1499,
+          -95.608,
+          1533.93
+        ],
+        "max": [
+          -39.4578,
+          -21.7206,
+          1572.85
+        ]
+      }
+    },
+    {
+      "element_id": "FJ1841",
+      "concept_id": "FMA72668",
+      "representation_id": "BP10438",
+      "english_name": "Left supramarginal gyrus",
+      "source_sha256": "895a1e9e5eaed7443d9fe9544fefede9db219aaf38d30a4674cde778e1bdfb8e",
+      "source_bytes": 149885,
+      "source_vertices": 1323,
+      "source_faces": 2344,
+      "source_bounds_mm": {
+        "min": [
+          23.1495,
+          -73.1168,
+          1561.24
+        ],
+        "max": [
+          68.7863,
+          -35.4599,
+          1602.82
+        ]
+      },
+      "source_signed_volume_mm3": 16663.384088055984,
+      "source_facet_winding_vs_OBJ_normals": {
+        "negative_dot_count": 0,
+        "nonnegative_dot_count": 2344,
+        "median_dot": 0.9941668853207805,
+        "minimum_dot": 0.9393556754362727
+      },
+      "source_boundary_edges_after_exact_position_welding": 0,
+      "source_non_manifold_edges_after_exact_position_welding": 0,
+      "source_degenerate_faces": 0,
+      "label": 0,
+      "group": "cerebral cortex",
+      "source_member": "isa_BP3D_4.0_obj_99/FJ1841.obj",
+      "candidate_face_count": 2344,
+      "frontmost_faces": 510,
+      "frontmost_or_near_faces": 608,
+      "retained_faces": 973,
+      "retained_vertices": 617,
+      "retained_fraction": 0.4151023890784983,
+      "vertex_start": 30540,
+      "face_start": 49422,
+      "visible_bounds_mm": {
+        "min": [
+          23.4041,
+          -72.8612,
+          1561.24
+        ],
+        "max": [
+          68.7863,
+          -35.4599,
+          1602.82
+        ]
+      }
+    },
+    {
+      "element_id": "FJ1842",
+      "concept_id": "FMA72667",
+      "representation_id": "BP10469",
+      "english_name": "Right supramarginal gyrus",
+      "source_sha256": "374934ec8c016aec1aae2cad47d80b1d2668354cc890b0227a0b102c9b3b4469",
+      "source_bytes": 152420,
+      "source_vertices": 1368,
+      "source_faces": 2314,
+      "source_bounds_mm": {
+        "min": [
+          -69.7052,
+          -73.1259,
+          1561.37
+        ],
+        "max": [
+          -24.3919,
+          -35.4275,
+          1602.45
+        ]
+      },
+      "source_signed_volume_mm3": 16819.911076062075,
+      "source_facet_winding_vs_OBJ_normals": {
+        "negative_dot_count": 0,
+        "nonnegative_dot_count": 2314,
+        "median_dot": 0.9945121685609546,
+        "minimum_dot": 0.9422299218236322
+      },
+      "source_boundary_edges_after_exact_position_welding": 0,
+      "source_non_manifold_edges_after_exact_position_welding": 0,
+      "source_degenerate_faces": 0,
+      "label": 0,
+      "group": "cerebral cortex",
+      "source_member": "isa_BP3D_4.0_obj_99/FJ1842.obj",
+      "candidate_face_count": 2314,
+      "frontmost_faces": 432,
+      "frontmost_or_near_faces": 490,
+      "retained_faces": 811,
+      "retained_vertices": 547,
+      "retained_fraction": 0.3504753673292999,
+      "vertex_start": 31157,
+      "face_start": 50395,
+      "visible_bounds_mm": {
+        "min": [
+          -69.7052,
+          -72.6295,
+          1561.37
+        ],
+        "max": [
+          -27.972,
+          -35.4275,
+          1602.45
+        ]
+      }
+    },
+    {
+      "element_id": "FJ1781",
+      "concept_id": "FMA67944",
+      "representation_id": "BP5696",
+      "english_name": "Cerebellum",
+      "source_sha256": "47003d37cf123dc10b108bb79a2b12638a56f0f2616d0d1f58b727af88d1ec53",
+      "source_bytes": 1579646,
+      "source_vertices": 12098,
+      "source_faces": 23818,
+      "source_bounds_mm": {
+        "min": [
+          -0.648386,
+          -68.4475,
+          1487.26
+        ],
+        "max": [
+          52.6099,
+          -12.1743,
+          1540.51
+        ]
+      },
+      "source_signed_volume_mm3": 58885.50408941387,
+      "source_facet_winding_vs_OBJ_normals": {
+        "negative_dot_count": 0,
+        "nonnegative_dot_count": 23818,
+        "median_dot": 0.9979239355957923,
+        "minimum_dot": 0.9365084277169464
+      },
+      "source_boundary_edges_after_exact_position_welding": 0,
+      "source_non_manifold_edges_after_exact_position_welding": 0,
+      "source_degenerate_faces": 0,
+      "label": 1,
+      "group": "cerebellum",
+      "source_member": "isa_BP3D_4.0_obj_99/FJ1781.obj",
+      "candidate_face_count": 23818,
+      "frontmost_faces": 16821,
+      "frontmost_or_near_faces": 20686,
+      "retained_faces": 22238,
+      "retained_vertices": 11473,
+      "retained_fraction": 0.933663615752792,
+      "vertex_start": 31704,
+      "face_start": 51206,
+      "visible_bounds_mm": {
+        "min": [
+          -0.648386,
+          -68.4475,
+          1487.26
+        ],
+        "max": [
+          52.6099,
+          -12.1743,
+          1540.51
+        ]
+      }
+    },
+    {
+      "element_id": "FJ1830",
+      "concept_id": "FMA67944",
+      "representation_id": "BP5696",
+      "english_name": "Cerebellum",
+      "source_sha256": "585176d67d072ead00bab6b4d0ca42a151ace76bed1c20c1aeed22b8b4c57ac1",
+      "source_bytes": 1598659,
+      "source_vertices": 12226,
+      "source_faces": 23882,
+      "source_bounds_mm": {
+        "min": [
+          -53.9299,
+          -68.4661,
+          1487.24
+        ],
+        "max": [
+          -0.650293,
+          -12.1786,
+          1540.5
+        ]
+      },
+      "source_signed_volume_mm3": 58874.059340706,
+      "source_facet_winding_vs_OBJ_normals": {
+        "negative_dot_count": 0,
+        "nonnegative_dot_count": 23882,
+        "median_dot": 0.9979765303636319,
+        "minimum_dot": 0.9458226239939839
+      },
+      "source_boundary_edges_after_exact_position_welding": 0,
+      "source_non_manifold_edges_after_exact_position_welding": 0,
+      "source_degenerate_faces": 0,
+      "label": 1,
+      "group": "cerebellum",
+      "source_member": "isa_BP3D_4.0_obj_99/FJ1830.obj",
+      "candidate_face_count": 23882,
+      "frontmost_faces": 17091,
+      "frontmost_or_near_faces": 20987,
+      "retained_faces": 22502,
+      "retained_vertices": 11613,
+      "retained_fraction": 0.9422158948161795,
+      "vertex_start": 43177,
+      "face_start": 73444,
+      "visible_bounds_mm": {
+        "min": [
+          -53.9299,
+          -68.4661,
+          1487.24
+        ],
+        "max": [
+          -0.650293,
+          -12.1786,
+          1540.5
+        ]
+      }
+    },
+    {
+      "element_id": "FJ1762",
+      "concept_id": "FMA73435",
+      "representation_id": "BP10479",
+      "english_name": "Left inferior colliculus",
+      "source_sha256": "cdaf86887af5df7757baa33c54afcb440cf29fd206fe7595e88aa12015757ea5",
+      "source_bytes": 9042,
+      "source_vertices": 81,
+      "source_faces": 156,
+      "source_bounds_mm": {
+        "min": [
+          -0.302063,
+          -75.2808,
+          1528.82
+        ],
+        "max": [
+          7.34689,
+          -67.4836,
+          1536.44
+        ]
+      },
+      "source_signed_volume_mm3": 195.11363219780424,
+      "source_facet_winding_vs_OBJ_normals": {
+        "negative_dot_count": 0,
+        "nonnegative_dot_count": 156,
+        "median_dot": 0.9984678446457238,
+        "minimum_dot": 0.985626947553448
+      },
+      "source_boundary_edges_after_exact_position_welding": 0,
+      "source_non_manifold_edges_after_exact_position_welding": 0,
+      "source_degenerate_faces": 0,
+      "label": 2,
+      "group": "brainstem",
+      "source_member": "isa_BP3D_4.0_obj_99/FJ1762.obj",
+      "candidate_face_count": 156,
+      "frontmost_faces": 0,
+      "frontmost_or_near_faces": 27,
+      "retained_faces": 75,
+      "retained_vertices": 49,
+      "retained_fraction": 0.4807692307692308,
+      "vertex_start": 54790,
+      "face_start": 95946,
+      "visible_bounds_mm": {
+        "min": [
+          -0.302063,
+          -74.5229,
+          1528.93
+        ],
+        "max": [
+          7.34689,
+          -67.4836,
+          1536.44
+        ]
+      }
+    },
+    {
+      "element_id": "FJ1769",
+      "concept_id": "FMA62004",
+      "representation_id": "BP5693",
+      "english_name": "Medulla oblongata",
+      "source_sha256": "cc1cd37ef3f58fea9ffe8875efa3a33101ee6945dd13bdb28c973303a9986fbd",
+      "source_bytes": 392219,
+      "source_vertices": 3196,
+      "source_faces": 6036,
+      "source_bounds_mm": {
+        "min": [
+          -0.65468,
+          -84.4395,
+          1464.5
+        ],
+        "max": [
+          12.7131,
+          -51.2396,
+          1505.78
+        ]
+      },
+      "source_signed_volume_mm3": 5264.7566551129485,
+      "source_facet_winding_vs_OBJ_normals": {
+        "negative_dot_count": 0,
+        "nonnegative_dot_count": 6036,
+        "median_dot": 0.9995422442137991,
+        "minimum_dot": 0.9155689964006866
+      },
+      "source_boundary_edges_after_exact_position_welding": 0,
+      "source_non_manifold_edges_after_exact_position_welding": 0,
+      "source_degenerate_faces": 0,
+      "label": 2,
+      "group": "brainstem",
+      "source_member": "isa_BP3D_4.0_obj_99/FJ1769.obj",
+      "candidate_face_count": 6036,
+      "frontmost_faces": 4008,
+      "frontmost_or_near_faces": 4696,
+      "retained_faces": 5028,
+      "retained_vertices": 2756,
+      "retained_fraction": 0.8330019880715706,
+      "vertex_start": 54839,
+      "face_start": 96021,
+      "visible_bounds_mm": {
+        "min": [
+          -0.65468,
+          -84.4395,
+          1464.5
+        ],
+        "max": [
+          12.7131,
+          -51.2396,
+          1505.5
+        ]
+      }
+    },
+    {
+      "element_id": "FJ1770",
+      "concept_id": "FMA61993",
+      "representation_id": "BP5695",
+      "english_name": "Midbrain",
+      "source_sha256": "6e7eb027702dc4097aa0b2abe46efcffcd1f5e108b1665a649b45420b98229e9",
+      "source_bytes": 468005,
+      "source_vertices": 4157,
+      "source_faces": 6468,
+      "source_bounds_mm": {
+        "min": [
+          -0.656113,
+          -95.9259,
+          1528.49
+        ],
+        "max": [
+          14.0111,
+          -66.5809,
+          1545.52
+        ]
+      },
+      "source_signed_volume_mm3": 4159.567399550703,
+      "source_facet_winding_vs_OBJ_normals": {
+        "negative_dot_count": 0,
+        "nonnegative_dot_count": 6468,
+        "median_dot": 0.9989404990486515,
+        "minimum_dot": 0.9099969137586503
+      },
+      "source_boundary_edges_after_exact_position_welding": 0,
+      "source_non_manifold_edges_after_exact_position_welding": 0,
+      "source_degenerate_faces": 0,
+      "label": 2,
+      "group": "brainstem",
+      "source_member": "isa_BP3D_4.0_obj_99/FJ1770.obj",
+      "candidate_face_count": 6468,
+      "frontmost_faces": 1169,
+      "frontmost_or_near_faces": 3057,
+      "retained_faces": 3770,
+      "retained_vertices": 2460,
+      "retained_fraction": 0.58286951144094,
+      "vertex_start": 57595,
+      "face_start": 101049,
+      "visible_bounds_mm": {
+        "min": [
+          -0.656113,
+          -95.9259,
+          1528.49
+        ],
+        "max": [
+          13.273,
+          -66.5809,
+          1545.52
+        ]
+      }
+    },
+    {
+      "element_id": "FJ1774",
+      "concept_id": "FMA62394",
+      "representation_id": "BP6560",
+      "english_name": "Peduncle of midbrain",
+      "source_sha256": "f1fb3311c99418c348b480280145b99e8d80632c33a4ddb4ca3052a4ee22c352",
+      "source_bytes": 378647,
+      "source_vertices": 3375,
+      "source_faces": 5364,
+      "source_bounds_mm": {
+        "min": [
+          1.23989,
+          -99.2735,
+          1529.04
+        ],
+        "max": [
+          20.6028,
+          -76.3102,
+          1545.79
+        ]
+      },
+      "source_signed_volume_mm3": 2204.550026503832,
+      "source_facet_winding_vs_OBJ_normals": {
+        "negative_dot_count": 0,
+        "nonnegative_dot_count": 5364,
+        "median_dot": 0.9981087788048155,
+        "minimum_dot": 0.7614657757148336
+      },
+      "source_boundary_edges_after_exact_position_welding": 0,
+      "source_non_manifold_edges_after_exact_position_welding": 0,
+      "source_degenerate_faces": 0,
+      "label": 2,
+      "group": "brainstem",
+      "source_member": "isa_BP3D_4.0_obj_99/FJ1774.obj",
+      "candidate_face_count": 5364,
+      "frontmost_faces": 1747,
+      "frontmost_or_near_faces": 2784,
+      "retained_faces": 3253,
+      "retained_vertices": 2127,
+      "retained_fraction": 0.6064504101416853,
+      "vertex_start": 60055,
+      "face_start": 104819,
+      "visible_bounds_mm": {
+        "min": [
+          1.23989,
+          -99.2735,
+          1529.05
+        ],
+        "max": [
+          20.6028,
+          -78.0934,
+          1545.79
+        ]
+      }
+    },
+    {
+      "element_id": "FJ1775",
+      "concept_id": "FMA67943",
+      "representation_id": "BP6545",
+      "english_name": "Pons",
+      "source_sha256": "d24253c225545078ce9c4420880dc5652e20fb2576a6305a9fadc18f95fba9dd",
+      "source_bytes": 697135,
+      "source_vertices": 5764,
+      "source_faces": 10304,
+      "source_bounds_mm": {
+        "min": [
+          -0.655189,
+          -96.9866,
+          1502.07
+        ],
+        "max": [
+          20.4466,
+          -62.5806,
+          1530.69
+        ]
+      },
+      "source_signed_volume_mm3": 11026.213504726213,
+      "source_facet_winding_vs_OBJ_normals": {
+        "negative_dot_count": 0,
+        "nonnegative_dot_count": 10304,
+        "median_dot": 0.9984209391408818,
+        "minimum_dot": 0.41180806035685874
+      },
+      "source_boundary_edges_after_exact_position_welding": 0,
+      "source_non_manifold_edges_after_exact_position_welding": 0,
+      "source_degenerate_faces": 0,
+      "label": 2,
+      "group": "brainstem",
+      "source_member": "isa_BP3D_4.0_obj_99/FJ1775.obj",
+      "candidate_face_count": 10304,
+      "frontmost_faces": 5557,
+      "frontmost_or_near_faces": 7266,
+      "retained_faces": 8214,
+      "retained_vertices": 4725,
+      "retained_fraction": 0.797166149068323,
+      "vertex_start": 62182,
+      "face_start": 108072,
+      "visible_bounds_mm": {
+        "min": [
+          -0.655189,
+          -96.9866,
+          1502.07
+        ],
+        "max": [
+          20.4466,
+          -62.5806,
+          1530.69
+        ]
+      }
+    },
+    {
+      "element_id": "FJ1779",
+      "concept_id": "FMA73423",
+      "representation_id": "BP10424",
+      "english_name": "Left superior colliculus",
+      "source_sha256": "ea51306905e78a614e760f45fafae87c988f6e57fc9eeef6aa853b5490f39f14",
+      "source_bytes": 10340,
+      "source_vertices": 93,
+      "source_faces": 180,
+      "source_bounds_mm": {
+        "min": [
+          -0.557623,
+          -74.2727,
+          1537.37
+        ],
+        "max": [
+          7.20012,
+          -68.2338,
+          1543.37
+        ]
+      },
+      "source_signed_volume_mm3": 134.18883891521276,
+      "source_facet_winding_vs_OBJ_normals": {
+        "negative_dot_count": 0,
+        "nonnegative_dot_count": 180,
+        "median_dot": 0.9979707050412012,
+        "minimum_dot": 0.9847508130940386
+      },
+      "source_boundary_edges_after_exact_position_welding": 0,
+      "source_non_manifold_edges_after_exact_position_welding": 0,
+      "source_degenerate_faces": 0,
+      "label": 2,
+      "group": "brainstem",
+      "source_member": "isa_BP3D_4.0_obj_99/FJ1779.obj",
+      "candidate_face_count": 180,
+      "frontmost_faces": 0,
+      "frontmost_or_near_faces": 14,
+      "retained_faces": 55,
+      "retained_vertices": 42,
+      "retained_fraction": 0.3055555555555556,
+      "vertex_start": 66907,
+      "face_start": 116286,
+      "visible_bounds_mm": {
+        "min": [
+          -0.557623,
+          -73.6204,
+          1537.37
+        ],
+        "max": [
+          7.20012,
+          -68.3151,
+          1543.01
+        ]
+      }
+    },
+    {
+      "element_id": "FJ1810",
+      "concept_id": "FMA73434",
+      "representation_id": "BP10427",
+      "english_name": "Right inferior colliculus",
+      "source_sha256": "af734152040c2d046a83a3163b95cd996c7fd361cbe930088944c984fb0241f4",
+      "source_bytes": 11681,
+      "source_vertices": 104,
+      "source_faces": 204,
+      "source_bounds_mm": {
+        "min": [
+          -8.71285,
+          -75.3417,
+          1528.86
+        ],
+        "max": [
+          -0.922659,
+          -67.535,
+          1536.53
+        ]
+      },
+      "source_signed_volume_mm3": 203.95063187629592,
+      "source_facet_winding_vs_OBJ_normals": {
+        "negative_dot_count": 0,
+        "nonnegative_dot_count": 204,
+        "median_dot": 0.9986899962504598,
+        "minimum_dot": 0.9877787097262417
+      },
+      "source_boundary_edges_after_exact_position_welding": 0,
+      "source_non_manifold_edges_after_exact_position_welding": 0,
+      "source_degenerate_faces": 0,
+      "label": 2,
+      "group": "brainstem",
+      "source_member": "isa_BP3D_4.0_obj_99/FJ1810.obj",
+      "candidate_face_count": 204,
+      "frontmost_faces": 0,
+      "frontmost_or_near_faces": 24,
+      "retained_faces": 58,
+      "retained_vertices": 39,
+      "retained_fraction": 0.28431372549019607,
+      "vertex_start": 66949,
+      "face_start": 116341,
+      "visible_bounds_mm": {
+        "min": [
+          -8.71285,
+          -74.2107,
+          1528.86
+        ],
+        "max": [
+          -2.85347,
+          -67.535,
+          1536.53
+        ]
+      }
+    },
+    {
+      "element_id": "FJ1817",
+      "concept_id": "FMA61993",
+      "representation_id": "BP5695",
+      "english_name": "Midbrain",
+      "source_sha256": "b86a8f1ce035a5ec382122a210f86239c581a5478f2b1b5f377b021542981f2e",
+      "source_bytes": 461102,
+      "source_vertices": 4050,
+      "source_faces": 6440,
+      "source_bounds_mm": {
+        "min": [
+          -15.3222,
+          -95.9517,
+          1528.49
+        ],
+        "max": [
+          -0.638148,
+          -66.5858,
+          1545.53
+        ]
+      },
+      "source_signed_volume_mm3": 4161.968031417951,
+      "source_facet_winding_vs_OBJ_normals": {
+        "negative_dot_count": 0,
+        "nonnegative_dot_count": 6440,
+        "median_dot": 0.9994563485359687,
+        "minimum_dot": 0.9167181142960846
+      },
+      "source_boundary_edges_after_exact_position_welding": 0,
+      "source_non_manifold_edges_after_exact_position_welding": 0,
+      "source_degenerate_faces": 0,
+      "label": 2,
+      "group": "brainstem",
+      "source_member": "isa_BP3D_4.0_obj_99/FJ1817.obj",
+      "candidate_face_count": 6440,
+      "frontmost_faces": 1294,
+      "frontmost_or_near_faces": 3282,
+      "retained_faces": 4105,
+      "retained_vertices": 2654,
+      "retained_fraction": 0.6374223602484472,
+      "vertex_start": 66988,
+      "face_start": 116399,
+      "visible_bounds_mm": {
+        "min": [
+          -14.7895,
+          -95.9517,
+          1528.49
+        ],
+        "max": [
+          -0.638148,
+          -66.5858,
+          1545.53
+        ]
+      }
+    },
+    {
+      "element_id": "FJ1821",
+      "concept_id": "FMA62394",
+      "representation_id": "BP6560",
+      "english_name": "Peduncle of midbrain",
+      "source_sha256": "322d04d50d336255c89f963566753415c0e2c43538303148cc6f6482ecbca17b",
+      "source_bytes": 391141,
+      "source_vertices": 3514,
+      "source_faces": 5374,
+      "source_bounds_mm": {
+        "min": [
+          -21.9219,
+          -99.2585,
+          1529.04
+        ],
+        "max": [
+          -2.56642,
+          -76.306,
+          1545.78
+        ]
+      },
+      "source_signed_volume_mm3": 2204.409988133037,
+      "source_facet_winding_vs_OBJ_normals": {
+        "negative_dot_count": 0,
+        "nonnegative_dot_count": 5374,
+        "median_dot": 0.9983224519674043,
+        "minimum_dot": 0.4506762412990781
+      },
+      "source_boundary_edges_after_exact_position_welding": 0,
+      "source_non_manifold_edges_after_exact_position_welding": 0,
+      "source_degenerate_faces": 0,
+      "label": 2,
+      "group": "brainstem",
+      "source_member": "isa_BP3D_4.0_obj_99/FJ1821.obj",
+      "candidate_face_count": 5374,
+      "frontmost_faces": 1746,
+      "frontmost_or_near_faces": 2772,
+      "retained_faces": 3202,
+      "retained_vertices": 2126,
+      "retained_fraction": 0.5958317826572386,
+      "vertex_start": 69642,
+      "face_start": 120504,
+      "visible_bounds_mm": {
+        "min": [
+          -21.9219,
+          -99.2585,
+          1529.04
+        ],
+        "max": [
+          -2.56642,
+          -78.1027,
+          1545.78
+        ]
+      }
+    },
+    {
+      "element_id": "FJ1822",
+      "concept_id": "FMA67943",
+      "representation_id": "BP6545",
+      "english_name": "Pons",
+      "source_sha256": "474dffce10e8506b5f8a7aac5d6ccfc7ef6251490b36b5f04a7fa2676b7fb708",
+      "source_bytes": 727798,
+      "source_vertices": 6179,
+      "source_faces": 10346,
+      "source_bounds_mm": {
+        "min": [
+          -21.7505,
+          -96.9822,
+          1502.07
+        ],
+        "max": [
+          -0.576263,
+          -62.5815,
+          1530.68
+        ]
+      },
+      "source_signed_volume_mm3": 11017.613590567023,
+      "source_facet_winding_vs_OBJ_normals": {
+        "negative_dot_count": 0,
+        "nonnegative_dot_count": 10346,
+        "median_dot": 0.9982946196745758,
+        "minimum_dot": 0.66958768464001
+      },
+      "source_boundary_edges_after_exact_position_welding": 0,
+      "source_non_manifold_edges_after_exact_position_welding": 0,
+      "source_degenerate_faces": 0,
+      "label": 2,
+      "group": "brainstem",
+      "source_member": "isa_BP3D_4.0_obj_99/FJ1822.obj",
+      "candidate_face_count": 10346,
+      "frontmost_faces": 5328,
+      "frontmost_or_near_faces": 7346,
+      "retained_faces": 8254,
+      "retained_vertices": 5060,
+      "retained_fraction": 0.7977962497583607,
+      "vertex_start": 71768,
+      "face_start": 123706,
+      "visible_bounds_mm": {
+        "min": [
+          -21.7505,
+          -96.9822,
+          1502.07
+        ],
+        "max": [
+          -0.576263,
+          -62.5815,
+          1530.68
+        ]
+      }
+    },
+    {
+      "element_id": "FJ1826",
+      "concept_id": "FMA73422",
+      "representation_id": "BP10470",
+      "english_name": "Right superior colliculus",
+      "source_sha256": "6698c53727491bdb63e7a474b201a8c6b8b504de7004567d76028ddec94a67c5",
+      "source_bytes": 10171,
+      "source_vertices": 91,
+      "source_faces": 176,
+      "source_bounds_mm": {
+        "min": [
+          -8.51769,
+          -74.2794,
+          1537.34
+        ],
+        "max": [
+          -0.815126,
+          -68.259,
+          1543.31
+        ]
+      },
+      "source_signed_volume_mm3": 134.9242226145742,
+      "source_facet_winding_vs_OBJ_normals": {
+        "negative_dot_count": 0,
+        "nonnegative_dot_count": 176,
+        "median_dot": 0.9986199965411074,
+        "minimum_dot": 0.9826394597690652
+      },
+      "source_boundary_edges_after_exact_position_welding": 0,
+      "source_non_manifold_edges_after_exact_position_welding": 0,
+      "source_degenerate_faces": 0,
+      "label": 2,
+      "group": "brainstem",
+      "source_member": "isa_BP3D_4.0_obj_99/FJ1826.obj",
+      "candidate_face_count": 176,
+      "frontmost_faces": 0,
+      "frontmost_or_near_faces": 10,
+      "retained_faces": 36,
+      "retained_vertices": 27,
+      "retained_fraction": 0.20454545454545456,
+      "vertex_start": 76828,
+      "face_start": 131960,
+      "visible_bounds_mm": {
+        "min": [
+          -8.51769,
+          -72.9932,
+          1537.34
+        ],
+        "max": [
+          -3.38571,
+          -68.2821,
+          1542.62
+        ]
+      }
+    },
+    {
+      "element_id": "FJ1831",
+      "concept_id": "FMA62004",
+      "representation_id": "BP5693",
+      "english_name": "Medulla oblongata",
+      "source_sha256": "7c19ec386aadaafdae3dab8aa99c08d5db47fa063f689e99ee7e9cdf0bdbeda9",
+      "source_bytes": 401304,
+      "source_vertices": 3281,
+      "source_faces": 6060,
+      "source_bounds_mm": {
+        "min": [
+          -14.0204,
+          -84.4381,
+          1464.5
+        ],
+        "max": [
+          -0.632494,
+          -51.2391,
+          1505.78
+        ]
+      },
+      "source_signed_volume_mm3": 5269.13444464588,
+      "source_facet_winding_vs_OBJ_normals": {
+        "negative_dot_count": 0,
+        "nonnegative_dot_count": 6060,
+        "median_dot": 0.9994058911947895,
+        "minimum_dot": 0.17560981289067026
+      },
+      "source_boundary_edges_after_exact_position_welding": 0,
+      "source_non_manifold_edges_after_exact_position_welding": 0,
+      "source_degenerate_faces": 0,
+      "label": 2,
+      "group": "brainstem",
+      "source_member": "isa_BP3D_4.0_obj_99/FJ1831.obj",
+      "candidate_face_count": 6060,
+      "frontmost_faces": 3816,
+      "frontmost_or_near_faces": 4727,
+      "retained_faces": 5066,
+      "retained_vertices": 2834,
+      "retained_fraction": 0.835973597359736,
+      "vertex_start": 76855,
+      "face_start": 131996,
+      "visible_bounds_mm": {
+        "min": [
+          -14.0204,
+          -84.4381,
+          1464.5
+        ],
+        "max": [
+          -0.634158,
+          -51.2391,
+          1505.49
+        ]
+      }
+    }
+  ],
+  "independent_verification": "Each of the 79,689 output vertices and all three corner coordinates of each of the 137,062 output faces matched their original source OBJ values exactly, in original corner order and increasing original face order per part. Output labels/ranges, NPZ hash and individual array hashes passed read-back validation."
+}

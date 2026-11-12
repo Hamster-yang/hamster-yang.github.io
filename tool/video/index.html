@@ -1,131 +1,85 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
-
+<html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>影片編輯器 - Hamsteryang Tools</title>
-    <link rel="icon" type="image/x-icon" href="../../assets/favicon.ico" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
-    <link rel="stylesheet" href="../../css/macos.css">
-    <link rel="stylesheet" href="css/video-editor.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#101114">
+    <meta name="description" content="在瀏覽器整理、裁剪與串接影片，調整淡入淡出，並匯出 WebM 或 MP4。">
+    <title>影片編輯器 — Hamster Yang Tools</title>
+    <link rel="icon" type="image/x-icon" href="../../assets/favicon.ico">
+    <link rel="stylesheet" href="../../css/tools.css?v=20261110b">
+    <link rel="stylesheet" href="css/video-editor.css?v=20261110b">
+    <script defer src="../../js/tools.js?v=20261110b"></script>
+    <script defer src="js/video-editor.js?v=20261110d"></script>
 </head>
-
 <body>
+    <a class="skip-link" href="#editor">跳至影片編輯器</a>
     <div class="desktop">
-
-        <!-- Top Bar -->
-        <div class="top-bar">
+        <nav class="top-bar" aria-label="工具導覽">
             <div class="top-bar-left">
-                <div class="apple-logo"><i class="bi bi-apple"></i></div>
-                <div class="menu-item" style="font-weight: bold;">Video Editor</div>
-                <div class="menu-item hide-on-mobile">File</div>
-                <div class="menu-item hide-on-mobile">Edit</div>
-                <div class="menu-item hide-on-mobile">View</div>
+                <a class="apple-logo" href="../../index.html" aria-label="Hamster Yang 首頁">hy.</a>
+                <span class="menu-item tool-name">Video Editor</span>
+                <a class="menu-item" href="../../index.html">返回桌面</a>
+                <a class="menu-item" href="../../projects.html">所有工具</a>
             </div>
-            <div class="top-bar-right">
-                <div class="menu-item"><i class="bi bi-battery-full"></i></div>
-                <div class="menu-item"><i class="bi bi-wifi"></i></div>
-                <div class="menu-item"><i class="bi bi-search"></i></div>
-                <div class="menu-item" id="clock">Mon Jun 22 9:41 AM</div>
-            </div>
-        </div>
+            <div class="top-bar-right"><time class="menu-item" id="clock"></time></div>
+        </nav>
 
-        <!-- Video Editor Window -->
-        <div class="video-window">
-            <div class="video-header">
+        <main class="video-window" id="editor" aria-labelledby="video-title">
+            <header class="video-header">
                 <div class="window-controls">
-                    <a href="../../index.html" class="window-control-btn close" title="關閉"></a>
-                    <div class="window-control-btn" style="background: #ffbd2e; cursor: default;"></div>
-                    <div class="window-control-btn" style="background: #27c93f; cursor: default;"></div>
+                    <a href="../../index.html" class="window-control-btn close" aria-label="關閉影片編輯器，返回桌面" title="返回桌面"></a>
+                    <span class="window-control-btn inactive" aria-hidden="true"></span>
+                    <span class="window-control-btn inactive" aria-hidden="true"></span>
                 </div>
-                <span class="video-header-title">影片編輯器</span>
+                <h1 class="video-header-title" id="video-title">影片編輯器</h1>
                 <div class="video-header-actions">
-                    <button class="btn btn-primary" onclick="document.getElementById('file-input').click()">
-                        <i class="bi bi-upload"></i>
-                        <span>匯入</span>
-                    </button>
-                    <button class="btn btn-success" id="export-btn" disabled onclick="startExport()">
-                        <i class="bi bi-download"></i>
-                        <span>匯出</span>
-                    </button>
+                    <button type="button" class="btn btn-primary" id="import-btn">＋ 匯入</button>
+                    <button type="button" class="btn btn-success" id="export-btn" disabled>匯出</button>
+                    <button type="button" class="btn btn-danger" id="cancel-export-btn" hidden>取消匯出</button>
                 </div>
-            </div>
+            </header>
 
             <div class="video-content">
-                <!-- Clips Sidebar -->
-                <div class="clips-sidebar">
-                    <div class="sidebar-header">
-                        <h3>
-                            <i class="bi bi-film"></i>
-                            片段列表
-                        </h3>
-                        <span class="clip-count" id="clip-count">0</span>
-                    </div>
+                <section class="clips-sidebar" aria-labelledby="clips-title">
+                    <div class="sidebar-header"><h2 id="clips-title">片段列表</h2><span class="clip-count" id="clip-count">0</span></div>
                     <div class="clips-list" id="clips-list">
-                        <div class="empty-state" id="empty-state">
-                            <i class="bi bi-film"></i>
-                            <p>尚無片段</p>
-                            <p style="font-size: 11px; margin-top: 5px;">點擊上方按鈕匯入影片</p>
-                        </div>
+                        <div class="empty-state" id="empty-state"><span aria-hidden="true">▤</span><p>尚無片段</p><p>按「匯入」選擇影片。<br>加入多個檔案後，可調整順序與剪取範圍。</p></div>
                     </div>
-                    <div style="padding: 12px; border-top: 1px solid rgba(255, 255, 255, 0.1);">
-                        <button class="btn btn-danger" style="width: 100%; justify-content: center; font-size: 12px;"
-                            id="clear-all-btn">
-                            <i class="bi bi-trash"></i>
-                            <span>清空全部</span>
-                        </button>
-                    </div>
-                </div>
+                    <div class="sidebar-footer"><button type="button" class="btn btn-danger" id="clear-all-btn" disabled>清空全部</button></div>
+                </section>
 
-                <!-- Preview Area -->
-                <div class="preview-area">
-                    <div class="preview-container">
-                        <canvas id="preview-canvas" width="1280" height="720"></canvas>
-                    </div>
+                <section class="preview-area" aria-label="影片預覽與播放控制">
+                    <div class="preview-heading"><span>PREVIEW</span><span>1280 × 720 · 16:9</span></div>
+                    <div class="preview-container"><canvas id="preview-canvas" width="1280" height="720" aria-label="影片預覽畫面">此瀏覽器不支援 Canvas 影片預覽。</canvas></div>
                     <div class="preview-controls">
                         <div class="play-controls">
-                            <button class="control-btn play" id="play-pause-btn">
-                                <i class="bi bi-play-fill"></i>
-                            </button>
-                            <button class="control-btn loop" id="loop-btn" title="重複播放">
-                                <i class="bi bi-repeat"></i>
-                            </button>
+                            <button type="button" class="control-btn play" id="play-pause-btn" aria-label="播放" title="播放" disabled>▶</button>
+                            <button type="button" class="control-btn loop" id="loop-btn" aria-label="重複播放" aria-pressed="false" title="重複播放" disabled>↻</button>
                         </div>
                         <div class="time-progress">
                             <div class="progress-bar-container" id="progress-bar-container">
-                                <div class="progress-bar" id="progress-bar"></div>
+                                <div class="progress-bar" id="progress-bar" aria-hidden="true"></div>
+                                <input type="range" id="timeline-seek" min="0" max="0" step="0.01" value="0" aria-label="播放位置（秒）" disabled>
                             </div>
-                            <div class="time-display">
-                                <span class="time-current" id="current-time">00:00.0</span>
-                                <span id="total-time">00:00.0</span>
-                            </div>
+                            <div class="time-display"><span class="time-current" id="current-time">00:00.0</span><span id="total-time">00:00.0</span></div>
                         </div>
                     </div>
-                </div>
+                    <div class="export-notes">
+                        <p id="editor-status" role="status" aria-live="polite">尚未匯入影片</p>
+                        <p>匯出為 WebM 或 MP4，依瀏覽器支援選擇。以實際播放速度錄製 720p／30 fps；請保持分頁在前景。淡化套用至畫面及聲音，非片段交疊轉場。</p>
+                    </div>
+                </section>
             </div>
+        </main>
+
+        <input type="file" id="file-input" multiple accept="video/*" hidden aria-label="選擇影片">
+        <div id="video-source-container" aria-hidden="true"></div>
+        <div id="loading-overlay" role="status" aria-live="polite">
+            <div class="loading-content"><div class="loading-spinner" aria-hidden="true"></div><p id="loading-text">處理中…</p></div>
         </div>
-
-        <!-- Hidden file input -->
-        <input type="file" id="file-input" multiple accept="video/*" style="display: none;">
-
-        <!-- Hidden video container -->
-        <div id="video-source-container"></div>
-
-        <!-- Loading Overlay -->
-        <div id="loading-overlay">
-            <div class="loading-content">
-                <div class="loading-spinner"></div>
-                <p id="loading-text" style="color: white;">處理中...</p>
-            </div>
-        </div>
-
-        <!-- Toast -->
-        <div id="toast"></div>
+        <div id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+        <noscript><p class="noscript-note">影片編輯器需要 JavaScript。請啟用後重新載入頁面。</p></noscript>
     </div>
-
-    <script src="../../js/macos.js"></script>
-    <script src="js/video-editor.js"></script>
 </body>
-
 </html>

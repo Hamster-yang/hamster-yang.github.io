@@ -1,283 +1,196 @@
+'use strict';
 const timerDisplay = document.getElementById('timer-display');
 const startBtn = document.getElementById('start-btn');
 const pauseBtn = document.getElementById('pause-btn');
 const resetBtn = document.getElementById('reset-btn');
-const settingsBtn = document.getElementById('settings-btn');
-const settingsPanel = document.getElementById('settings-panel');
 const hoursInput = document.getElementById('hours-input');
 const minutesInput = document.getElementById('minutes-input');
 const secondsInput = document.getElementById('seconds-input');
 const presetButtons = document.querySelectorAll('.preset-btn');
-const themeButtons = document.querySelectorAll('.theme-btn');
-const bgButtons = document.querySelectorAll('.bg-btn');
 const soundCheckbox = document.getElementById('sound-checkbox');
-const fontScaleSlider = document.getElementById('font-scale-slider');
-const fontScaleValue = document.getElementById('font-scale-value');
-const clockContent = document.querySelector('.clock-content');
-
-let totalSeconds = 300; // Default 5 minutes
+const timerStatus = document.getElementById('timer-status');
+const soundStatus = document.getElementById('sound-status');
+const soundTestButton = document.getElementById('sound-test-btn');
+const inputs = [hoursInput, minutesInput, secondsInput];
+let totalSeconds = 300;
 let remainingSeconds = totalSeconds;
 let timerInterval = null;
 let isRunning = false;
-let currentColor = '#0a84ff';
+let deadline = null;
+let pausedRemainingMs = null;
 let soundEnabled = true;
-let baseFontSize = 140;
-
-// Dragging variables
-let isDragging = false;
-let startX, startY, initialX = 0, initialY = 0;
-
-// Format time display
+let audioContext = null;
+let soundPrepared = false;
 function formatTime(seconds) {
-    const h = Math.floor(seconds / 3600);
-    const m = Math.floor((seconds % 3600) / 60);
-    const s = seconds % 60;
-    return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+    const safe = Math.max(0, Math.floor(Number(seconds) || 0));
+    return [Math.floor(safe / 3600), Math.floor((safe % 3600) / 60), safe % 60].map(value => String(value).padStart(2, '0')).join(':');
 }
-
 function updateDisplay() {
     timerDisplay.textContent = formatTime(remainingSeconds);
-
-    // Change color based on remaining time
-    timerDisplay.classList.remove('warning', 'danger');
-    if (remainingSeconds <= 10 && remainingSeconds > 0) {
-        timerDisplay.classList.add('danger');
-    } else if (remainingSeconds <= 60 && remainingSeconds > 10) {
-        timerDisplay.classList.add('warning');
+    timerDisplay.setAttribute?.('aria-label', `剩餘 ${Math.floor(remainingSeconds / 3600)} 小時 ${Math.floor(remainingSeconds % 3600 / 60)} 分 ${remainingSeconds % 60} 秒`);
+    timerDisplay.classList.toggle('warning', remainingSeconds > 10 && remainingSeconds <= 60);
+    timerDisplay.classList.toggle('danger', remainingSeconds > 0 && remainingSeconds <= 10);
+    startBtn.disabled = remainingSeconds <= 0;
+}
+function setStatus(message) { if (timerStatus) timerStatus.textContent = message; }
+function updateControls() {
+    startBtn.hidden = isRunning;
+    pauseBtn.hidden = !isRunning;
+    inputs.forEach(input => { input.disabled = isRunning; });
+    presetButtons.forEach(button => { button.disabled = isRunning; });
+    startBtn.textContent = pausedRemainingMs !== null ? '繼續' : '開始';
+    window.syncClockControls?.();
+}
+// The wall-clock deadline catches up after a background tab throttles callbacks.
+function syncTimer() {
+    if (!isRunning) return;
+    remainingSeconds = Math.max(0, Math.ceil((deadline - Date.now()) / 1000));
+    updateDisplay();
+    if (remainingSeconds === 0) {
+        stopTimer();
+        setStatus('時間到了。按「重設」可再計時一次。');
+        playSound();
     }
 }
-
-// Start timer
+function prepareSound() {
+    if (!soundEnabled) return Promise.resolve(false);
+    const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+    if (!AudioContextClass) {
+        if (soundStatus) soundStatus.textContent = '此瀏覽器不支援提示音；計時結束仍會顯示訊息。';
+        return Promise.resolve(false);
+    }
+    try {
+        if (!audioContext || audioContext.state === 'closed') audioContext = new AudioContextClass();
+        const ready = audioContext.state === 'suspended' ? audioContext.resume() : Promise.resolve();
+        return Promise.resolve(ready).then(() => {
+            soundPrepared = audioContext.state === 'running';
+            return soundPrepared;
+        }).catch(() => { soundPrepared = false; if (soundStatus) soundStatus.textContent = '提示音未能啟用，請再按「測試提示音」。'; return false; });
+    } catch {
+        soundPrepared = false;
+        if (soundStatus) soundStatus.textContent = '提示音未能啟用，計時仍可使用。';
+        return Promise.resolve(false);
+    }
+}
+function playSound() {
+    if (!soundEnabled || !soundPrepared || !audioContext || audioContext.state !== 'running') return;
+    try {
+        const oscillator = audioContext.createOscillator();
+        const gain = audioContext.createGain();
+        oscillator.connect(gain);
+        gain.connect(audioContext.destination);
+        oscillator.frequency.value = 800;
+        oscillator.type = 'sine';
+        const now = audioContext.currentTime;
+        gain.gain.setValueAtTime(0.001, now);
+        gain.gain.exponentialRampToValueAtTime(0.2, now + 0.02);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.65);
+        oscillator.onended = () => { oscillator.disconnect(); gain.disconnect(); };
+        oscillator.start(now);
+        oscillator.stop(now + 0.7);
+    } catch { if (soundStatus) soundStatus.textContent = '無法播放提示音，請確認瀏覽器音訊設定。'; }
+}
 function startTimer() {
-    if (remainingSeconds <= 0) return;
-
+    if (isRunning || remainingSeconds <= 0) return;
+    // Unlock Web Audio from the user's start gesture, not when the timer expires.
+    prepareSound();
+    deadline = Date.now() + (pausedRemainingMs ?? remainingSeconds * 1000);
+    pausedRemainingMs = null;
     isRunning = true;
-    startBtn.style.display = 'none';
-    pauseBtn.style.display = 'flex';
-
-    timerInterval = setInterval(() => {
-        remainingSeconds--;
-        updateDisplay();
-
-        if (remainingSeconds <= 0) {
-            stopTimer();
-            playSound();
-            showNotification();
-        }
-    }, 1000);
+    updateControls();
+    setStatus('計時中');
+    timerInterval = setInterval(syncTimer, 250);
+    syncTimer();
 }
-
-// Pause timer
 function pauseTimer() {
+    if (!isRunning) return;
+    syncTimer();
+    if (!isRunning) return;
+    pausedRemainingMs = Math.max(0, deadline - Date.now());
     isRunning = false;
+    deadline = null;
     clearInterval(timerInterval);
-    startBtn.style.display = 'flex';
-    pauseBtn.style.display = 'none';
+    timerInterval = null;
+    updateControls();
+    setStatus('已暫停');
 }
-
-// Stop timer
 function stopTimer() {
     isRunning = false;
+    deadline = null;
+    pausedRemainingMs = null;
     clearInterval(timerInterval);
-    startBtn.style.display = 'flex';
-    pauseBtn.style.display = 'none';
+    timerInterval = null;
+    updateControls();
 }
-
-// Reset timer
+function writeInputs() {
+    hoursInput.value = Math.floor(totalSeconds / 3600);
+    minutesInput.value = Math.floor((totalSeconds % 3600) / 60);
+    secondsInput.value = totalSeconds % 60;
+}
 function resetTimer() {
     stopTimer();
     remainingSeconds = totalSeconds;
+    writeInputs();
     updateDisplay();
+    setStatus(totalSeconds ? '已重設' : '請先設定大於 0 秒的時間');
 }
-
-// Play sound
-function playSound() {
-    if (!soundEnabled) return;
-
-    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-    const oscillator = audioContext.createOscillator();
-    const gainNode = audioContext.createGain();
-
-    oscillator.connect(gainNode);
-    gainNode.connect(audioContext.destination);
-
-    oscillator.frequency.value = 800;
-    oscillator.type = 'sine';
-
-    gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
-    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
-
-    oscillator.start(audioContext.currentTime);
-    oscillator.stop(audioContext.currentTime + 0.5);
+function applyDuration(seconds) {
+    if (isRunning) return;
+    totalSeconds = Math.min(86399, Math.max(0, Math.floor(Number(seconds) || 0)));
+    remainingSeconds = totalSeconds;
+    pausedRemainingMs = null;
+    updateDisplay();
+    updateControls();
+    setStatus(totalSeconds ? '準備就緒' : '請先設定大於 0 秒的時間');
 }
-
-// Show notification
-function showNotification() {
-    if ('Notification' in window && Notification.permission === 'granted') {
-        new Notification('倒數計時結束！', {
-            body: '時間到了',
-            icon: '../../assets/favicon.ico'
-        });
-    }
+function readInputs() {
+    if (isRunning) { writeInputs(); return; }
+    const values = inputs.map((input, index) => {
+        const parsed = Number(input.value);
+        const value = Math.min(index === 0 ? 23 : 59, Math.max(0, Number.isFinite(parsed) ? Math.floor(parsed) : 0));
+        if (input.value !== '') input.value = value;
+        return value;
+    });
+    applyDuration(values[0] * 3600 + values[1] * 60 + values[2]);
 }
-
-// Request notification permission
-if ('Notification' in window && Notification.permission === 'default') {
-    Notification.requestPermission();
-}
-
-// Event listeners
+inputs.forEach(input => {
+    input.addEventListener('input', readInputs);
+    input.addEventListener('change', () => { readInputs(); writeInputs(); });
+});
+presetButtons.forEach(button => button.addEventListener('click', () => {
+    if (isRunning) return;
+    applyDuration(button.dataset.seconds);
+    writeInputs();
+}));
 startBtn.addEventListener('click', startTimer);
 pauseBtn.addEventListener('click', pauseTimer);
 resetBtn.addEventListener('click', resetTimer);
-
-// Settings toggle
-let settingsOpen = false;
-settingsBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    settingsOpen = !settingsOpen;
-    settingsPanel.classList.toggle('show', settingsOpen);
-    settingsBtn.classList.toggle('active', settingsOpen);
+soundCheckbox.addEventListener('change', () => {
+    soundEnabled = soundCheckbox.checked;
+    soundTestButton.disabled = !soundEnabled;
+    if (soundEnabled) prepareSound();
 });
-
-document.addEventListener('click', (e) => {
-    if (settingsOpen && !settingsPanel.contains(e.target) && !settingsBtn.contains(e.target)) {
-        settingsOpen = false;
-        settingsPanel.classList.remove('show');
-        settingsBtn.classList.remove('active');
-    }
+soundTestButton.addEventListener('click', async () => {
+    if (await prepareSound()) { playSound(); if (soundStatus) soundStatus.textContent = '已播放測試提示音。'; }
 });
-
-// Input validation and instant update
-[hoursInput, minutesInput, secondsInput].forEach(input => {
-    input.addEventListener('input', (e) => {
-        const value = parseInt(e.target.value) || 0;
-        const max = parseInt(e.target.max);
-        if (value > max) e.target.value = max;
-        if (value < 0) e.target.value = 0;
-
-        // Instantly update timer when not running
-        if (!isRunning) {
-            const h = parseInt(hoursInput.value) || 0;
-            const m = parseInt(minutesInput.value) || 0;
-            const s = parseInt(secondsInput.value) || 0;
-
-            totalSeconds = h * 3600 + m * 60 + s;
-            if (totalSeconds <= 0) {
-                totalSeconds = 60;
-            }
-            remainingSeconds = totalSeconds;
-            updateDisplay();
-        }
-    });
+document.addEventListener('visibilitychange', () => { if (!document.hidden) syncTimer(); });
+window.addEventListener?.('pageshow', syncTimer);
+window.addEventListener?.('pagehide', event => {
+    if (event.persisted) return;
+    stopTimer();
+    if (audioContext && audioContext.state !== 'closed') Promise.resolve(audioContext.close()).catch(() => {});
 });
-
-// Preset buttons - now also instantly updates
-presetButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-        if (isRunning) return; // Don't change time while running
-
-        const seconds = parseInt(btn.dataset.seconds);
-        const h = Math.floor(seconds / 3600);
-        const m = Math.floor((seconds % 3600) / 60);
-        const s = seconds % 60;
-
-        hoursInput.value = h;
-        minutesInput.value = m;
-        secondsInput.value = s;
-
-        // Trigger instant update
-        totalSeconds = seconds;
-        remainingSeconds = totalSeconds;
-        updateDisplay();
-    });
-});
-
-// Theme buttons (text color)
-themeButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-        themeButtons.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        currentColor = btn.dataset.color;
-        timerDisplay.style.color = currentColor;
-        timerDisplay.style.textShadow = `0 0 20px ${currentColor}80`;
-    });
-});
-
-// Background color buttons
-bgButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-        bgButtons.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const bgColor = btn.dataset.bg;
-        clockContent.style.backgroundColor = bgColor;
-    });
-});
-
-// Font scale slider (0.1x to 20x)
-fontScaleSlider.addEventListener('input', (e) => {
-    const scale = parseFloat(e.target.value);
-    timerDisplay.style.fontSize = (baseFontSize * scale) + 'px';
-    fontScaleValue.textContent = scale.toFixed(1) + 'x';
-});
-
-// Sound checkbox
-soundCheckbox.addEventListener('change', (e) => {
-    soundEnabled = e.target.checked;
-});
-
-// Dragging functionality - optimized
-timerDisplay.addEventListener('mousedown', handleDragStart);
-timerDisplay.addEventListener('touchstart', handleDragStart, { passive: false });
-
-document.addEventListener('mousemove', handleDragMove);
-document.addEventListener('touchmove', handleDragMove, { passive: false });
-
-document.addEventListener('mouseup', handleDragEnd);
-document.addEventListener('touchend', handleDragEnd);
-
-function handleDragStart(e) {
-    isDragging = true;
-    startX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
-    startY = e.type.includes('touch') ? e.touches[0].clientY : e.clientY;
-
-    // Read current position from computed style
-    const style = window.getComputedStyle(timerDisplay);
-    const matrix = new DOMMatrix(style.transform);
-    initialX = matrix.m41;
-    initialY = matrix.m42;
-
-    timerDisplay.style.cursor = 'grabbing';
-}
-
-function handleDragMove(e) {
-    if (!isDragging) return;
-    e.preventDefault(); // Prevent scrolling on touch
-
-    const clientX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
-    const clientY = e.type.includes('touch') ? e.touches[0].clientY : e.clientY;
-
-    const dx = clientX - startX;
-    const dy = clientY - startY;
-    const newX = initialX + dx;
-    const newY = initialY + dy;
-    timerDisplay.style.transform = `translate(${newX}px, ${newY}px)`;
-    timerDisplay.style.left = '50%';
-    timerDisplay.style.top = '50%';
-}
-
-function handleDragEnd() {
-    isDragging = false;
-    timerDisplay.style.cursor = 'move';
-}
-
-// Initialize
+writeInputs();
 updateDisplay();
-
-// Update inputs from default time
-const h = Math.floor(totalSeconds / 3600);
-const m = Math.floor((totalSeconds % 3600) / 60);
-const s = totalSeconds % 60;
-hoursInput.value = h;
-minutesInput.value = m;
-secondsInput.value = s;
+updateControls();
+window.createClockFace?.({
+    display: timerDisplay,
+    content: document.querySelector('.clock-content'),
+    windowElement: document.querySelector('.clock-window'),
+    panel: document.getElementById('settings-panel'),
+    settingsButton: document.getElementById('settings-btn'),
+    scaleSlider: document.getElementById('font-scale-slider'),
+    scaleValue: document.getElementById('font-scale-value'),
+    resetButton: document.getElementById('position-reset-btn'),
+    fullscreenButton: document.getElementById('fullscreen-btn')
+});

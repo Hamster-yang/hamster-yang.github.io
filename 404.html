@@ -1,31 +1,58 @@
-
-<html>
-    <head>
-        <link href="css/styles_404.css" rel="stylesheet" />
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.2/velocity.min.js"></script>
-        
-    </head>
-
-    <body>
-        <div class="container">
-            <form class="four-oh-four-form">
-              <input type="text" class="404-input">
-            </form>
-          
-            <div class="terminal">
-                <p class="prompt">The page you requested cannot be found right meow. Try typing '404 not found'.</p>
-                <p class="prompt output new-output"></p>
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>找不到這個頁面 · Hamster Yang 楊上賢</title>
+    <meta name="description" content="這個頁面不存在。回到 Hamster Yang 個人網站首頁，或探索作品與工具。">
+    <meta name="author" content="楊上賢 Hamster Yang">
+    <meta name="theme-color" content="#101114">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="找不到這個頁面 · Hamster Yang 楊上賢">
+    <meta property="og:description" content="這個頁面不存在。回到 Hamster Yang 個人網站首頁，或探索作品與工具。">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:url" content="https://hamsteryang.com/404.html">
+    <meta name="robots" content="noindex">
+    <link rel="icon" href="/assets/favicon.ico" sizes="any">
+    <link rel="stylesheet" href="/css/site.css?v=20261110b">
+    <link rel="stylesheet" href="/css/profile.css?v=20261110b">
+    <script src="/js/site.js?v=20261110b" defer></script>
+</head>
+<body>
+    <a class="skip-link" href="#main">跳至主要內容</a>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="/index.html"><span class="brand-mark">hy.</span><span>Hamster Yang<span class="brand-sub">PERSONAL WORKSPACE</span></span></a>
+            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" hidden>選單<span aria-hidden="true">＋</span></button>
+            <nav class="site-nav" id="site-nav" aria-label="主要導覽">
+                <a href="/index.html">首頁</a>
+                <a href="/index.html#research">研究方向</a>
+                <a href="/projects.html">作品與工具</a>
+                <a href="/resume.html">關於我</a>
+                <a href="/contact.html" class="nav-contact">聯絡我 <span aria-hidden="true">↗</span></a>
+            </nav>
+        </div>
+    </header>
+    <main id="main" class="not-found-main">
+        <section class="container document-window error-window" aria-labelledby="not-found-title">
+            <div class="document-titlebar"><span class="document-lights" aria-hidden="true"><i></i><i></i><i></i></span><span>404 — Terminal</span><span class="document-encoding">UTF-8</span></div>
+            <div class="document-body not-found-copy">
+                <p class="error-command"><span>hamsteryang@web</span> <span class="error-command-path">~ %</span> open page</p>
+                <p class="not-found-number" aria-hidden="true">404</p>
+                <h1 id="not-found-title">找不到這個頁面</h1>
+                <p class="error-output"><span>error:</span> No such file or directory.</p>
+                <p>網址可能有誤，或頁面已經移動。</p>
+                <div class="not-found-actions"><a class="button" href="/index.html">回到桌面 <span aria-hidden="true">↗</span></a><a class="button-secondary" href="/projects.html">開啟工具目錄</a></div>
             </div>
-          </div>
-
-        <script src="js/scripts.js"></script>
-        
-        <!-- Core theme JS-->
-        
-    </body>
+            <div class="document-status"><span>exit status 404</span><span>zsh</span></div>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <a class="footer-brand" href="/index.html">Hamster Yang<span aria-hidden="true">.</span></a>
+            <span>© 2026 楊上賢</span>
+            <div class="footer-links"><a href="https://github.com/Hamster-yang" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a><a href="/contact.html">聯絡我</a></div>
+        </div>
+    </footer>
+</body>
 </html>
-
-
-  

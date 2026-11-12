@@ -1,0 +1,119 @@
+{
+  "cerebral": {
+    "source_mesh": "bodyparts3d-brain.npz",
+    "source_sha256": "f2114429139a3e2a7812cdaa2f4b6867295288a5f580d8b5768d0414995e5724",
+    "source_vertices": 79689,
+    "included_triangles": 137062,
+    "count": 80000,
+    "surface_sampling": "triangle area weighted, deterministic barycentric samples",
+    "seed": 7601,
+    "rotation": [
+      [
+        1.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ],
+      [
+        0.0,
+        -1.0,
+        0.0
+      ]
+    ],
+    "center_rotated_mm": [
+      -0.7256,
+      1547.48,
+      79.67385
+    ],
+    "uniform_scale": 0.01022186445696623,
+    "surface_normals": "area-weighted vertex normals, barycentric interpolation, rigid rotation, signed Int8 / 127",
+    "supplementary_geometry": {
+      "source_mesh": "bodyparts3d-brain-vessels.npz",
+      "source_sha256": "633a83911b5024b081bf8dbb179ce8027acc5d0547cb9c819146d531bae3922b",
+      "source_vertices": 107559,
+      "included_triangles": 175186,
+      "count": 16000,
+      "label": 3,
+      "normal": "zero vector for faint internal vessel material",
+      "transform": "same brain rotation, center and uniform scale; no independent normalization"
+    },
+    "normalized_bounds": [
+      [
+        -0.7316035337873408,
+        -0.8475912915654709,
+        -0.9188592059688047
+      ],
+      [
+        0.7466671950693767,
+        0.8524455987025958,
+        0.9181513885454341
+      ]
+    ],
+    "point_labels": {
+      "0": 55861,
+      "1": 4782,
+      "2": 3357,
+      "3": 16000
+    },
+    "quantization": "little-endian signed Int16 / 32767, then Float32 in browser",
+    "source": "BodyParts3D 4.0 \u00b7 whole brain with intracranial arteries",
+    "license": "CC BY 4.0"
+  },
+  "pulmonary": {
+    "source_mesh": "bodyparts3d-pulmonary.npz",
+    "source_sha256": "e2051b8d24af36aa7d4005d177f909cca9ea930ce6ffaa50c57a820673f231f8",
+    "source_vertices": 39220,
+    "included_triangles": 67170,
+    "count": 56000,
+    "surface_sampling": "triangle area weighted, deterministic barycentric samples",
+    "seed": 7603,
+    "rotation": [
+      [
+        1.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ],
+      [
+        0.0,
+        -1.0,
+        0.0
+      ]
+    ],
+    "center_rotated_mm": [
+      5.564999999999998,
+      1239.525,
+      96.34975
+    ],
+    "uniform_scale": 0.007675173317093112,
+    "surface_normals": null,
+    "supplementary_geometry": null,
+    "normalized_bounds": [
+      [
+        -0.9189247793453471,
+        -0.8882343941608944,
+        -0.5721321752316111
+      ],
+      [
+        0.9155699776746172,
+        0.8901448714753482,
+        0.575999685348764
+      ]
+    ],
+    "point_labels": {
+      "0": 34083,
+      "1": 21917
+    },
+    "quantization": "little-endian signed Int16 / 32767, then Float32 in browser",
+    "source": "BodyParts3D 4.0 \u00b7 pulmonary arteries and veins",
+    "license": "CC BY 4.0"
+  }
+}

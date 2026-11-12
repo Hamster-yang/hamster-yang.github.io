@@ -1,0 +1,265 @@
+/* Shared chrome for the standalone tools; matches the personal desktop. */
+
+:root {
+  color-scheme: dark;
+  --paper: #101114;
+  --ink: #e3e5eb;
+  --muted: #9196a3;
+  --line: #30333c;
+  --surface: #1b1d23;
+  --surface-raised: #24262e;
+  --green: #a7c995;
+  --sage: #252c25;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  --bg-color: var(--paper);
+  --text-color: var(--ink);
+  --window-bg: var(--surface);
+  --window-header-bg: #2a2c34;
+  --accent-color: #4b6540;
+  --shadow-lg: 0 16px 50px #0005;
+  --glass-blur: blur(16px);
+  --menu-height: 36px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+  font-family: var(--font-main);
+  background: var(--paper);
+  color: var(--ink);
+}
+
+body {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button, input, select, textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+button, input, select, textarea {
+  color: inherit;
+}
+
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, [tabindex]:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 3px;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+::selection {
+  background: #45583c;
+  color: #fff;
+}
+
+.desktop {
+  min-height: 100svh;
+  background: var(--paper);
+}
+
+.top-bar {
+  height: var(--menu-height);
+  padding: 0 20px;
+  background: #1b1e24;
+  border-bottom: 1px solid #ffffff10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  position: relative;
+  z-index: 100;
+  font-size: 11px;
+}
+
+.top-bar-left, .top-bar-right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  min-width: 0;
+}
+
+.top-bar a {
+  color: #b8bec9;
+  white-space: nowrap;
+}
+
+.top-bar a:hover {
+  color: var(--green);
+}
+
+.top-bar .apple-logo {
+  font: 700 15px var(--mono);
+  letter-spacing: -1px;
+  color: var(--ink);
+}
+
+.top-bar .menu-item {
+  font-size: 11px;
+}
+
+.top-bar #clock {
+  color: var(--muted);
+  font: 10px var(--mono);
+  white-space: nowrap;
+}
+
+.window-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.window-control-btn {
+  display: block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 0;
+  background: #4b525d;
+  flex-shrink: 0;
+}
+
+.window-control-btn.close {
+  background: #ed6a5f;
+}
+
+.window-control-btn.close:hover {
+  background: #f28379;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 7px 13px;
+  min-height: 32px;
+  border: 1px solid var(--line);
+  background: var(--surface-raised);
+  color: var(--ink);
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+body .btn-primary, body .btn-success {
+  background: #35482e;
+  border: 1px solid #566d49;
+  color: #dce9d4;
+}
+
+body .btn-primary:hover:not(:disabled), body .btn-success:hover:not(:disabled) {
+  background: #425a38;
+  color: #f0f7eb;
+}
+
+body .btn-danger {
+  background: #382a2c;
+  border: 1px solid #644349;
+  color: #e5b7bd;
+}
+
+body .btn-danger:hover:not(:disabled) {
+  background: #503438;
+}
+
+body .btn-icon {
+  background: var(--surface-raised);
+  color: var(--ink);
+  border: 1px solid var(--line);
+}
+
+body .btn:disabled {
+  opacity: .4;
+}
+
+input, select, textarea {
+  accent-color: var(--green);
+}
+
+input[type=number], select {
+  color-scheme: dark;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 600px) {
+  .top-bar {
+    padding-inline: 12px;
+    gap: 8px;
+  }
+  .top-bar-left, .top-bar-right {
+    gap: 13px;
+  }
+  .top-bar .menu-item, .top-bar a:not(.apple-logo) {
+    font-size: 10px;
+  }
+  .top-bar #clock {
+    font-size: 8px;
+  }
+  .top-bar .hide-on-mobile {
+    display: none;
+  }
+}
+
+@media (max-width: 370px) {
+  .top-bar-right {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.skip-link {
+  position: fixed;
+  top: -80px;
+  left: 14px;
+  z-index: 20000;
+  padding: 9px 14px;
+  background: var(--green);
+  color: var(--paper);
+  border-radius: 5px;
+}
+
+.skip-link:focus {
+  top: 8px;
+}

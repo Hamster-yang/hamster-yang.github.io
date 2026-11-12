@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101114">
+  <meta name="description" content="完整大腦與肺部動靜脈點雲桌布採用的 BodyParts3D 解剖圖譜、取樣方式與資料授權。">
+  <title>桌布資料來源 — Hamster Yang</title>
+  <link rel="icon" href="assets/favicon.ico">
+  <link rel="stylesheet" href="css/site.css?v=20261110b">
+  <style>
+    .sources { max-width: 900px; padding-block: 55px 75px; }
+    .sources h1 { font: 500 clamp(24px, 4vw, 40px) var(--mono); margin-block: 30px; }
+    .sources h2 { font-size: 22px; margin-bottom: 15px; }
+    .sources p { color: var(--muted); font-size: 14px; line-height: 1.9; }
+    .sources a { color: var(--green); text-decoration: underline; text-underline-offset: 4px; }
+    .sources section { margin-top: 42px; padding-top: 30px; border-top: 1px solid var(--line); }
+    .sources .credit { padding: 18px 20px; border: 1px solid var(--line); border-radius: 7px; color: var(--ink); overflow-wrap: anywhere; }
+  </style>
+</head>
+<body>
+  <main class="container sources" id="main">
+    <a href="index.html">← 返回桌面</a>
+    <h1>桌布資料來源</h1>
+    <p>完整大腦與肺部動靜脈兩個場景都取自 BodyParts3D 4.0。這套成人解剖參考圖譜以 MRI 模型為基礎，經人工參照解剖資料修訂，各部位共用一套毫米座標。<a href="https://doi.org/10.1093/nar/gkn613" target="_blank" rel="noopener noreferrer">圖譜建構方法</a></p>
+    <section aria-labelledby="brain-source">
+      <h2 id="brain-source">完整大腦</h2>
+      <p>完整大腦場景呈現雙側大腦皮質、小腦與腦幹的外觀。50 個來源網格包括 36 個皮質部件、2 個小腦部件與 12 個腦幹部件，各自保留圖譜中的位置與比例。</p>
+      <p>從 126 個方向檢查表面後，取樣器使用保留的 137,062 個三角面產生 64,000 點，依三個部位著色。渲染器以表面的單位法線計算光照，顯示腦回與腦溝的起伏。<a href="assets/vascular/BRAIN-NOTICE.md">大腦資料說明</a></p>
+      <p>另有 16,000 個低亮度暖色點顯示同一圖譜的顱內動脈分支，涵蓋貼近腦表面及位於較深處的部分。全場景共 80,000 點，大腦與動脈共用同一座標變換。<a href="assets/vascular/bodyparts3d-brain-vessels.json">腦動脈資料清單</a></p>
+    </section>
+    <section aria-labelledby="pulmonary-source">
+      <h2 id="pulmonary-source">肺部動靜脈</h2>
+      <p>此場景使用 184 個網格，涵蓋肺動脈樹與四條肺靜脈所屬分支。56,000 個表面點依圖譜分類著色，藍色代表動脈，珊瑚色代表靜脈。兩個與肺部其餘網格明顯分離的來源網格 FJ2041、FJ2044 已在取樣前排除。<a href="assets/vascular/PULMONARY-NOTICE.md">肺部資料說明</a></p>
+    </section>
+    <section aria-labelledby="credit-title">
+      <h2 id="credit-title">圖譜授權與出處</h2>
+      <p class="credit" lang="en">BodyParts3D, © The Database Center for Life Science licensed under CC Attribution 4.0 International.</p>
+      <p><a href="https://dbarchive.biosciencedbc.jp/en/bodyparts3d/download.html" target="_blank" rel="noopener noreferrer">官方模型下載</a> · <a href="https://dbarchive.biosciencedbc.jp/en/bodyparts3d/lic.html" target="_blank" rel="noopener noreferrer">官方授權說明</a> · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a></p>
+    </section>
+    <section aria-labelledby="build-source">
+      <h2 id="build-source">表面取樣與顯示</h2>
+      <p>取樣器按照原始三角面積選擇表面，再計算點在三角面上的位置。每個場景共用一次座標軸轉換、置中與等比例縮放，之後將座標量化為瀏覽器可直接載入的資料。模型來源、雜湊值、樣本數與顯示變換皆記錄於資料目錄。</p>
+      <p><a href="assets/vascular/README.md">資料與建構說明</a> · <a href="assets/vascular/pointcloud-build.json">取樣與顯示變換記錄</a></p>
+    </section>
+  </main>
+</body>
+</html>
